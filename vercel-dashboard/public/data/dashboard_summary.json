@@ -1,0 +1,298 @@
+{
+  "generated_from": "discovery_insights_dataset.csv (frozen v1)",
+  "totals": {
+    "total_reviews": 26823,
+    "discovery_specific": 19620,
+    "adjacent_signal": 7203,
+    "problem_reviews": 15633,
+    "problem_rate": 0.583
+  },
+  "by_category": {
+    "discovery_issue": 7542,
+    "general_music_experience": 7203,
+    "repetition_issue": 4753,
+    "discovery_positive": 3987,
+    "algorithm_mismatch": 3338
+  },
+  "by_source": {
+    "play_store": 24049,
+    "app_store": 2098,
+    "reddit": 508,
+    "forums": 168
+  },
+  "by_layer": {
+    "discovery_specific": 19620,
+    "adjacent_signal": 7203
+  },
+  "by_sentiment": {
+    "positive": 13005,
+    "frustrated": 11349,
+    "neutral": 2469
+  },
+  "by_user_type": {
+    "casual_or_unknown": 20444,
+    "power_user": 6379
+  },
+  "by_region": {
+    "North America": 15594,
+    "Europe": 5810,
+    "LATAM": 1998,
+    "MEA": 1678,
+    "SE Asia": 618,
+    "Reddit(global)": 508,
+    "Forum(global)": 168,
+    "ANZ": 136,
+    "South Asia": 133,
+    "UK/Ireland": 129,
+    "East Asia": 51
+  },
+  "by_language": {
+    "en": 15472,
+    "en/unknown": 2774,
+    "de": 1941,
+    "it": 1659,
+    "fr": 1616,
+    "tr": 1222,
+    "es": 933,
+    "pt": 787,
+    "id": 395,
+    "hi": 24
+  },
+  "sentiment_distribution": {
+    "counts": {
+      "frustrated": 11349,
+      "positive": 13005,
+      "neutral": 2469
+    },
+    "share": {
+      "frustrated": 0.423,
+      "positive": 0.485,
+      "neutral": 0.092
+    },
+    "net_sentiment": 0.062
+  },
+  "review_analytics": {
+    "total_reviews": 26823,
+    "discovery_specific": 19620,
+    "adjacent_signal": 7203,
+    "discovery_issue": 7542,
+    "repetition_issue": 4753,
+    "algorithm_mismatch": 3338,
+    "discovery_positive": 3987,
+    "general_music_experience": 7203,
+    "problem_reviews": 15633,
+    "problem_rate": 0.583
+  },
+  "trend": [
+    {
+      "month": "2024-01",
+      "reviews": 59,
+      "problem_rate": 0.678,
+      "repetition_rate": 0.169,
+      "positive_rate": 0.017
+    },
+    {
+      "month": "2024-02",
+      "reviews": 39,
+      "problem_rate": 0.718,
+      "repetition_rate": 0.231,
+      "positive_rate": 0.026
+    },
+    {
+      "month": "2024-03",
+      "reviews": 51,
+      "problem_rate": 0.765,
+      "repetition_rate": 0.294,
+      "positive_rate": 0.059
+    },
+    {
+      "month": "2024-04",
+      "reviews": 45,
+      "problem_rate": 0.667,
+      "repetition_rate": 0.156,
+      "positive_rate": 0.044
+    },
+    {
+      "month": "2024-05",
+      "reviews": 92,
+      "problem_rate": 0.772,
+      "repetition_rate": 0.174,
+      "positive_rate": 0.054
+    },
+    {
+      "month": "2024-06",
+      "reviews": 120,
+      "problem_rate": 0.625,
+      "repetition_rate": 0.175,
+      "positive_rate": 0.1
+    },
+    {
+      "month": "2024-07",
+      "reviews": 148,
+      "problem_rate": 0.628,
+      "repetition_rate": 0.101,
+      "positive_rate": 0.034
+    },
+    {
+      "month": "2024-08",
+      "reviews": 184,
+      "problem_rate": 0.674,
+      "repetition_rate": 0.076,
+      "positive_rate": 0.027
+    },
+    {
+      "month": "2024-09",
+      "reviews": 154,
+      "problem_rate": 0.669,
+      "repetition_rate": 0.084,
+      "positive_rate": 0.065
+    },
+    {
+      "month": "2024-10",
+      "reviews": 151,
+      "problem_rate": 0.728,
+      "repetition_rate": 0.119,
+      "positive_rate": 0.033
+    },
+    {
+      "month": "2024-11",
+      "reviews": 108,
+      "problem_rate": 0.639,
+      "repetition_rate": 0.12,
+      "positive_rate": 0.065
+    },
+    {
+      "month": "2024-12",
+      "reviews": 167,
+      "problem_rate": 0.563,
+      "repetition_rate": 0.114,
+      "positive_rate": 0.03
+    },
+    {
+      "month": "2025-01",
+      "reviews": 337,
+      "problem_rate": 0.691,
+      "repetition_rate": 0.169,
+      "positive_rate": 0.05
+    },
+    {
+      "month": "2025-02",
+      "reviews": 268,
+      "problem_rate": 0.75,
+      "repetition_rate": 0.235,
+      "positive_rate": 0.034
+    },
+    {
+      "month": "2025-03",
+      "reviews": 401,
+      "problem_rate": 0.746,
+      "repetition_rate": 0.222,
+      "positive_rate": 0.032
+    },
+    {
+      "month": "2025-04",
+      "reviews": 333,
+      "problem_rate": 0.793,
+      "repetition_rate": 0.243,
+      "positive_rate": 0.018
+    },
+    {
+      "month": "2025-05",
+      "reviews": 274,
+      "problem_rate": 0.759,
+      "repetition_rate": 0.175,
+      "positive_rate": 0.029
+    },
+    {
+      "month": "2025-06",
+      "reviews": 350,
+      "problem_rate": 0.697,
+      "repetition_rate": 0.217,
+      "positive_rate": 0.034
+    },
+    {
+      "month": "2025-07",
+      "reviews": 311,
+      "problem_rate": 0.752,
+      "repetition_rate": 0.251,
+      "positive_rate": 0.023
+    },
+    {
+      "month": "2025-08",
+      "reviews": 326,
+      "problem_rate": 0.773,
+      "repetition_rate": 0.199,
+      "positive_rate": 0.021
+    },
+    {
+      "month": "2025-09",
+      "reviews": 307,
+      "problem_rate": 0.752,
+      "repetition_rate": 0.199,
+      "positive_rate": 0.036
+    },
+    {
+      "month": "2025-10",
+      "reviews": 1261,
+      "problem_rate": 0.569,
+      "repetition_rate": 0.159,
+      "positive_rate": 0.163
+    },
+    {
+      "month": "2025-11",
+      "reviews": 2343,
+      "problem_rate": 0.513,
+      "repetition_rate": 0.145,
+      "positive_rate": 0.165
+    },
+    {
+      "month": "2025-12",
+      "reviews": 2295,
+      "problem_rate": 0.519,
+      "repetition_rate": 0.168,
+      "positive_rate": 0.194
+    },
+    {
+      "month": "2026-01",
+      "reviews": 2361,
+      "problem_rate": 0.525,
+      "repetition_rate": 0.166,
+      "positive_rate": 0.197
+    },
+    {
+      "month": "2026-02",
+      "reviews": 2053,
+      "problem_rate": 0.56,
+      "repetition_rate": 0.183,
+      "positive_rate": 0.163
+    },
+    {
+      "month": "2026-03",
+      "reviews": 2524,
+      "problem_rate": 0.543,
+      "repetition_rate": 0.175,
+      "positive_rate": 0.176
+    },
+    {
+      "month": "2026-04",
+      "reviews": 2367,
+      "problem_rate": 0.543,
+      "repetition_rate": 0.175,
+      "positive_rate": 0.191
+    },
+    {
+      "month": "2026-05",
+      "reviews": 3707,
+      "problem_rate": 0.577,
+      "repetition_rate": 0.194,
+      "positive_rate": 0.132
+    },
+    {
+      "month": "2026-06",
+      "reviews": 2909,
+      "problem_rate": 0.601,
+      "repetition_rate": 0.193,
+      "positive_rate": 0.176
+    }
+  ]
+}

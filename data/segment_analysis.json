@@ -1,0 +1,481 @@
+{
+  "by_platform": {
+    "play_store": {
+      "total": 86014,
+      "categories": {
+        "general_music_experience": 68550,
+        "algorithm_mismatch": 3126,
+        "discovery_issue": 6666,
+        "discovery_positive": 3412,
+        "repetition_issue": 4260
+      },
+      "repetition_rate": 0.05,
+      "problem_rate": 0.163,
+      "positive_rate": 0.04
+    },
+    "app_store": {
+      "total": 7776,
+      "categories": {
+        "repetition_issue": 373,
+        "general_music_experience": 6230,
+        "discovery_positive": 472,
+        "discovery_issue": 505,
+        "algorithm_mismatch": 196
+      },
+      "repetition_rate": 0.048,
+      "problem_rate": 0.138,
+      "positive_rate": 0.061
+    },
+    "reddit": {
+      "total": 690,
+      "categories": {
+        "repetition_issue": 84,
+        "discovery_issue": 256,
+        "general_music_experience": 239,
+        "discovery_positive": 101,
+        "algorithm_mismatch": 10
+      },
+      "repetition_rate": 0.122,
+      "problem_rate": 0.507,
+      "positive_rate": 0.146
+    },
+    "forums": {
+      "total": 179,
+      "categories": {
+        "discovery_issue": 115,
+        "repetition_issue": 36,
+        "general_music_experience": 20,
+        "discovery_positive": 2,
+        "algorithm_mismatch": 6
+      },
+      "repetition_rate": 0.201,
+      "problem_rate": 0.877,
+      "positive_rate": 0.011
+    }
+  },
+  "by_region": {
+    "North America": {
+      "total": 62268,
+      "categories": {
+        "repetition_issue": 2343,
+        "general_music_experience": 51480,
+        "discovery_positive": 3296,
+        "discovery_issue": 4857,
+        "algorithm_mismatch": 292
+      },
+      "repetition_rate": 0.038,
+      "problem_rate": 0.12,
+      "positive_rate": 0.053
+    },
+    "Europe": {
+      "total": 16548,
+      "categories": {
+        "general_music_experience": 12281,
+        "discovery_issue": 1659,
+        "algorithm_mismatch": 1521,
+        "discovery_positive": 211,
+        "repetition_issue": 876
+      },
+      "repetition_rate": 0.053,
+      "problem_rate": 0.245,
+      "positive_rate": 0.013
+    },
+    "LATAM": {
+      "total": 7467,
+      "categories": {
+        "general_music_experience": 5887,
+        "repetition_issue": 570,
+        "algorithm_mismatch": 817,
+        "discovery_issue": 179,
+        "discovery_positive": 14
+      },
+      "repetition_rate": 0.076,
+      "problem_rate": 0.21,
+      "positive_rate": 0.002
+    },
+    "MEA": {
+      "total": 3942,
+      "categories": {
+        "general_music_experience": 2421,
+        "discovery_positive": 132,
+        "repetition_issue": 639,
+        "discovery_issue": 194,
+        "algorithm_mismatch": 556
+      },
+      "repetition_rate": 0.162,
+      "problem_rate": 0.352,
+      "positive_rate": 0.033
+    },
+    "SE Asia": {
+      "total": 1629,
+      "categories": {
+        "discovery_issue": 148,
+        "general_music_experience": 1095,
+        "repetition_issue": 140,
+        "discovery_positive": 117,
+        "algorithm_mismatch": 129
+      },
+      "repetition_rate": 0.086,
+      "problem_rate": 0.256,
+      "positive_rate": 0.072
+    },
+    "South Asia": {
+      "total": 801,
+      "categories": {
+        "general_music_experience": 699,
+        "discovery_positive": 41,
+        "discovery_issue": 39,
+        "algorithm_mismatch": 4,
+        "repetition_issue": 18
+      },
+      "repetition_rate": 0.022,
+      "problem_rate": 0.076,
+      "positive_rate": 0.051
+    },
+    "Reddit(global)": {
+      "total": 690,
+      "categories": {
+        "repetition_issue": 84,
+        "discovery_issue": 256,
+        "general_music_experience": 239,
+        "discovery_positive": 101,
+        "algorithm_mismatch": 10
+      },
+      "repetition_rate": 0.122,
+      "problem_rate": 0.507,
+      "positive_rate": 0.146
+    },
+    "UK/Ireland": {
+      "total": 481,
+      "categories": {
+        "general_music_experience": 392,
+        "repetition_issue": 16,
+        "discovery_issue": 39,
+        "discovery_positive": 34
+      },
+      "repetition_rate": 0.033,
+      "problem_rate": 0.114,
+      "positive_rate": 0.071
+    },
+    "ANZ": {
+      "total": 477,
+      "categories": {
+        "general_music_experience": 384,
+        "discovery_positive": 35,
+        "algorithm_mismatch": 3,
+        "repetition_issue": 25,
+        "discovery_issue": 30
+      },
+      "repetition_rate": 0.052,
+      "problem_rate": 0.122,
+      "positive_rate": 0.073
+    },
+    "Forum(global)": {
+      "total": 179,
+      "categories": {
+        "discovery_issue": 115,
+        "repetition_issue": 36,
+        "general_music_experience": 20,
+        "discovery_positive": 2,
+        "algorithm_mismatch": 6
+      },
+      "repetition_rate": 0.201,
+      "problem_rate": 0.877,
+      "positive_rate": 0.011
+    },
+    "East Asia": {
+      "total": 177,
+      "categories": {
+        "general_music_experience": 141,
+        "discovery_issue": 26,
+        "repetition_issue": 6,
+        "discovery_positive": 4
+      },
+      "repetition_rate": 0.034,
+      "problem_rate": 0.181,
+      "positive_rate": 0.023
+    }
+  },
+  "by_language": {
+    "en": {
+      "total": 61806,
+      "categories": {
+        "general_music_experience": 51099,
+        "algorithm_mismatch": 288,
+        "discovery_issue": 4829,
+        "discovery_positive": 3266,
+        "repetition_issue": 2324
+      },
+      "repetition_rate": 0.038,
+      "problem_rate": 0.12,
+      "positive_rate": 0.053
+    },
+    "en/unknown": {
+      "total": 8645,
+      "categories": {
+        "repetition_issue": 493,
+        "general_music_experience": 6489,
+        "discovery_positive": 575,
+        "discovery_issue": 876,
+        "algorithm_mismatch": 212
+      },
+      "repetition_rate": 0.057,
+      "problem_rate": 0.183,
+      "positive_rate": 0.067
+    },
+    "de": {
+      "total": 5496,
+      "categories": {
+        "general_music_experience": 4305,
+        "discovery_issue": 844,
+        "discovery_positive": 68,
+        "algorithm_mismatch": 146,
+        "repetition_issue": 133
+      },
+      "repetition_rate": 0.024,
+      "problem_rate": 0.204,
+      "positive_rate": 0.012
+    },
+    "it": {
+      "total": 5402,
+      "categories": {
+        "general_music_experience": 4151,
+        "repetition_issue": 315,
+        "algorithm_mismatch": 644,
+        "discovery_positive": 18,
+        "discovery_issue": 274
+      },
+      "repetition_rate": 0.058,
+      "problem_rate": 0.228,
+      "positive_rate": 0.003
+    },
+    "pt": {
+      "total": 3460,
+      "categories": {
+        "general_music_experience": 2959,
+        "algorithm_mismatch": 222,
+        "repetition_issue": 200,
+        "discovery_issue": 76,
+        "discovery_positive": 3
+      },
+      "repetition_rate": 0.058,
+      "problem_rate": 0.144,
+      "positive_rate": 0.001
+    },
+    "fr": {
+      "total": 3388,
+      "categories": {
+        "discovery_issue": 387,
+        "algorithm_mismatch": 658,
+        "general_music_experience": 1990,
+        "repetition_issue": 329,
+        "discovery_positive": 24
+      },
+      "repetition_rate": 0.097,
+      "problem_rate": 0.406,
+      "positive_rate": 0.007
+    },
+    "es": {
+      "total": 3170,
+      "categories": {
+        "repetition_issue": 250,
+        "general_music_experience": 2339,
+        "algorithm_mismatch": 506,
+        "discovery_issue": 70,
+        "discovery_positive": 5
+      },
+      "repetition_rate": 0.079,
+      "problem_rate": 0.261,
+      "positive_rate": 0.002
+    },
+    "tr": {
+      "total": 2034,
+      "categories": {
+        "general_music_experience": 837,
+        "discovery_issue": 70,
+        "algorithm_mismatch": 540,
+        "repetition_issue": 585,
+        "discovery_positive": 2
+      },
+      "repetition_rate": 0.288,
+      "problem_rate": 0.588,
+      "positive_rate": 0.001
+    },
+    "id": {
+      "total": 962,
+      "categories": {
+        "general_music_experience": 595,
+        "algorithm_mismatch": 122,
+        "repetition_issue": 120,
+        "discovery_issue": 106,
+        "discovery_positive": 19
+      },
+      "repetition_rate": 0.125,
+      "problem_rate": 0.362,
+      "positive_rate": 0.02
+    },
+    "hi": {
+      "total": 296,
+      "categories": {
+        "general_music_experience": 275,
+        "discovery_issue": 10,
+        "repetition_issue": 4,
+        "discovery_positive": 7
+      },
+      "repetition_rate": 0.014,
+      "problem_rate": 0.047,
+      "positive_rate": 0.024
+    }
+  },
+  "by_user_type": {
+    "casual_or_unknown": {
+      "total": 75899,
+      "categories": {
+        "repetition_issue": 3332,
+        "general_music_experience": 60980,
+        "discovery_positive": 3103,
+        "discovery_issue": 5656,
+        "algorithm_mismatch": 2828
+      },
+      "repetition_rate": 0.044,
+      "problem_rate": 0.156,
+      "positive_rate": 0.041
+    },
+    "power_user": {
+      "total": 18760,
+      "categories": {
+        "general_music_experience": 14059,
+        "discovery_positive": 884,
+        "algorithm_mismatch": 510,
+        "discovery_issue": 1886,
+        "repetition_issue": 1421
+      },
+      "repetition_rate": 0.076,
+      "problem_rate": 0.203,
+      "positive_rate": 0.047
+    }
+  },
+  "unmet_need_signals": {
+    "shuffle_repeats_small_pool": 985,
+    "ai_generated_flooding": 569,
+    "lost_dislike_reset_control": 228,
+    "recs_too_narrow_boxed_in": 93,
+    "cant_find_new_music": 86,
+    "forced_recs_in_playlist": 43
+  },
+  "most_repetition_affected_cohorts": [
+    {
+      "cohort": "tr",
+      "total": 2034,
+      "categories": {
+        "general_music_experience": 837,
+        "discovery_issue": 70,
+        "algorithm_mismatch": 540,
+        "repetition_issue": 585,
+        "discovery_positive": 2
+      },
+      "repetition_rate": 0.288,
+      "problem_rate": 0.588,
+      "positive_rate": 0.001
+    },
+    {
+      "cohort": "Forum(global)",
+      "total": 179,
+      "categories": {
+        "discovery_issue": 115,
+        "repetition_issue": 36,
+        "general_music_experience": 20,
+        "discovery_positive": 2,
+        "algorithm_mismatch": 6
+      },
+      "repetition_rate": 0.201,
+      "problem_rate": 0.877,
+      "positive_rate": 0.011
+    },
+    {
+      "cohort": "MEA",
+      "total": 3942,
+      "categories": {
+        "general_music_experience": 2421,
+        "discovery_positive": 132,
+        "repetition_issue": 639,
+        "discovery_issue": 194,
+        "algorithm_mismatch": 556
+      },
+      "repetition_rate": 0.162,
+      "problem_rate": 0.352,
+      "positive_rate": 0.033
+    },
+    {
+      "cohort": "id",
+      "total": 962,
+      "categories": {
+        "general_music_experience": 595,
+        "algorithm_mismatch": 122,
+        "repetition_issue": 120,
+        "discovery_issue": 106,
+        "discovery_positive": 19
+      },
+      "repetition_rate": 0.125,
+      "problem_rate": 0.362,
+      "positive_rate": 0.02
+    },
+    {
+      "cohort": "Reddit(global)",
+      "total": 690,
+      "categories": {
+        "repetition_issue": 84,
+        "discovery_issue": 256,
+        "general_music_experience": 239,
+        "discovery_positive": 101,
+        "algorithm_mismatch": 10
+      },
+      "repetition_rate": 0.122,
+      "problem_rate": 0.507,
+      "positive_rate": 0.146
+    },
+    {
+      "cohort": "fr",
+      "total": 3388,
+      "categories": {
+        "discovery_issue": 387,
+        "algorithm_mismatch": 658,
+        "general_music_experience": 1990,
+        "repetition_issue": 329,
+        "discovery_positive": 24
+      },
+      "repetition_rate": 0.097,
+      "problem_rate": 0.406,
+      "positive_rate": 0.007
+    },
+    {
+      "cohort": "SE Asia",
+      "total": 1629,
+      "categories": {
+        "discovery_issue": 148,
+        "general_music_experience": 1095,
+        "repetition_issue": 140,
+        "discovery_positive": 117,
+        "algorithm_mismatch": 129
+      },
+      "repetition_rate": 0.086,
+      "problem_rate": 0.256,
+      "positive_rate": 0.072
+    },
+    {
+      "cohort": "es",
+      "total": 3170,
+      "categories": {
+        "repetition_issue": 250,
+        "general_music_experience": 2339,
+        "algorithm_mismatch": 506,
+        "discovery_issue": 70,
+        "discovery_positive": 5
+      },
+      "repetition_rate": 0.079,
+      "problem_rate": 0.261,
+      "positive_rate": 0.002
+    }
+  ],
+  "notes": "Heuristic segmentation; power_user inferred from text cues (premium/years/large library). Run the Claude classifier for higher-precision category + segment labels."
+}

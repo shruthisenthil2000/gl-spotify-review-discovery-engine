@@ -1,0 +1,50 @@
+{
+  "final_total": 94659,
+  "by_source": {
+    "app_store": 7776,
+    "forums": 179,
+    "play_store": 86014,
+    "reddit": 690
+  },
+  "by_source_and_category": {
+    "app_store": {
+      "repetition_issue": 373,
+      "general_music_experience": 6230,
+      "discovery_positive": 472,
+      "discovery_issue": 505,
+      "algorithm_mismatch": 196
+    },
+    "forums": {
+      "discovery_issue": 115,
+      "repetition_issue": 36,
+      "general_music_experience": 20,
+      "discovery_positive": 2,
+      "algorithm_mismatch": 6
+    },
+    "play_store": {
+      "general_music_experience": 68550,
+      "algorithm_mismatch": 3126,
+      "discovery_issue": 6666,
+      "discovery_positive": 3412,
+      "repetition_issue": 4260
+    },
+    "reddit": {
+      "repetition_issue": 84,
+      "discovery_issue": 256,
+      "general_music_experience": 239,
+      "discovery_positive": 101,
+      "algorithm_mismatch": 10
+    }
+  },
+  "funnel": {
+    "input_normalized": 440416,
+    "after_min_words": 230622,
+    "exact_duplicates_removed": 813,
+    "keyword_irrelevant_removed": 135150,
+    "relevant_after_keyword": 94659,
+    "near_duplicates_removed": 0,
+    "dedup_mode": "exact_only (paraphrases preserved)",
+    "classifier": "heuristic",
+    "final_rows": 94659
+  }
+}

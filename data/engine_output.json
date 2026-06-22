@@ -1,0 +1,1495 @@
+{
+  "generated_from": "discovery_insights_dataset.csv (frozen v1)",
+  "review_analytics": {
+    "total_reviews": 26823,
+    "discovery_specific": 19620,
+    "adjacent_signal": 7203,
+    "discovery_issue": 7542,
+    "repetition_issue": 4753,
+    "algorithm_mismatch": 3338,
+    "discovery_positive": 3987,
+    "general_music_experience": 7203,
+    "problem_reviews": 15633,
+    "problem_rate": 0.583
+  },
+  "sentiment_distribution": {
+    "counts": {
+      "frustrated": 11349,
+      "positive": 13005,
+      "neutral": 2469
+    },
+    "share": {
+      "frustrated": 0.423,
+      "positive": 0.485,
+      "neutral": 0.092
+    },
+    "net_sentiment": 0.062
+  },
+  "trend": [
+    {
+      "month": "2024-01",
+      "reviews": 59,
+      "problem_rate": 0.678,
+      "repetition_rate": 0.169,
+      "positive_rate": 0.017
+    },
+    {
+      "month": "2024-02",
+      "reviews": 39,
+      "problem_rate": 0.718,
+      "repetition_rate": 0.231,
+      "positive_rate": 0.026
+    },
+    {
+      "month": "2024-03",
+      "reviews": 51,
+      "problem_rate": 0.765,
+      "repetition_rate": 0.294,
+      "positive_rate": 0.059
+    },
+    {
+      "month": "2024-04",
+      "reviews": 45,
+      "problem_rate": 0.667,
+      "repetition_rate": 0.156,
+      "positive_rate": 0.044
+    },
+    {
+      "month": "2024-05",
+      "reviews": 92,
+      "problem_rate": 0.772,
+      "repetition_rate": 0.174,
+      "positive_rate": 0.054
+    },
+    {
+      "month": "2024-06",
+      "reviews": 120,
+      "problem_rate": 0.625,
+      "repetition_rate": 0.175,
+      "positive_rate": 0.1
+    },
+    {
+      "month": "2024-07",
+      "reviews": 148,
+      "problem_rate": 0.628,
+      "repetition_rate": 0.101,
+      "positive_rate": 0.034
+    },
+    {
+      "month": "2024-08",
+      "reviews": 184,
+      "problem_rate": 0.674,
+      "repetition_rate": 0.076,
+      "positive_rate": 0.027
+    },
+    {
+      "month": "2024-09",
+      "reviews": 154,
+      "problem_rate": 0.669,
+      "repetition_rate": 0.084,
+      "positive_rate": 0.065
+    },
+    {
+      "month": "2024-10",
+      "reviews": 151,
+      "problem_rate": 0.728,
+      "repetition_rate": 0.119,
+      "positive_rate": 0.033
+    },
+    {
+      "month": "2024-11",
+      "reviews": 108,
+      "problem_rate": 0.639,
+      "repetition_rate": 0.12,
+      "positive_rate": 0.065
+    },
+    {
+      "month": "2024-12",
+      "reviews": 167,
+      "problem_rate": 0.563,
+      "repetition_rate": 0.114,
+      "positive_rate": 0.03
+    },
+    {
+      "month": "2025-01",
+      "reviews": 337,
+      "problem_rate": 0.691,
+      "repetition_rate": 0.169,
+      "positive_rate": 0.05
+    },
+    {
+      "month": "2025-02",
+      "reviews": 268,
+      "problem_rate": 0.75,
+      "repetition_rate": 0.235,
+      "positive_rate": 0.034
+    },
+    {
+      "month": "2025-03",
+      "reviews": 401,
+      "problem_rate": 0.746,
+      "repetition_rate": 0.222,
+      "positive_rate": 0.032
+    },
+    {
+      "month": "2025-04",
+      "reviews": 333,
+      "problem_rate": 0.793,
+      "repetition_rate": 0.243,
+      "positive_rate": 0.018
+    },
+    {
+      "month": "2025-05",
+      "reviews": 274,
+      "problem_rate": 0.759,
+      "repetition_rate": 0.175,
+      "positive_rate": 0.029
+    },
+    {
+      "month": "2025-06",
+      "reviews": 350,
+      "problem_rate": 0.697,
+      "repetition_rate": 0.217,
+      "positive_rate": 0.034
+    },
+    {
+      "month": "2025-07",
+      "reviews": 311,
+      "problem_rate": 0.752,
+      "repetition_rate": 0.251,
+      "positive_rate": 0.023
+    },
+    {
+      "month": "2025-08",
+      "reviews": 326,
+      "problem_rate": 0.773,
+      "repetition_rate": 0.199,
+      "positive_rate": 0.021
+    },
+    {
+      "month": "2025-09",
+      "reviews": 307,
+      "problem_rate": 0.752,
+      "repetition_rate": 0.199,
+      "positive_rate": 0.036
+    },
+    {
+      "month": "2025-10",
+      "reviews": 1261,
+      "problem_rate": 0.569,
+      "repetition_rate": 0.159,
+      "positive_rate": 0.163
+    },
+    {
+      "month": "2025-11",
+      "reviews": 2343,
+      "problem_rate": 0.513,
+      "repetition_rate": 0.145,
+      "positive_rate": 0.165
+    },
+    {
+      "month": "2025-12",
+      "reviews": 2295,
+      "problem_rate": 0.519,
+      "repetition_rate": 0.168,
+      "positive_rate": 0.194
+    },
+    {
+      "month": "2026-01",
+      "reviews": 2361,
+      "problem_rate": 0.525,
+      "repetition_rate": 0.166,
+      "positive_rate": 0.197
+    },
+    {
+      "month": "2026-02",
+      "reviews": 2053,
+      "problem_rate": 0.56,
+      "repetition_rate": 0.183,
+      "positive_rate": 0.163
+    },
+    {
+      "month": "2026-03",
+      "reviews": 2524,
+      "problem_rate": 0.543,
+      "repetition_rate": 0.175,
+      "positive_rate": 0.176
+    },
+    {
+      "month": "2026-04",
+      "reviews": 2367,
+      "problem_rate": 0.543,
+      "repetition_rate": 0.175,
+      "positive_rate": 0.191
+    },
+    {
+      "month": "2026-05",
+      "reviews": 3707,
+      "problem_rate": 0.577,
+      "repetition_rate": 0.194,
+      "positive_rate": 0.132
+    },
+    {
+      "month": "2026-06",
+      "reviews": 2909,
+      "problem_rate": 0.601,
+      "repetition_rate": 0.193,
+      "positive_rate": 0.176
+    }
+  ],
+  "theme_detection": {
+    "top_discovery_problems": [
+      {
+        "label": "music, app, spotify, good",
+        "top_terms": [
+          "music",
+          "app",
+          "spotify",
+          "good",
+          "recommend",
+          "new",
+          "like",
+          "ads"
+        ],
+        "size": 5324
+      },
+      {
+        "label": "songs, song, shuffle, play",
+        "top_terms": [
+          "songs",
+          "song",
+          "shuffle",
+          "play",
+          "listen",
+          "playlist",
+          "ads",
+          "app"
+        ],
+        "size": 4069
+      },
+      {
+        "label": "la, je, che, le",
+        "top_terms": [
+          "la",
+          "je",
+          "che",
+          "le",
+          "non",
+          "est",
+          "di",
+          "et"
+        ],
+        "size": 2544
+      },
+      {
+        "label": "que, música, muy, la",
+        "top_terms": [
+          "que",
+          "música",
+          "muy",
+          "la",
+          "es",
+          "para",
+          "el",
+          "buena"
+        ],
+        "size": 1573
+      },
+      {
+        "label": "bir, çok, uygulama, ama",
+        "top_terms": [
+          "bir",
+          "çok",
+          "uygulama",
+          "ama",
+          "tekrar",
+          "güzel",
+          "şarkı",
+          "ve"
+        ],
+        "size": 1145
+      },
+      {
+        "label": "die, ich, und, nicht",
+        "top_terms": [
+          "die",
+          "ich",
+          "und",
+          "nicht",
+          "ist",
+          "der",
+          "das",
+          "man"
+        ],
+        "size": 978
+      }
+    ],
+    "top_discovery_problem_terms": [
+      [
+        "premium",
+        4299
+      ],
+      [
+        "shuffle",
+        3474
+      ],
+      [
+        "playlist",
+        3453
+      ],
+      [
+        "listen",
+        2390
+      ],
+      [
+        "play",
+        2383
+      ],
+      [
+        "same",
+        1928
+      ],
+      [
+        "want",
+        1705
+      ],
+      [
+        "can't",
+        1578
+      ],
+      [
+        "good",
+        1535
+      ],
+      [
+        "don't",
+        1402
+      ],
+      [
+        "over",
+        1361
+      ],
+      [
+        "playlists",
+        1310
+      ]
+    ],
+    "top_recommendation_complaints": [
+      {
+        "label": "di, la, che, consiglio",
+        "top_terms": [
+          "di",
+          "la",
+          "che",
+          "consiglio",
+          "non",
+          "app",
+          "musica",
+          "ascoltare"
+        ],
+        "size": 1087
+      },
+      {
+        "label": "je, recommande, je recommande, application",
+        "top_terms": [
+          "je",
+          "recommande",
+          "je recommande",
+          "application",
+          "est",
+          "et",
+          "musique",
+          "très"
+        ],
+        "size": 663
+      },
+      {
+        "label": "muy, que, es, recomendable",
+        "top_terms": [
+          "muy",
+          "que",
+          "es",
+          "recomendable",
+          "la",
+          "buena",
+          "música",
+          "aplicación"
+        ],
+        "size": 611
+      },
+      {
+        "label": "bir, çok, uygulama, öneririm",
+        "top_terms": [
+          "bir",
+          "çok",
+          "uygulama",
+          "öneririm",
+          "güzel",
+          "iyi",
+          "bir uygulama",
+          "ve"
+        ],
+        "size": 517
+      },
+      {
+        "label": "music, songs, app, song",
+        "top_terms": [
+          "music",
+          "songs",
+          "app",
+          "song",
+          "und",
+          "die",
+          "spotify",
+          "ich"
+        ],
+        "size": 460
+      }
+    ],
+    "top_recommendation_complaint_terms": [
+      [
+        "premium",
+        588
+      ],
+      [
+        "recommande",
+        555
+      ],
+      [
+        "playlist",
+        420
+      ],
+      [
+        "música",
+        418
+      ],
+      [
+        "musica",
+        355
+      ],
+      [
+        "para",
+        350
+      ],
+      [
+        "consiglio",
+        347
+      ],
+      [
+        "uygulama",
+        306
+      ],
+      [
+        "application",
+        303
+      ],
+      [
+        "musique",
+        289
+      ],
+      [
+        "mais",
+        262
+      ],
+      [
+        "pour",
+        257
+      ]
+    ],
+    "top_unmet_needs": [
+      {
+        "need": "shuffle_repeats_small_pool",
+        "evidence_count": 967,
+        "problem_share": 0.913
+      },
+      {
+        "need": "ai_generated_flooding",
+        "evidence_count": 246,
+        "problem_share": 0.646
+      },
+      {
+        "need": "lost_dislike_reset_control",
+        "evidence_count": 123,
+        "problem_share": 0.707
+      },
+      {
+        "need": "recs_too_narrow_boxed_in",
+        "evidence_count": 67,
+        "problem_share": 0.791
+      },
+      {
+        "need": "cant_find_new_music",
+        "evidence_count": 58,
+        "problem_share": 0.603
+      },
+      {
+        "need": "forced_recs_in_playlist",
+        "evidence_count": 43,
+        "problem_share": 0.605
+      }
+    ],
+    "emerging_themes": [
+      {
+        "theme": "repetition_issue",
+        "recent_share": 0.182,
+        "prior_share": 0.167,
+        "delta": 0.015
+      },
+      {
+        "theme": "discovery_issue",
+        "recent_share": 0.268,
+        "prior_share": 0.294,
+        "delta": -0.026
+      },
+      {
+        "theme": "algorithm_mismatch",
+        "recent_share": 0.111,
+        "prior_share": 0.147,
+        "delta": -0.037
+      }
+    ]
+  },
+  "segmentation": {
+    "by_platform": {
+      "play_store": {
+        "total": 24049,
+        "repetition_rate": 0.177,
+        "discovery_issue_rate": 0.277,
+        "algorithm_mismatch_rate": 0.13,
+        "problem_rate": 0.584,
+        "positive_rate": 0.142,
+        "categories": {
+          "algorithm_mismatch": 3126,
+          "discovery_issue": 6666,
+          "discovery_positive": 3412,
+          "repetition_issue": 4260,
+          "general_music_experience": 6585
+        }
+      },
+      "app_store": {
+        "total": 2098,
+        "repetition_rate": 0.178,
+        "discovery_issue_rate": 0.241,
+        "algorithm_mismatch_rate": 0.093,
+        "problem_rate": 0.512,
+        "positive_rate": 0.225,
+        "categories": {
+          "repetition_issue": 373,
+          "discovery_positive": 472,
+          "discovery_issue": 505,
+          "algorithm_mismatch": 196,
+          "general_music_experience": 552
+        }
+      },
+      "reddit": {
+        "total": 508,
+        "repetition_rate": 0.165,
+        "discovery_issue_rate": 0.504,
+        "algorithm_mismatch_rate": 0.02,
+        "problem_rate": 0.689,
+        "positive_rate": 0.199,
+        "categories": {
+          "repetition_issue": 84,
+          "discovery_issue": 256,
+          "discovery_positive": 101,
+          "algorithm_mismatch": 10,
+          "general_music_experience": 57
+        }
+      },
+      "forums": {
+        "total": 168,
+        "repetition_rate": 0.214,
+        "discovery_issue_rate": 0.685,
+        "algorithm_mismatch_rate": 0.036,
+        "problem_rate": 0.935,
+        "positive_rate": 0.012,
+        "categories": {
+          "discovery_issue": 115,
+          "repetition_issue": 36,
+          "discovery_positive": 2,
+          "algorithm_mismatch": 6,
+          "general_music_experience": 9
+        }
+      }
+    },
+    "by_region": {
+      "North America": {
+        "total": 15594,
+        "repetition_rate": 0.15,
+        "discovery_issue_rate": 0.311,
+        "algorithm_mismatch_rate": 0.019,
+        "problem_rate": 0.48,
+        "positive_rate": 0.211,
+        "categories": {
+          "repetition_issue": 2343,
+          "discovery_positive": 3296,
+          "discovery_issue": 4857,
+          "algorithm_mismatch": 292,
+          "general_music_experience": 4806
+        }
+      },
+      "Europe": {
+        "total": 5810,
+        "repetition_rate": 0.151,
+        "discovery_issue_rate": 0.286,
+        "algorithm_mismatch_rate": 0.262,
+        "problem_rate": 0.698,
+        "positive_rate": 0.036,
+        "categories": {
+          "discovery_issue": 1659,
+          "algorithm_mismatch": 1521,
+          "discovery_positive": 211,
+          "repetition_issue": 876,
+          "general_music_experience": 1543
+        }
+      },
+      "LATAM": {
+        "total": 1998,
+        "repetition_rate": 0.285,
+        "discovery_issue_rate": 0.09,
+        "algorithm_mismatch_rate": 0.409,
+        "problem_rate": 0.784,
+        "positive_rate": 0.007,
+        "categories": {
+          "repetition_issue": 570,
+          "algorithm_mismatch": 817,
+          "discovery_issue": 179,
+          "discovery_positive": 14,
+          "general_music_experience": 418
+        }
+      },
+      "MEA": {
+        "total": 1678,
+        "repetition_rate": 0.381,
+        "discovery_issue_rate": 0.116,
+        "algorithm_mismatch_rate": 0.331,
+        "problem_rate": 0.828,
+        "positive_rate": 0.079,
+        "categories": {
+          "discovery_positive": 132,
+          "repetition_issue": 639,
+          "discovery_issue": 194,
+          "algorithm_mismatch": 556,
+          "general_music_experience": 157
+        }
+      },
+      "SE Asia": {
+        "total": 618,
+        "repetition_rate": 0.227,
+        "discovery_issue_rate": 0.239,
+        "algorithm_mismatch_rate": 0.209,
+        "problem_rate": 0.675,
+        "positive_rate": 0.189,
+        "categories": {
+          "discovery_issue": 148,
+          "repetition_issue": 140,
+          "discovery_positive": 117,
+          "algorithm_mismatch": 129,
+          "general_music_experience": 84
+        }
+      },
+      "Reddit(global)": {
+        "total": 508,
+        "repetition_rate": 0.165,
+        "discovery_issue_rate": 0.504,
+        "algorithm_mismatch_rate": 0.02,
+        "problem_rate": 0.689,
+        "positive_rate": 0.199,
+        "categories": {
+          "repetition_issue": 84,
+          "discovery_issue": 256,
+          "discovery_positive": 101,
+          "algorithm_mismatch": 10,
+          "general_music_experience": 57
+        }
+      },
+      "Forum(global)": {
+        "total": 168,
+        "repetition_rate": 0.214,
+        "discovery_issue_rate": 0.685,
+        "algorithm_mismatch_rate": 0.036,
+        "problem_rate": 0.935,
+        "positive_rate": 0.012,
+        "categories": {
+          "discovery_issue": 115,
+          "repetition_issue": 36,
+          "discovery_positive": 2,
+          "algorithm_mismatch": 6,
+          "general_music_experience": 9
+        }
+      },
+      "ANZ": {
+        "total": 136,
+        "repetition_rate": 0.184,
+        "discovery_issue_rate": 0.221,
+        "algorithm_mismatch_rate": 0.022,
+        "problem_rate": 0.426,
+        "positive_rate": 0.257,
+        "categories": {
+          "discovery_positive": 35,
+          "algorithm_mismatch": 3,
+          "repetition_issue": 25,
+          "discovery_issue": 30,
+          "general_music_experience": 43
+        }
+      },
+      "South Asia": {
+        "total": 133,
+        "repetition_rate": 0.135,
+        "discovery_issue_rate": 0.293,
+        "algorithm_mismatch_rate": 0.03,
+        "problem_rate": 0.459,
+        "positive_rate": 0.308,
+        "categories": {
+          "discovery_positive": 41,
+          "discovery_issue": 39,
+          "algorithm_mismatch": 4,
+          "repetition_issue": 18,
+          "general_music_experience": 31
+        }
+      },
+      "UK/Ireland": {
+        "total": 129,
+        "repetition_rate": 0.124,
+        "discovery_issue_rate": 0.302,
+        "algorithm_mismatch_rate": 0.0,
+        "problem_rate": 0.426,
+        "positive_rate": 0.264,
+        "categories": {
+          "repetition_issue": 16,
+          "discovery_issue": 39,
+          "discovery_positive": 34,
+          "general_music_experience": 40
+        }
+      },
+      "East Asia": {
+        "total": 51,
+        "repetition_rate": 0.118,
+        "discovery_issue_rate": 0.51,
+        "algorithm_mismatch_rate": 0.0,
+        "problem_rate": 0.627,
+        "positive_rate": 0.078,
+        "categories": {
+          "discovery_issue": 26,
+          "repetition_issue": 6,
+          "discovery_positive": 4,
+          "general_music_experience": 15
+        }
+      }
+    },
+    "by_language": {
+      "en": {
+        "total": 15472,
+        "repetition_rate": 0.15,
+        "discovery_issue_rate": 0.312,
+        "algorithm_mismatch_rate": 0.019,
+        "problem_rate": 0.481,
+        "positive_rate": 0.211,
+        "categories": {
+          "algorithm_mismatch": 288,
+          "discovery_issue": 4829,
+          "discovery_positive": 3266,
+          "repetition_issue": 2324,
+          "general_music_experience": 4765
+        }
+      },
+      "en/unknown": {
+        "total": 2774,
+        "repetition_rate": 0.178,
+        "discovery_issue_rate": 0.316,
+        "algorithm_mismatch_rate": 0.076,
+        "problem_rate": 0.57,
+        "positive_rate": 0.207,
+        "categories": {
+          "repetition_issue": 493,
+          "discovery_positive": 575,
+          "discovery_issue": 876,
+          "algorithm_mismatch": 212,
+          "general_music_experience": 618
+        }
+      },
+      "de": {
+        "total": 1941,
+        "repetition_rate": 0.069,
+        "discovery_issue_rate": 0.435,
+        "algorithm_mismatch_rate": 0.075,
+        "problem_rate": 0.579,
+        "positive_rate": 0.035,
+        "categories": {
+          "discovery_issue": 844,
+          "discovery_positive": 68,
+          "algorithm_mismatch": 146,
+          "repetition_issue": 133,
+          "general_music_experience": 750
+        }
+      },
+      "it": {
+        "total": 1659,
+        "repetition_rate": 0.19,
+        "discovery_issue_rate": 0.165,
+        "algorithm_mismatch_rate": 0.388,
+        "problem_rate": 0.743,
+        "positive_rate": 0.011,
+        "categories": {
+          "repetition_issue": 315,
+          "algorithm_mismatch": 644,
+          "discovery_positive": 18,
+          "discovery_issue": 274,
+          "general_music_experience": 408
+        }
+      },
+      "fr": {
+        "total": 1616,
+        "repetition_rate": 0.204,
+        "discovery_issue_rate": 0.239,
+        "algorithm_mismatch_rate": 0.407,
+        "problem_rate": 0.85,
+        "positive_rate": 0.015,
+        "categories": {
+          "discovery_issue": 387,
+          "algorithm_mismatch": 658,
+          "repetition_issue": 329,
+          "discovery_positive": 24,
+          "general_music_experience": 218
+        }
+      },
+      "tr": {
+        "total": 1222,
+        "repetition_rate": 0.479,
+        "discovery_issue_rate": 0.057,
+        "algorithm_mismatch_rate": 0.442,
+        "problem_rate": 0.978,
+        "positive_rate": 0.002,
+        "categories": {
+          "discovery_issue": 70,
+          "algorithm_mismatch": 540,
+          "repetition_issue": 585,
+          "discovery_positive": 2,
+          "general_music_experience": 25
+        }
+      },
+      "es": {
+        "total": 933,
+        "repetition_rate": 0.268,
+        "discovery_issue_rate": 0.075,
+        "algorithm_mismatch_rate": 0.542,
+        "problem_rate": 0.885,
+        "positive_rate": 0.005,
+        "categories": {
+          "repetition_issue": 250,
+          "algorithm_mismatch": 506,
+          "discovery_issue": 70,
+          "discovery_positive": 5,
+          "general_music_experience": 102
+        }
+      },
+      "pt": {
+        "total": 787,
+        "repetition_rate": 0.254,
+        "discovery_issue_rate": 0.097,
+        "algorithm_mismatch_rate": 0.282,
+        "problem_rate": 0.633,
+        "positive_rate": 0.004,
+        "categories": {
+          "algorithm_mismatch": 222,
+          "repetition_issue": 200,
+          "discovery_issue": 76,
+          "discovery_positive": 3,
+          "general_music_experience": 286
+        }
+      },
+      "id": {
+        "total": 395,
+        "repetition_rate": 0.304,
+        "discovery_issue_rate": 0.268,
+        "algorithm_mismatch_rate": 0.309,
+        "problem_rate": 0.881,
+        "positive_rate": 0.048,
+        "categories": {
+          "algorithm_mismatch": 122,
+          "repetition_issue": 120,
+          "discovery_issue": 106,
+          "discovery_positive": 19,
+          "general_music_experience": 28
+        }
+      }
+    },
+    "by_user_type": {
+      "casual_or_unknown": {
+        "total": 20444,
+        "repetition_rate": 0.163,
+        "discovery_issue_rate": 0.277,
+        "algorithm_mismatch_rate": 0.138,
+        "problem_rate": 0.578,
+        "positive_rate": 0.152,
+        "categories": {
+          "repetition_issue": 3332,
+          "discovery_positive": 3103,
+          "discovery_issue": 5656,
+          "algorithm_mismatch": 2828,
+          "general_music_experience": 5525
+        }
+      },
+      "power_user": {
+        "total": 6379,
+        "repetition_rate": 0.223,
+        "discovery_issue_rate": 0.296,
+        "algorithm_mismatch_rate": 0.08,
+        "problem_rate": 0.598,
+        "positive_rate": 0.139,
+        "categories": {
+          "discovery_positive": 884,
+          "algorithm_mismatch": 510,
+          "discovery_issue": 1886,
+          "repetition_issue": 1421,
+          "general_music_experience": 1678
+        }
+      }
+    },
+    "most_affected_by_repetition": [
+      {
+        "cohort": "tr",
+        "total": 1222,
+        "repetition_rate": 0.479,
+        "discovery_issue_rate": 0.057,
+        "algorithm_mismatch_rate": 0.442,
+        "problem_rate": 0.978,
+        "positive_rate": 0.002,
+        "categories": {
+          "discovery_issue": 70,
+          "algorithm_mismatch": 540,
+          "repetition_issue": 585,
+          "discovery_positive": 2,
+          "general_music_experience": 25
+        }
+      },
+      {
+        "cohort": "MEA",
+        "total": 1678,
+        "repetition_rate": 0.381,
+        "discovery_issue_rate": 0.116,
+        "algorithm_mismatch_rate": 0.331,
+        "problem_rate": 0.828,
+        "positive_rate": 0.079,
+        "categories": {
+          "discovery_positive": 132,
+          "repetition_issue": 639,
+          "discovery_issue": 194,
+          "algorithm_mismatch": 556,
+          "general_music_experience": 157
+        }
+      },
+      {
+        "cohort": "id",
+        "total": 395,
+        "repetition_rate": 0.304,
+        "discovery_issue_rate": 0.268,
+        "algorithm_mismatch_rate": 0.309,
+        "problem_rate": 0.881,
+        "positive_rate": 0.048,
+        "categories": {
+          "algorithm_mismatch": 122,
+          "repetition_issue": 120,
+          "discovery_issue": 106,
+          "discovery_positive": 19,
+          "general_music_experience": 28
+        }
+      },
+      {
+        "cohort": "LATAM",
+        "total": 1998,
+        "repetition_rate": 0.285,
+        "discovery_issue_rate": 0.09,
+        "algorithm_mismatch_rate": 0.409,
+        "problem_rate": 0.784,
+        "positive_rate": 0.007,
+        "categories": {
+          "repetition_issue": 570,
+          "algorithm_mismatch": 817,
+          "discovery_issue": 179,
+          "discovery_positive": 14,
+          "general_music_experience": 418
+        }
+      },
+      {
+        "cohort": "es",
+        "total": 933,
+        "repetition_rate": 0.268,
+        "discovery_issue_rate": 0.075,
+        "algorithm_mismatch_rate": 0.542,
+        "problem_rate": 0.885,
+        "positive_rate": 0.005,
+        "categories": {
+          "repetition_issue": 250,
+          "algorithm_mismatch": 506,
+          "discovery_issue": 70,
+          "discovery_positive": 5,
+          "general_music_experience": 102
+        }
+      },
+      {
+        "cohort": "pt",
+        "total": 787,
+        "repetition_rate": 0.254,
+        "discovery_issue_rate": 0.097,
+        "algorithm_mismatch_rate": 0.282,
+        "problem_rate": 0.633,
+        "positive_rate": 0.004,
+        "categories": {
+          "algorithm_mismatch": 222,
+          "repetition_issue": 200,
+          "discovery_issue": 76,
+          "discovery_positive": 3,
+          "general_music_experience": 286
+        }
+      },
+      {
+        "cohort": "SE Asia",
+        "total": 618,
+        "repetition_rate": 0.227,
+        "discovery_issue_rate": 0.239,
+        "algorithm_mismatch_rate": 0.209,
+        "problem_rate": 0.675,
+        "positive_rate": 0.189,
+        "categories": {
+          "discovery_issue": 148,
+          "repetition_issue": 140,
+          "discovery_positive": 117,
+          "algorithm_mismatch": 129,
+          "general_music_experience": 84
+        }
+      },
+      {
+        "cohort": "Forum(global)",
+        "total": 168,
+        "repetition_rate": 0.214,
+        "discovery_issue_rate": 0.685,
+        "algorithm_mismatch_rate": 0.036,
+        "problem_rate": 0.935,
+        "positive_rate": 0.012,
+        "categories": {
+          "discovery_issue": 115,
+          "repetition_issue": 36,
+          "discovery_positive": 2,
+          "algorithm_mismatch": 6,
+          "general_music_experience": 9
+        }
+      },
+      {
+        "cohort": "fr",
+        "total": 1616,
+        "repetition_rate": 0.204,
+        "discovery_issue_rate": 0.239,
+        "algorithm_mismatch_rate": 0.407,
+        "problem_rate": 0.85,
+        "positive_rate": 0.015,
+        "categories": {
+          "discovery_issue": 387,
+          "algorithm_mismatch": 658,
+          "repetition_issue": 329,
+          "discovery_positive": 24,
+          "general_music_experience": 218
+        }
+      },
+      {
+        "cohort": "it",
+        "total": 1659,
+        "repetition_rate": 0.19,
+        "discovery_issue_rate": 0.165,
+        "algorithm_mismatch_rate": 0.388,
+        "problem_rate": 0.743,
+        "positive_rate": 0.011,
+        "categories": {
+          "repetition_issue": 315,
+          "algorithm_mismatch": 644,
+          "discovery_positive": 18,
+          "discovery_issue": 274,
+          "general_music_experience": 408
+        }
+      }
+    ]
+  },
+  "insights": [
+    {
+      "title": "Discovery friction: can't surface new music",
+      "category": "discovery_issue",
+      "evidence_count": 7542,
+      "negativity": 0.568,
+      "reach_regions": 11,
+      "affected_segment": "North America (power-user share 25%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "auto shuffle doesn't make sense. its annoying and too many ads in between. m sure of finding better app than this. everytime i m driving, I can't select each song. n that's the only time I get to listen to music. so this app is big no to me"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "horrible. I have to pay for premium to manually change songs on my playlist. they limit me to only being able to choose about 10 songs per day, and then the rest is a shuffle. Spotify has become greedy and ruined my experience with the app."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "freaking hate this app now. like everytime I tried to find a good song or recommend a song for my friends it wouldnt let me see it or find it again. And why the flip is there so many ads like im trying to listen to music not advertisements."
+        }
+      ],
+      "severity_score": 84.9
+    },
+    {
+      "title": "Repetition: same songs/artists on repeat",
+      "category": "repetition_issue",
+      "evidence_count": 4753,
+      "negativity": 0.599,
+      "reach_regions": 11,
+      "affected_segment": "North America (power-user share 30%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "the app is designed to intentional create a poor experience for you if you don't have premium. With 4 back to back Ad's combined over a minute long, unskipable and repetitive plus strange limits on what you can listen to and how many times."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "music is fine,except one thing whenever I try to find music it kicks me out and it makes me to log in again and again I'm pretty tired of this you guys should fix this and it also makes me get kicked out when I press the old button plz help"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "2",
+          "text": "i used to love this app,but now im starting to think of moving to a different app,shuffle does 3 og songs then just repeats them like 50 times,and now theu have DOUBLE ADS OR EVEN TRIPLE???im starting to rlly hate tjis app,spotify do better"
+        }
+      ],
+      "severity_score": 83.6
+    },
+    {
+      "title": "Shuffle replays a small pool of a large library",
+      "category": "unmet_need",
+      "evidence_count": 967,
+      "negativity": 0.645,
+      "reach_regions": 7,
+      "affected_segment": "North America (power-user share 36%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "2",
+          "text": "i used to love this app,but now im starting to think of moving to a different app,shuffle does 3 og songs then just repeats them like 50 times,and now theu have DOUBLE ADS OR EVEN TRIPLE???im starting to rlly hate tjis app,spotify do better"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "The shuffle is terrible and constantly plays all the same songs over and over. The same thing with their AI DJ, same songs over and over again even when you ask for new ones. terrible streaming app that overcharges you and underpays artists"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "not sure why I have to pay for a premium account if the app is garbage. Most of the time the app will not even open, just a black screen. The shuffle literally only plays the same 20 songs on repeat in the same order. Terrible app design."
+        }
+      ],
+      "severity_score": 70.0
+    },
+    {
+      "title": "Recommendation mismatch: recs off-taste",
+      "category": "algorithm_mismatch",
+      "evidence_count": 3338,
+      "negativity": 0.232,
+      "reach_regions": 7,
+      "affected_segment": "Europe (power-user share 15%)",
+      "representative_quotes": [
+        {
+          "source": "app_store",
+          "region": "MEA",
+          "rating": "2",
+          "text": "When listening via autoplay/recommended tracks, the songs are poorly selected! They don’t align to my taste. I bet I’m not the only one. I just want Google to fix YouTube music UI so I can switch. DO SOMETHING ABOUT YOUR ALGORITHM!!!!!!"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "Why can't there be simple buttons for add to playlists and song radio. So many options that are never used. And algorithm for song radio is so bad. Can't they use any other metric than genre? Tempo, groove, instrument? So uninspired."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "2",
+          "text": "The apps functionality gets worse every update and they have the nerve to increase the price and flood the app with ai slop. I do not recommend this app for audiophile at all. this sucks so bad. The app worked better a decade ago🫩"
+        }
+      ],
+      "severity_score": 61.7
+    },
+    {
+      "title": "AI-generated tracks flooding discovery surfaces",
+      "category": "unmet_need",
+      "evidence_count": 246,
+      "negativity": 0.768,
+      "reach_regions": 3,
+      "affected_segment": "North America (power-user share 24%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "Ai slop masquerading as music. absolutely trash discovery algo and same music plays over and over even if you have shuffle on. also no option to get rid of podcasts. they removed family plan and new price doesn't justify what they offer."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "I cancelled Spotify yesterday because 1. they pay artists very poorly 2. they use AI generated music (which is based on original artists' work) to fill playlists, and so pay real artists even less 3. they now run recruitment ads for ICE"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "Experience getting worse and worse every year. Now they integrate AI music into your algorithms so they can pay even less to real musicians. CEO is a multi millionaire. A cancer on the music industry, change over to tidal or qobuz."
+        }
+      ],
+      "severity_score": 60.1
+    },
+    {
+      "title": "Recommendations feel narrow — 'stuck in a box'",
+      "category": "unmet_need",
+      "evidence_count": 67,
+      "negativity": 0.716,
+      "reach_regions": 4,
+      "affected_segment": "North America (power-user share 25%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "2",
+          "text": "please fix the glitch where I'm trying to save a song into a playlist and I'm searching for it and it doesn't come up. it just stays stuck in the search bar and I've got a scroll through and find the place that I want which is not ideal"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "Not sure if an update recently installed, but the app suddenly decided to log be out, delete all my settings and downloads, and is stuck in low quality cellular streaming suggesting that my phone is in data saver mode, which it isn't."
+        },
+        {
+          "source": "app_store",
+          "region": "Europe",
+          "rating": "1",
+          "text": "Unfortunately the weekly discovery doesn’t come up with nice songs: too much of a remix of originally good songs, nothing new I like. For the price I pay, they could come up with a better personalized offer!"
+        }
+      ],
+      "severity_score": 53.6
+    },
+    {
+      "title": "Users want dislike / reset / taste controls back",
+      "category": "unmet_need",
+      "evidence_count": 123,
+      "negativity": 0.626,
+      "reach_regions": 3,
+      "affected_segment": "North America (power-user share 24%)",
+      "representative_quotes": [
+        {
+          "source": "app_store",
+          "region": "East Asia",
+          "rating": "1",
+          "text": "Playing normal, melodic music, but the next song suddenly turns into noisy/weird experimental garbage. This issue has lasted over a week now, and there’s no effective way to reset or clean the recommendations. Extremely frustrating."
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "rating": "2",
+          "text": "Yeah I’ve tried looking in the “Made for you” stuff but unfortunately I don’t have the option to hide songs. I’ll keep pressing the like button on songs I like, but it seems like there’s no way for me to hide the ones I don’t."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "shuffle resets on phone lock. so I'm stuck listening to the same songs in the same order. over and over. maybe just maybe they should focus on making core features work instead of shoehorned A.I. features nobody wants."
+        }
+      ],
+      "severity_score": 51.7
+    },
+    {
+      "title": "Recommended songs forced into user playlists",
+      "category": "unmet_need",
+      "evidence_count": 43,
+      "negativity": 0.651,
+      "reach_regions": 1,
+      "affected_segment": "North America (power-user share 42%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "2",
+          "text": "ok so if you don't have if you don't get the premium you can't listen to your Playlist without it or shuffle and it will just play similar songs that's no even on the Playlist and the ads are stupid loud and its no what it uses to be"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "Dont add “similar songs” to my playlist i don’t want ur songs let me listen to my own in peace and like I know u guys have to make money some how but if I don’t want to pay at least stop adding annoying songs to my playlist"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "The bare minimum is literally for premium members. Picking the songs you want, skips, looping, etc. Playlists are basically useless because they pick songs NOT in the Playlist to play next. JUST LET US PICK SONGS WE WANT."
+        }
+      ],
+      "severity_score": 43.7
+    },
+    {
+      "title": "Hard to find / discover genuinely new music",
+      "category": "unmet_need",
+      "evidence_count": 58,
+      "negativity": 0.379,
+      "reach_regions": 2,
+      "affected_segment": "North America (power-user share 26%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "I was a fan for 12 years. Suggesting me AI music and fake AI artists, flooding the app with video content and continuously making discovery worse has made me hate this app."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "they replaced the recommended music feature for this new the drop weekly which sucks because now I cant find new music that I actually like."
+        },
+        {
+          "source": "app_store",
+          "region": "MEA",
+          "rating": "1",
+          "text": "Whenever I press on a song it says you just discovered a premium feature NO I DID NOT I CANT play songs right now it’s bad as hell fix THIS"
+        }
+      ],
+      "severity_score": 37.5
+    }
+  ],
+  "priority_radar": [
+    {
+      "opportunity": "Discovery friction: can't surface new music",
+      "impact": 84.9,
+      "frequency": 7542,
+      "priority_score": 758.0,
+      "quadrant": "Quick win / Now",
+      "category": "discovery_issue"
+    },
+    {
+      "opportunity": "Repetition: same songs/artists on repeat",
+      "impact": 83.6,
+      "frequency": 4753,
+      "priority_score": 707.8,
+      "quadrant": "Quick win / Now",
+      "category": "repetition_issue"
+    },
+    {
+      "opportunity": "Recommendation mismatch: recs off-taste",
+      "impact": 61.7,
+      "frequency": 3338,
+      "priority_score": 500.6,
+      "quadrant": "Quick win / Now",
+      "category": "algorithm_mismatch"
+    },
+    {
+      "opportunity": "Shuffle replays a small pool of a large library",
+      "impact": 70.0,
+      "frequency": 967,
+      "priority_score": 481.3,
+      "quadrant": "Quick win / Now",
+      "category": "unmet_need"
+    },
+    {
+      "opportunity": "AI-generated tracks flooding discovery surfaces",
+      "impact": 60.1,
+      "frequency": 246,
+      "priority_score": 331.1,
+      "quadrant": "Strategic bet",
+      "category": "unmet_need"
+    },
+    {
+      "opportunity": "Users want dislike / reset / taste controls back",
+      "impact": 51.7,
+      "frequency": 123,
+      "priority_score": 249.2,
+      "quadrant": "Backlog",
+      "category": "unmet_need"
+    },
+    {
+      "opportunity": "Recommendations feel narrow — 'stuck in a box'",
+      "impact": 53.6,
+      "frequency": 67,
+      "priority_score": 226.2,
+      "quadrant": "Backlog",
+      "category": "unmet_need"
+    },
+    {
+      "opportunity": "Recommended songs forced into user playlists",
+      "impact": 43.7,
+      "frequency": 43,
+      "priority_score": 165.4,
+      "quadrant": "Backlog",
+      "category": "unmet_need"
+    },
+    {
+      "opportunity": "Hard to find / discover genuinely new music",
+      "impact": 37.5,
+      "frequency": 58,
+      "priority_score": 152.9,
+      "quadrant": "Backlog",
+      "category": "unmet_need"
+    }
+  ],
+  "weekly_pulse": {
+    "current_period": "2026-06",
+    "prior_period": "2026-05",
+    "key_trends": {
+      "review_volume": 2909,
+      "volume_delta_vs_prev": -798,
+      "problem_rate": 0.601,
+      "problem_rate_prev": 0.577
+    },
+    "rising_issues": [
+      {
+        "issue": "algorithm_mismatch",
+        "current_share": 0.159,
+        "delta_vs_prev": 0.018
+      },
+      {
+        "issue": "discovery_issue",
+        "current_share": 0.249,
+        "delta_vs_prev": 0.006
+      },
+      {
+        "issue": "repetition_issue",
+        "current_share": 0.193,
+        "delta_vs_prev": -0.001
+      }
+    ],
+    "notable_discoveries": [
+      {
+        "text": "It is a wonderful service , I enjoy it listening to my favorite songs on and the different podcasts that they have available. It’s variety of audio books to listen to on here as well . It’s very easy ",
+        "region": "North America"
+      },
+      {
+        "text": "As a person who can’t live without music, I’ve used many music apps. Most don’t have many varieties of music I enjoyed, some songs weren’t on it, most artists weren’t even added. And Spotify has proba",
+        "region": "North America"
+      },
+      {
+        "text": "My Review: Spotify is an absolute 5/5! ⭐⭐⭐⭐⭐ I love this app so much. The music recommendations are always spot-on, and it basically knows exactly what I want to hear before I even do. Creating playli",
+        "region": "North America"
+      }
+    ],
+    "recommendation_system_risk": {
+      "current": 0.352,
+      "prior": 0.335,
+      "direction": "up"
+    }
+  }
+}

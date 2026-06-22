@@ -1,0 +1,11 @@
+{
+  "input_normalized": 440416,
+  "after_min_words": 230622,
+  "exact_duplicates_removed": 813,
+  "keyword_irrelevant_removed": 135150,
+  "relevant_after_keyword": 94659,
+  "near_duplicates_removed": 0,
+  "dedup_mode": "exact_only (paraphrases preserved)",
+  "classifier": "heuristic",
+  "final_rows": 94659
+}

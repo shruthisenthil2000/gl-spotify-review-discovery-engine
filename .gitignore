@@ -1,0 +1,25 @@
+# --- Python ---
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+
+# --- Heavy intermediates NOT needed at runtime (keep deploy slim) ---
+# The dashboard only needs data/discovery_insights_dataset.csv + data/engine_output.json
+data/raw/
+data/normalized.csv
+data/cleaned_dataset.csv
+data/cleaned.csv
+data/raw_appstore.csv
+data/raw_playstore.csv
+data/results_sample.csv
+data/_handtags.py
+data/_sample.json
+
+# --- Local API keys / env ---
+.env
+
+# IMPORTANT: do NOT ignore these — they are required for deployment:
+#   data/discovery_insights_dataset.csv   (frozen source of truth)
+#   data/engine_output.json               (precomputed metrics)

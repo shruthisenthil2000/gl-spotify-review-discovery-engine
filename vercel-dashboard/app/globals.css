@@ -198,3 +198,18 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
 .send-btn { background: var(--green); color: #04130a; font-weight: 800; border: none;
   padding: 9px 20px; border-radius: 8px; cursor: pointer; font-size: 13px; }
 .send-btn:hover { background: #1ed760; }
+
+/* ---- AI Pilot: research question option cards ---- */
+.qopts { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 10px; }
+.qopt { display: flex; gap: 12px; align-items: center; text-align: left; cursor: pointer;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+  padding: 13px 15px; color: #e0e0e0; font-size: 13.5px; line-height: 1.4; transition: all .12s; }
+.qopt:hover { border-color: var(--green); background: rgba(29,185,84,.07); color: #fff; }
+.qopt-n { color: var(--green); font-weight: 800; font-size: 13px; min-width: 22px; }
+
+/* ---- AI Pilot: structured answer rows ---- */
+.ans-grid { margin: 12px 0 2px; display: flex; flex-direction: column; gap: 8px; }
+.ans-row { display: grid; grid-template-columns: 110px 1fr; gap: 12px; align-items: start; font-size: 13px; }
+.ans-k { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em; padding-top: 2px; }
+.ans-v { color: #dcdcdc; line-height: 1.5; }

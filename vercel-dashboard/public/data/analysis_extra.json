@@ -601,21 +601,24 @@
         "rating": "1",
         "text": "auto shuffle doesn't make sense. its annoying and too many ads in between. m sure of finding better app than this. everytime i m driving, I can't select each song. n that's the only time I get to listen to music. so this app is big no to me"
       },
-      "implication": "Prioritize a freshness/discovery mode and broaden candidate generation beyond familiar history."
+      "implication": "Prioritize a freshness/discovery mode and broaden candidate generation beyond familiar history.",
+      "key_insight": "Shuffle replaying a small pool (967) is the single biggest discovery blocker."
     },
     {
       "q": "What are the most common frustrations with recommendations?",
       "a": "3338 reviews flag off-taste/irrelevant recommendations. The most frustration-heavy features are Radio (856), Smart Shuffle (697), Discover Weekly (331).",
       "evidence": 3338,
       "quote": null,
-      "implication": "Strengthen ranking relevance and add a 'tune my recommendations' control."
+      "implication": "Strengthen ranking relevance and add a 'tune my recommendations' control.",
+      "key_insight": "Feature frustration peaks on Radio (856) and Smart Shuffle (697)."
     },
     {
       "q": "What listening behaviors are users trying to achieve?",
       "a": "Top goals by evidence: Hear their own playlist/songs without interference (2113); Find fresh / new music effortlessly (1145); Match music to mood / context / activity (1038).",
       "evidence": 2113,
       "quote": null,
-      "implication": "Respect user intent — keep user playlists clean and make freshness opt-in, not forced."
+      "implication": "Respect user intent — keep user playlists clean and make freshness opt-in, not forced.",
+      "key_insight": "Top goal: 'Hear their own playlist/songs without interference' (2113 reviews)."
     },
     {
       "q": "What causes users to repeatedly listen to the same content?",
@@ -627,21 +630,24 @@
         "rating": "1",
         "text": "the app is designed to intentional create a poor experience for you if you don't have premium. With 4 back to back Ad's combined over a minute long, unskipable and repetitive plus strange limits on what you can listen to and how many times."
       },
-      "implication": "Fix shuffle diversity so large libraries don't loop a small pool."
+      "implication": "Fix shuffle diversity so large libraries don't loop a small pool.",
+      "key_insight": "Even large libraries loop a small set — shuffle diversity is the core fix (967)."
     },
     {
       "q": "Which user segments experience different discovery challenges?",
       "a": "Most repetition-affected cohorts: tr (48% repetition); MEA (38% repetition); id (30% repetition). Power users show higher repetition than casual listeners.",
       "evidence": null,
       "quote": null,
-      "implication": "Target power users and the highest-repetition regions first."
+      "implication": "Target power users and the highest-repetition regions first.",
+      "key_insight": "Most affected: tr (48% repetition); power users exceed casual."
     },
     {
       "q": "What unmet needs emerge consistently across reviews?",
       "a": "Consistently: shuffle repeats small pool (967); ai generated flooding (246); lost dislike reset control (123) — plus lost dislike/reset controls and AI-generated flooding.",
       "evidence": 967,
       "quote": null,
-      "implication": "Ship shuffle diversity, dislike/reset controls, and authenticity filters."
+      "implication": "Ship shuffle diversity, dislike/reset controls, and authenticity filters.",
+      "key_insight": "Biggest gaps: shuffle repeats small pool (967) and lost dislike/reset controls."
     },
     {
       "q": "Which Spotify discovery features frustrate users the most?",
@@ -653,35 +659,40 @@
         "region": "Europe",
         "rating": "1"
       },
-      "implication": "Audit the highest-frustration features (Radio, Smart Shuffle, Release Radar)."
+      "implication": "Audit the highest-frustration features (Radio, Smart Shuffle, Release Radar).",
+      "key_insight": "Radio (856) and Smart Shuffle (697) lead feature frustration."
     },
     {
       "q": "What kind of new music do users want to find?",
       "a": "Desired discovery types (by evidence): New songs (1028), Regional music (398), New artists (191), Niche music (109).",
       "evidence": 1028,
       "quote": null,
-      "implication": "Bias discovery toward new songs first, then regional and niche coverage."
+      "implication": "Bias discovery toward new songs first, then regional and niche coverage.",
+      "key_insight": "Users most want New songs (1028), then Regional music (398)."
     },
     {
       "q": "Does Spotify understand users' mood and current listening context?",
       "a": "1038 reviews reference mood, context, or activity (workout, study, sleep, driving…). Many feel discovery ignores it.",
       "evidence": 1038,
       "quote": null,
-      "implication": "Invest in context-aware discovery (mood / activity / time-of-day)."
+      "implication": "Invest in context-aware discovery (mood / activity / time-of-day).",
+      "key_insight": "1038 reviews cite mood/context — discovery rarely adapts to it."
     },
     {
       "q": "Do users want more control over their recommendations?",
       "a": "704 reviews ask for stronger controls: dislike, 'not interested', block, or reset taste profile.",
       "evidence": 704,
       "quote": null,
-      "implication": "Add stronger negative-feedback and taste-reset controls."
+      "implication": "Add stronger negative-feedback and taste-reset controls.",
+      "key_insight": "704 reviews explicitly ask for dislike / reset / 'not interested'."
     },
     {
       "q": "Where do users go when Spotify discovery fails?",
       "a": "Named alternatives/workarounds: YouTube (1020), Apple Music (258), SoundCloud (80), TikTok (56).",
       "evidence": 1414,
       "quote": null,
-      "implication": "Discovery leakage to YouTube/Apple Music is a retention risk — close the gap."
+      "implication": "Discovery leakage to YouTube/Apple Music is a retention risk — close the gap.",
+      "key_insight": "YouTube (1020) is the top fallback when Spotify discovery fails."
     },
     {
       "q": "How do users feel when recommendations become repetitive or irrelevant?",
@@ -693,7 +704,8 @@
         "region": "North America",
         "rating": "1"
       },
-      "implication": "Repetition drives frustration/fatigue — reducing it protects satisfaction and retention."
+      "implication": "Repetition drives frustration/fatigue — reducing it protects satisfaction and retention.",
+      "key_insight": "Frustration (1476) and fatigue (648) dominate when recs repeat."
     }
   ]
 }

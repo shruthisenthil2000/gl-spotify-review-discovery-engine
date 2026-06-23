@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { getExtra, Extra } from "@/lib/data";
+import { getExtra } from "@/lib/data";
 import { useJSON } from "../components/ui";
 
 // Curated keyword bags for matching a typed question to one of the 12 answers.
@@ -19,21 +19,23 @@ const KEYWORDS: string[][] = [
   ["feel", "emotion", "feeling", "bored", "frustrated", "fatigue", "distrust", "when recommendations"],
 ];
 
-const FALLBACK =
-  "I can answer the 12 discovery research questions using the frozen review dataset. " +
-  "Choose one of the suggested questions.";
-
-type Msg = { role: "user"; text: string } | { role: "bot"; idx: number } | { role: "bot-fallback" };
-
+// Bias emotion/feel queries toward Q12 over Q4 when both appear.
 function matchIndex(query: string): number {
   const q = query.toLowerCase();
   let best = -1, bestScore = 0;
   KEYWORDS.forEach((bag, i) => {
-    const score = bag.reduce((s, kw) => (q.includes(kw) ? s + 1 : s), 0);
+    let score = bag.reduce((s, kw) => (q.includes(kw) ? s + 1 : s), 0);
+    if (i === 11 && /\bfeel|emotion|bored|fatigue/.test(q)) score += 1;
     if (score > bestScore) { bestScore = score; best = i; }
   });
   return bestScore > 0 ? best : -1;
 }
+
+const FALLBACK =
+  "I can answer the 12 Spotify discovery research questions using the frozen review dataset. " +
+  "Choose one of the suggested questions.";
+
+type Msg = { role: "user"; text: string } | { role: "bot"; idx: number } | { role: "bot-fallback" };
 
 export default function AiPilot() {
   const x = useJSON(getExtra);
@@ -42,7 +44,9 @@ export default function AiPilot() {
   const [input, setInput] = useState("");
   const logRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { logRef.current?.scrollTo({ top: logRef.current.scrollHeight, behavior: "smooth" }); }, [msgs]);
+  useEffect(() => {
+    if (msgs.length) logRef.current?.scrollTo({ top: logRef.current.scrollHeight, behavior: "smooth" });
+  }, [msgs]);
 
   const ask = (text: string, exactIdx?: number) => {
     if (!text.trim() && exactIdx === undefined) return;
@@ -56,51 +60,67 @@ export default function AiPilot() {
   return (
     <>
       <div className="hero">
-        <h1>AI Pilot</h1>
-        <div className="subtitle">Executive answer engine · chat</div>
-        <p className="lead">Ask a discovery-research question. Answers are pulled from the frozen
-          dataset’s precomputed evidence — no live model, no external API, nothing invented.</p>
+        <h1>Ask the Spotify Discovery AI</h1>
+        <p className="lead" style={{ margin: "8px 0 0" }}>
+          Evidence-backed answers from 26,823 Spotify reviews, Reddit discussions, and community forum posts.
+        </p>
       </div>
 
       {!x ? <p className="muted" style={{ marginTop: 18 }}>Loading…</p> : (
         <div className="chat">
-          <div className="chatlog" ref={logRef}>
-            {msgs.length === 0 && (
-              <div className="qa"><div className="a">👋 Ask me anything about Spotify music
-                discovery. Try a suggested question below, or type your own — I’ll match it to the
-                closest of 12 evidence-backed answers.</div></div>
-            )}
-            {msgs.map((m, i) => {
-              if (m.role === "user") return <div className="bubble-user" key={i}>{m.text}</div>;
-              if (m.role === "bot-fallback") return <div className="qa" key={i}><div className="a">{FALLBACK}</div></div>;
-              const item = qa[m.idx];
-              if (!item) return <div className="qa" key={i}><div className="a">Not available.</div></div>;
-              return (
-                <div className="qa" key={i}>
-                  <div className="q"><span className="qnum">A</span>{item.q}</div>
-                  <div className="a">{item.a}</div>
-                  {item.evidence != null && <span className="ev">{item.evidence.toLocaleString()} reviews of evidence</span>}
-                  {item.quote && (
-                    <div className="quote" style={{ marginTop: 10 }}>{item.quote.text}
-                      <span className="meta">— {item.quote.source} · {item.quote.region}
-                        {item.quote.rating ? ` · ★${item.quote.rating}` : ""}</span></div>
-                  )}
-                  {item.implication && (
-                    <div className="impl" style={{ marginTop: 10 }}><b>PM interpretation:</b> {item.implication}</div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          {/* conversation */}
+          {msgs.length > 0 && (
+            <div className="chatlog" ref={logRef}>
+              {msgs.map((m, i) => {
+                if (m.role === "user") return <div className="bubble-user" key={i}>{m.text}</div>;
+                if (m.role === "bot-fallback") return <div className="qa" key={i}><div className="a">{FALLBACK}</div></div>;
+                const item = qa[m.idx];
+                if (!item) return <div className="qa" key={i}><div className="a">Not available.</div></div>;
+                return (
+                  <div className="qa" key={i}>
+                    <div className="q"><span className="qnum">AI</span>{item.q}</div>
+                    <div className="a">{item.a}</div>
+                    <div className="ans-grid">
+                      {item.evidence != null && (
+                        <div className="ans-row"><span className="ans-k">Evidence</span>
+                          <span className="ev">{item.evidence.toLocaleString()} reviews</span></div>
+                      )}
+                      {item.key_insight && (
+                        <div className="ans-row"><span className="ans-k">Key insight</span>
+                          <span className="ans-v">{item.key_insight}</span></div>
+                      )}
+                      {item.implication && (
+                        <div className="ans-row"><span className="ans-k">PM implication</span>
+                          <span className="ans-v" style={{ color: "#cdebd7" }}>{item.implication}</span></div>
+                      )}
+                    </div>
+                    {item.quote ? (
+                      <div className="quote" style={{ marginTop: 10 }}>{item.quote.text}
+                        <span className="meta">— {item.quote.source} · {item.quote.region}
+                          {item.quote.rating ? ` · ★${item.quote.rating}` : ""}</span></div>
+                    ) : (
+                      <div className="muted" style={{ fontSize: 11.5, marginTop: 8 }}>Supporting quote: Not available</div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
 
-          <div className="chips">
+          {/* research question options */}
+          <div className="nav-section-label" style={{ margin: "4px 0 2px" }}>Research questions</div>
+          <div className="qopts">
             {qa.map((item, i) => (
-              <button className="chip" key={i} onClick={() => ask(item.q, i)}>{item.q}</button>
+              <button className="qopt" key={i} onClick={() => ask(item.q, i)}>
+                <span className="qopt-n">{String(i + 1).padStart(2, "0")}</span>
+                <span>{item.q}</span>
+              </button>
             ))}
           </div>
 
+          {/* type-your-own */}
           <form className="chatbar" onSubmit={(e) => { e.preventDefault(); ask(input); }}>
-            <input type="text" placeholder="Ask a discovery question…" value={input}
+            <input type="text" placeholder="Or type a similar question…" value={input}
               onChange={(e) => setInput(e.target.value)} style={{ flex: 1 }} />
             <button type="submit" className="send-btn">Ask</button>
           </form>

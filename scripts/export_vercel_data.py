@@ -422,8 +422,33 @@ def build_extra(df, engine):
         "Discovery leakage to YouTube/Apple Music is a retention risk — close the gap.",
         "Repetition drives frustration/fatigue — reducing it protects satisfaction and retention.",
     ]
+    # one-line "key insight" per question, built from the SAME real numbers
+    f1 = feat_rank[0] if feat_rank else {"feature": "n/a", "mentions": 0}
+    f2 = feat_rank[1] if len(feat_rank) > 1 else f1
+    af0 = affected[0] if affected else None
+    d0 = desired_top[0] if desired_top else None
+    d1 = desired_top[1] if len(desired_top) > 1 else None
+    wk0 = list(wkr.items())[0] if wkr else ("n/a", 0)
+    sh = needs.get("shuffle_repeats_small_pool")
+    AI_PILOT_KEY = [
+        f"Shuffle replaying a small pool ({sh}) is the single biggest discovery blocker.",
+        f"Feature frustration peaks on {f1['feature']} ({f1['mentions']}) and {f2['feature']} ({f2['mentions']}).",
+        f"Top goal: '{behaviors[0]['behavior']}' ({behaviors[0]['evidence']} reviews).",
+        f"Even large libraries loop a small set — shuffle diversity is the core fix ({sh}).",
+        (f"Most affected: {af0['cohort']} ({af0['repetition_rate']*100:.0f}% repetition); power users exceed casual."
+         if af0 else "Not available"),
+        f"Biggest gaps: {topneeds[0]['need'].replace('_',' ')} ({topneeds[0]['evidence_count']}) and lost dislike/reset controls.",
+        f"{f1['feature']} ({f1['mentions']}) and {f2['feature']} ({f2['mentions']}) lead feature frustration.",
+        (f"Users most want {d0['type']} ({d0['count']})" + (f", then {d1['type']} ({d1['count']})." if d1 else ".")
+         if d0 else "Not available"),
+        f"{ctx['mood_context_mentions']} reviews cite mood/context — discovery rarely adapts to it.",
+        f"{ctx['control_wanted_mentions']} reviews explicitly ask for dislike / reset / 'not interested'.",
+        f"{wk0[0]} ({wk0[1]}) is the top fallback when Spotify discovery fails.",
+        f"Frustration ({emo.get('frustration',0)}) and fatigue ({emo.get('fatigue',0)}) dominate when recs repeat.",
+    ]
     for i, item in enumerate(ai_pilot):
         item["implication"] = AI_PILOT_IMPL[i] if i < len(AI_PILOT_IMPL) else ""
+        item["key_insight"] = AI_PILOT_KEY[i] if i < len(AI_PILOT_KEY) else ""
 
     return {
         "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",

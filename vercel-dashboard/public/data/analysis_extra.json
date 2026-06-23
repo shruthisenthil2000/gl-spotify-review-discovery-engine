@@ -603,25 +603,36 @@
       },
       "id": "q1",
       "implication": "Prioritize a freshness/discovery mode and broaden candidate generation beyond familiar history.",
-      "key_insight": "Shuffle replaying a small pool (967) is the single biggest discovery blocker.",
+      "key_insight": "Within 7,542 discovery-friction reviews, recommendations feel too narrow is the strongest signal (67 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Discovery-issue reviews",
+          "label": "Matching evidence reviews",
           "count": 7542
         },
         {
-          "label": "Recs-too-narrow signal",
+          "label": "Specific pain point · recommendations feel too narrow",
           "count": 67
         }
       ],
+      "grounding": {
+        "n": 7542,
+        "by_source": {
+          "play_store": 0.884,
+          "app_store": 0.067,
+          "reddit": 0.034,
+          "forums": 0.015
+        },
+        "avg_rating": 4.8,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -742,6 +753,36 @@
           "text": "… normally it would fix itself after a few hours, but lately it's been stuck on the same rotation for days. pick a new song and it restarts the rotation. the exact same group of songs.",
           "matched_theme": "Discovery friction"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "recommendations too narrow",
+          "count": 67
+        },
+        {
+          "label": "can't find new music",
+          "count": 58
+        },
+        {
+          "label": "AI-generated flooding",
+          "count": 246
+        }
+      ],
+      "match_label": "discovery-friction",
+      "themes": [
+        "Personalization gaps",
+        "Narrow recommendations",
+        "Discovery fatigue"
+      ],
+      "segments": [
+        "Users seeking new artists",
+        "Adventurous listeners",
+        "Power users"
+      ],
+      "recommendations": [
+        "Add a freshness / diversity control for users stuck in narrow recommendations.",
+        "Surface more genuinely new artists across Home and discovery surfaces.",
+        "Add a 'show me something different' action to break the comfort-zone loop."
       ]
     },
     {
@@ -751,25 +792,36 @@
       "quote": null,
       "id": "q2",
       "implication": "Strengthen ranking relevance and add a 'tune my recommendations' control.",
-      "key_insight": "Feature frustration peaks on Radio (856) and Smart Shuffle (697).",
+      "key_insight": "Within 3,338 recommendation-mismatch reviews, Radio frustration is the strongest signal (856 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Algorithm-mismatch reviews",
+          "label": "Matching evidence reviews",
           "count": 3338
         },
         {
-          "label": "Radio mentions",
+          "label": "Specific pain point · Radio frustration",
           "count": 856
         }
       ],
+      "grounding": {
+        "n": 3338,
+        "by_source": {
+          "play_store": 0.936,
+          "app_store": 0.059,
+          "reddit": 0.003,
+          "forums": 0.002
+        },
+        "avg_rating": 4.2,
+        "top_region": "Europe"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -890,34 +942,75 @@
           "text": "Spotify is an excellent music streaming app with a huge collection of songs and podcasts. The interface is easy to use, and the recommendations are very accurate. I enjoy discovering new music every day. Highly recommended!",
           "matched_theme": "Recommendation mismatch"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "Radio",
+          "count": 856
+        },
+        {
+          "label": "Smart Shuffle",
+          "count": 697
+        },
+        {
+          "label": "recommendations too narrow",
+          "count": 67
+        }
+      ],
+      "match_label": "recommendation-mismatch",
+      "themes": [
+        "Off-taste recommendations",
+        "Algorithm mismatch",
+        "Weak personalization"
+      ],
+      "segments": [
+        "Power users",
+        "Premium users",
+        "Genre-specific listeners"
+      ],
+      "recommendations": [
+        "Improve ranking relevance to reduce off-taste recommendations.",
+        "Add 'tune my recommendations' so users can correct mismatches.",
+        "Audit the highest-frustration features (Smart Shuffle, Radio)."
       ]
     },
     {
       "q": "What listening behaviors are users trying to achieve?",
       "a": "Top goals by evidence: Hear their own playlist/songs without interference (2113); Find fresh / new music effortlessly (1145); Match music to mood / context / activity (1038).",
-      "evidence": 2113,
+      "evidence": 2724,
       "quote": null,
       "id": "q3",
       "implication": "Respect user intent — keep user playlists clean and make freshness opt-in, not forced.",
-      "key_insight": "Top goal: 'Hear their own playlist/songs without interference' (2113 reviews).",
+      "key_insight": "Within 2,724 listening-intent signals reviews, wanting control over playback is the strongest signal (704 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Own-playlist intent",
-          "count": 2113
+          "label": "Matching evidence reviews",
+          "count": 2724
         },
         {
-          "label": "Freshness intent",
-          "count": 1145
+          "label": "Specific pain point · wanting control over playback",
+          "count": 704
         }
       ],
+      "grounding": {
+        "n": 2724,
+        "by_source": {
+          "play_store": 0.877,
+          "app_store": 0.092,
+          "reddit": 0.026,
+          "forums": 0.005
+        },
+        "avg_rating": 6.5,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -1038,6 +1131,40 @@
           "text": "…remium yep i will say again don't download this cause it will ruin ur mood of listening to ur fav song NOT RECOMMENDED ytmusic is far better atleast let u skip ads",
           "matched_theme": "Listening-intent signals"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "Hear their own playlist/songs without interference",
+          "count": 2113
+        },
+        {
+          "label": "Find fresh / new music effortlessly",
+          "count": 1145
+        },
+        {
+          "label": "Match music to mood / context / activity",
+          "count": 1038
+        },
+        {
+          "label": "Control / correct what gets recommended",
+          "count": 704
+        }
+      ],
+      "match_label": "listening-intent signals",
+      "themes": [
+        "Playlist control",
+        "Freshness seeking",
+        "Mood-based listening"
+      ],
+      "segments": [
+        "Playlist-heavy users",
+        "Power users",
+        "Casual listeners"
+      ],
+      "recommendations": [
+        "Keep user playlists clean — make injected recommendations opt-in.",
+        "Add explicit mood / context inputs to shape each session.",
+        "Give clearer playback controls so user intent is respected."
       ]
     },
     {
@@ -1052,25 +1179,36 @@
       },
       "id": "q4",
       "implication": "Fix shuffle diversity so large libraries don't loop a small pool.",
-      "key_insight": "Even large libraries loop a small set — shuffle diversity is the core fix (967).",
+      "key_insight": "Within 4,753 repetition reviews, shuffle replaying a small pool is the strongest signal (967 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Repetition-issue reviews",
+          "label": "Matching evidence reviews",
           "count": 4753
         },
         {
-          "label": "Shuffle-small-pool signal",
+          "label": "Specific pain point · shuffle replaying a small pool",
           "count": 967
         }
       ],
+      "grounding": {
+        "n": 4753,
+        "by_source": {
+          "play_store": 0.896,
+          "app_store": 0.078,
+          "reddit": 0.018,
+          "forums": 0.008
+        },
+        "avg_rating": 4.1,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -1191,6 +1329,36 @@
           "text": "Over 1,500 songs in my list... on shuffle, it plays the same rotation EVERY. SINGLE. TIME. Shuffle is abysmal at best. Yes, I've done \"sort\" different. If I want to hear ALL the songs, I can't have it on shuffle. This isn't a radio station. I don't do just one genre!",
           "matched_theme": "Repetition / shuffle"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "shuffle repeats a small pool",
+          "count": 967
+        },
+        {
+          "label": "forced recs in playlist",
+          "count": 43
+        },
+        {
+          "label": "recommendations too narrow",
+          "count": 67
+        }
+      ],
+      "match_label": "repetition",
+      "themes": [
+        "Shuffle repetition",
+        "Small playback pool",
+        "Discovery fatigue"
+      ],
+      "segments": [
+        "Power users",
+        "Users stuck in repeat loops",
+        "Large-library users"
+      ],
+      "recommendations": [
+        "Widen Smart Shuffle candidate generation to break small-pool loops.",
+        "Add a freshness / diversity slider for large libraries.",
+        "Introduce reset / dislike tuning to escape stale loops."
       ]
     },
     {
@@ -1200,25 +1368,32 @@
       "quote": null,
       "id": "q5",
       "implication": "Target power users and the highest-repetition regions first.",
-      "key_insight": "Most affected: tr (48% repetition); power users exceed casual.",
+      "key_insight": "Within 19,620 discovery-specific reviews, repetition in tr is the strongest signal (1,222 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Repetition-issue reviews",
-          "count": 4753
-        },
-        {
-          "label": "Most-affected: tr",
+          "label": "Specific pain point · repetition in tr",
           "count": 1222
         }
       ],
+      "grounding": {
+        "n": 19620,
+        "by_source": {
+          "play_store": 0.89,
+          "app_store": 0.079,
+          "reddit": 0.023,
+          "forums": 0.008
+        },
+        "avg_rating": 4.8,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -1339,34 +1514,71 @@
           "text": "…wed down and became very repetitive. Now I’ve got 4 months of Spotify Premium, and I’d like to really learn how to use it properly — not to over-optimize, but to give the algorithm a fair chance to surprise me again. I’m curious: – Have some of you gone through a similar “music f…",
           "matched_theme": "Segment / power-user signals"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "tr",
+          "count": 1222
+        },
+        {
+          "label": "MEA",
+          "count": 1678
+        },
+        {
+          "label": "id",
+          "count": 395
+        }
+      ],
+      "match_label": "discovery-specific",
+      "themes": [
+        "Power-user repetition",
+        "Regional gaps",
+        "Segment differences"
+      ],
+      "segments": [
+        "Power users",
+        "Casual listeners",
+        "Regional / multilingual users"
+      ],
+      "recommendations": [
+        "Prioritize power users and high-repetition regions for diversity fixes.",
+        "Localize discovery coverage for non-English markets.",
+        "Tailor freshness defaults by segment."
       ]
     },
     {
       "q": "What unmet needs emerge consistently across reviews?",
       "a": "Consistently: shuffle repeats small pool (967); ai generated flooding (246); lost dislike reset control (123) — plus lost dislike/reset controls and AI-generated flooding.",
-      "evidence": 967,
+      "evidence": 19620,
       "quote": null,
       "id": "q6",
       "implication": "Ship shuffle diversity, dislike/reset controls, and authenticity filters.",
-      "key_insight": "Biggest gaps: shuffle repeats small pool (967) and lost dislike/reset controls.",
+      "key_insight": "Within 19,620 discovery-specific reviews, shuffle replaying a small pool is the strongest signal (967 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Shuffle-small-pool need",
+          "label": "Specific pain point · shuffle replaying a small pool",
           "count": 967
-        },
-        {
-          "label": "Lost dislike/reset need",
-          "count": 123
         }
       ],
+      "grounding": {
+        "n": 19620,
+        "by_source": {
+          "play_store": 0.89,
+          "app_store": 0.079,
+          "reddit": 0.023,
+          "forums": 0.008
+        },
+        "avg_rating": 4.8,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -1487,12 +1699,54 @@
           "text": "Over 1,500 songs in my list... on shuffle, it plays the same rotation EVERY. SINGLE. TIME. Shuffle is abysmal at best. Yes, I've done \"sort\" different. If I want to hear ALL the songs, I can't have it on shuffle. This isn't a radio station. I don't do just one genre!",
           "matched_theme": "Unmet needs"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "shuffle repeats small pool",
+          "count": 967
+        },
+        {
+          "label": "ai generated flooding",
+          "count": 246
+        },
+        {
+          "label": "lost dislike reset control",
+          "count": 123
+        },
+        {
+          "label": "recs too narrow boxed in",
+          "count": 67
+        },
+        {
+          "label": "cant find new music",
+          "count": 58
+        },
+        {
+          "label": "forced recs in playlist",
+          "count": 43
+        }
+      ],
+      "match_label": "discovery-specific",
+      "themes": [
+        "Shuffle repetition",
+        "Lost feedback controls",
+        "AI-generated flooding"
+      ],
+      "segments": [
+        "Power users",
+        "Adventurous listeners",
+        "Long-term users"
+      ],
+      "recommendations": [
+        "Ship shuffle diversity to address the top unmet need.",
+        "Restore dislike / reset / not-interested controls.",
+        "Add authenticity filters against AI-generated flooding."
       ]
     },
     {
       "q": "Which Spotify discovery features frustrate users the most?",
       "a": "By mention × frustration: Radio (856), Smart Shuffle (697), Discover Weekly (331).",
-      "evidence": 856,
+      "evidence": 2143,
       "quote": {
         "text": "Really BAD ako for liste.ming via bluetooth, makes idiotic requests ,works trough radio sttions% Steeldfrequencies",
         "source": "app_store",
@@ -1501,25 +1755,36 @@
       },
       "id": "q7",
       "implication": "Audit the highest-frustration features (Radio, Smart Shuffle, Release Radar).",
-      "key_insight": "Radio (856) and Smart Shuffle (697) lead feature frustration.",
+      "key_insight": "Within 2,143 feature frustration reviews, Radio frustration is the strongest signal (856 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Radio mentions",
-          "count": 856
+          "label": "Matching evidence reviews",
+          "count": 2143
         },
         {
-          "label": "Smart Shuffle mentions",
-          "count": 697
+          "label": "Specific pain point · Radio frustration",
+          "count": 856
         }
       ],
+      "grounding": {
+        "n": 2143,
+        "by_source": {
+          "play_store": 0.832,
+          "reddit": 0.087,
+          "app_store": 0.052,
+          "forums": 0.029
+        },
+        "avg_rating": 12.2,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -1640,30 +1905,79 @@
           "text": "Over 1,500 songs in my list... on shuffle, it plays the same rotation EVERY. SINGLE. TIME. Shuffle is abysmal at best. Yes, I've done \"sort\" different. If I want to hear ALL the songs, I can't have it on shuffle. This isn't a radio station. I don't do just one genre!",
           "matched_theme": "Feature frustration"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "Radio",
+          "count": 856
+        },
+        {
+          "label": "Smart Shuffle",
+          "count": 697
+        },
+        {
+          "label": "Discover Weekly",
+          "count": 331
+        },
+        {
+          "label": "AI DJ",
+          "count": 267
+        }
+      ],
+      "match_label": "feature frustration",
+      "themes": [
+        "Smart Shuffle",
+        "Radio repetition",
+        "Release Radar trust"
+      ],
+      "segments": [
+        "Free users",
+        "Power users",
+        "Playlist-heavy users"
+      ],
+      "recommendations": [
+        "Audit Smart Shuffle and Radio — highest frustration share.",
+        "Protect Release Radar from AI-generated dilution.",
+        "Make feature behavior more transparent and controllable."
       ]
     },
     {
       "q": "What kind of new music do users want to find?",
       "a": "Desired discovery types (by evidence): New songs (1028), Regional music (398), New artists (191), Niche music (109).",
-      "evidence": 1028,
+      "evidence": 622,
       "quote": null,
       "id": "q8",
       "implication": "Bias discovery toward new songs first, then regional and niche coverage.",
-      "key_insight": "Users most want New songs (1028), then Regional music (398).",
+      "key_insight": "Within 622 desired discovery types reviews, demand for New songs is the strongest signal (1,028 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "New songs mentions",
+          "label": "Matching evidence reviews",
+          "count": 622
+        },
+        {
+          "label": "Specific pain point · demand for New songs",
           "count": 1028
         }
       ],
+      "grounding": {
+        "n": 622,
+        "by_source": {
+          "play_store": 0.778,
+          "reddit": 0.113,
+          "app_store": 0.1,
+          "forums": 0.01
+        },
+        "avg_rating": 11.8,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -1784,30 +2098,79 @@
           "text": "Spotify offers an amazing music library with excellent recommendations. The app is easy to use, and discovering new songs and artists is always enjoyable.",
           "matched_theme": "Desired discovery types"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "New songs",
+          "count": 1028
+        },
+        {
+          "label": "Regional music",
+          "count": 398
+        },
+        {
+          "label": "New artists",
+          "count": 191
+        },
+        {
+          "label": "Niche music",
+          "count": 109
+        }
+      ],
+      "match_label": "desired discovery types",
+      "themes": [
+        "New songs",
+        "Regional music",
+        "Niche / deep cuts"
+      ],
+      "segments": [
+        "Users seeking new artists",
+        "Niche listeners",
+        "Regional / multilingual users"
+      ],
+      "recommendations": [
+        "Bias discovery toward new songs first, then regional and niche.",
+        "Add a niche / deep-cut discovery mode.",
+        "Expand regional / non-English catalog surfacing."
       ]
     },
     {
       "q": "Does Spotify understand users' mood and current listening context?",
       "a": "1038 reviews reference mood, context, or activity (workout, study, sleep, driving…). Many feel discovery ignores it.",
-      "evidence": 1038,
+      "evidence": 959,
       "quote": null,
       "id": "q9",
       "implication": "Invest in context-aware discovery (mood / activity / time-of-day).",
-      "key_insight": "1038 reviews cite mood/context — discovery rarely adapts to it.",
+      "key_insight": "Within 959 mood / context reviews, Spotify ignoring mood / context is the strongest signal (1,038 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Mood/context mentions",
+          "label": "Matching evidence reviews",
+          "count": 959
+        },
+        {
+          "label": "Specific pain point · Spotify ignoring mood / context",
           "count": 1038
         }
       ],
+      "grounding": {
+        "n": 959,
+        "by_source": {
+          "play_store": 0.83,
+          "app_store": 0.113,
+          "reddit": 0.056,
+          "forums": 0.001
+        },
+        "avg_rating": 10.6,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -1928,30 +2291,67 @@
           "text": "…erent songs (different decades/genres). For example I just put in: * \"Nightcall\" by Kavinsky, * \"Addicted to Love\" by Robert Palmer * \"Encome Part II\" by Daft Punk. Then I let it play past the last song. Then Spotify always gives me AMAZING recommendations. I just did this and go…",
           "matched_theme": "Mood / context"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "mood / context mentions",
+          "count": 1038
+        }
+      ],
+      "match_label": "mood / context",
+      "themes": [
+        "Mood / context",
+        "Activity-based",
+        "Contextual discovery"
+      ],
+      "segments": [
+        "Mood-driven listeners",
+        "Casual listeners",
+        "Activity-based users"
+      ],
+      "recommendations": [
+        "Invest in context-aware discovery (mood / activity / time-of-day).",
+        "Add quick mood / context pickers to start sessions.",
+        "Adapt recommendations to short-term listening intent."
       ]
     },
     {
       "q": "Do users want more control over their recommendations?",
       "a": "704 reviews ask for stronger controls: dislike, 'not interested', block, or reset taste profile.",
-      "evidence": 704,
+      "evidence": 382,
       "quote": null,
       "id": "q10",
       "implication": "Add stronger negative-feedback and taste-reset controls.",
-      "key_insight": "704 reviews explicitly ask for dislike / reset / 'not interested'.",
+      "key_insight": "Within 382 control signals reviews, requests for dislike / reset controls is the strongest signal (704 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Control-wanted mentions",
+          "label": "Matching evidence reviews",
+          "count": 382
+        },
+        {
+          "label": "Specific pain point · requests for dislike / reset controls",
           "count": 704
         }
       ],
+      "grounding": {
+        "n": 382,
+        "by_source": {
+          "play_store": 0.804,
+          "app_store": 0.089,
+          "reddit": 0.06,
+          "forums": 0.047
+        },
+        "avg_rating": 22.8,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -2072,30 +2472,70 @@
           "text": "…, whilst also recommending you songs, so if you get a random song you dislike, you can't skip it. The rating fluctuates depending on whether or not you have premium. I understand the 6 skips, but the recommended songs? Too far.",
           "matched_theme": "Control signals"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "control wanted",
+          "count": 704
+        },
+        {
+          "label": "lost dislike/reset need",
+          "count": 123
+        }
+      ],
+      "match_label": "control signals",
+      "themes": [
+        "Dislike / reset controls",
+        "Negative feedback",
+        "Taste tuning"
+      ],
+      "segments": [
+        "Power users",
+        "Long-term users",
+        "Adventurous listeners"
+      ],
+      "recommendations": [
+        "Add stronger negative-feedback controls (dislike / not-interested).",
+        "Provide a taste-reset / tune flow.",
+        "Make feedback visibly change future recommendations."
       ]
     },
     {
       "q": "Where do users go when Spotify discovery fails?",
       "a": "Named alternatives/workarounds: YouTube (1020), Apple Music (258), SoundCloud (80), TikTok (56).",
-      "evidence": 1414,
+      "evidence": 1829,
       "quote": null,
       "id": "q11",
       "implication": "Discovery leakage to YouTube/Apple Music is a retention risk — close the gap.",
-      "key_insight": "YouTube (1020) is the top fallback when Spotify discovery fails.",
+      "key_insight": "Within 1,829 workarounds reviews, switching to YouTube is the strongest signal (1,020 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "YouTube mentions",
+          "label": "Matching evidence reviews",
+          "count": 1829
+        },
+        {
+          "label": "Specific pain point · switching to YouTube",
           "count": 1020
         }
       ],
+      "grounding": {
+        "n": 1829,
+        "by_source": {
+          "play_store": 0.871,
+          "app_store": 0.095,
+          "reddit": 0.034
+        },
+        "avg_rating": 5.9,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -2216,12 +2656,46 @@
           "text": "…stalgic for CDs? Seriously considering ditching my 100+ playlists and switching services. Spotify should’ve been for the artists and music lovers, but you messed that up. It’s clear you’re just going to push whatever gets you paid 🤑 Thank you for being another example of a compan…",
           "matched_theme": "Workarounds"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "YouTube",
+          "count": 1020
+        },
+        {
+          "label": "Apple Music",
+          "count": 258
+        },
+        {
+          "label": "SoundCloud",
+          "count": 80
+        },
+        {
+          "label": "TikTok",
+          "count": 56
+        }
+      ],
+      "match_label": "workarounds",
+      "themes": [
+        "Cross-platform leakage",
+        "YouTube fallback",
+        "Manual search"
+      ],
+      "segments": [
+        "Adventurous listeners",
+        "Users seeking new artists",
+        "Power users"
+      ],
+      "recommendations": [
+        "Close the discovery gap driving users to YouTube / Apple Music.",
+        "Match competitor discovery surfaces for surfacing new music.",
+        "Reduce friction in finding genuinely new tracks."
       ]
     },
     {
       "q": "How do users feel when recommendations become repetitive or irrelevant?",
       "a": "Dominant negative emotions: frustration (1476), fatigue (648), disappointment (382), boredom (46).",
-      "evidence": 2822,
+      "evidence": 650,
       "quote": {
         "text": "He's the only one without a premium in my family and he's getting frustrated because he can't skip music without limits, repeat music, please fix this Edit: I kinda like that they censor bad words in the lyrics, kinda cool",
         "source": "app_store",
@@ -2230,21 +2704,36 @@
       },
       "id": "q12",
       "implication": "Repetition drives frustration/fatigue — reducing it protects satisfaction and retention.",
-      "key_insight": "Frustration (1476) and fatigue (648) dominate when recs repeat.",
+      "key_insight": "Within 650 emotional reaction reviews, frustration is the strongest signal (1,476 reviews).",
       "funnel": [
         {
-          "label": "Total reviews analyzed",
+          "label": "Frozen analysis dataset",
           "count": 26823
         },
         {
-          "label": "Discovery-specific",
+          "label": "Discovery-specific reviews",
           "count": 19620
         },
         {
-          "label": "Negative-emotion reviews",
-          "count": 2822
+          "label": "Matching evidence reviews",
+          "count": 650
+        },
+        {
+          "label": "Specific pain point · frustration",
+          "count": 1476
         }
       ],
+      "grounding": {
+        "n": 650,
+        "by_source": {
+          "play_store": 0.849,
+          "app_store": 0.089,
+          "reddit": 0.048,
+          "forums": 0.014
+        },
+        "avg_rating": 6.3,
+        "top_region": "North America"
+      },
       "quotes": [
         {
           "source": "app_store",
@@ -2365,6 +2854,44 @@
           "text": "Very disappointing. It is hard to enjoy music when I can't even play the song I select and basic features like repeat and replay are restricted. Randomly playing other songs instead of the one I chose makes the experience frustrating and inconvenient. It feels like these limitati…",
           "matched_theme": "Emotional reaction"
         }
+      ],
+      "sub_needs": [
+        {
+          "label": "excitement",
+          "count": 3463
+        },
+        {
+          "label": "frustration",
+          "count": 1476
+        },
+        {
+          "label": "fatigue",
+          "count": 648
+        },
+        {
+          "label": "disappointment",
+          "count": 382
+        },
+        {
+          "label": "distrust",
+          "count": 270
+        }
+      ],
+      "match_label": "emotional reaction",
+      "themes": [
+        "Frustration",
+        "Fatigue",
+        "Boredom / disappointment"
+      ],
+      "segments": [
+        "Power users",
+        "Long-term users",
+        "Users stuck in repeat loops"
+      ],
+      "recommendations": [
+        "Reduce repetition to protect satisfaction and retention.",
+        "Add freshness controls to relieve fatigue and boredom.",
+        "Rebuild trust with transparent, tunable recommendations."
       ]
     }
   ]

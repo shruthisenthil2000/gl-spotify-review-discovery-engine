@@ -546,20 +546,161 @@ def build_extra(df, engine):
                 break
         return out
 
+    # NOTE (tagging-quality bottleneck): per-answer "matching set" is defined by
+    # category for q1/q2/q4/q5/q6 (frozen classifier counts) and by a keyword
+    # regex elsewhere. Grounding %/avg-rating/top-region are computed over that
+    # exact subset, so every number on the card traces to a real review group.
+    def _match_sub(qid):
+        if qid == "q1": return df[df["category"] == "discovery_issue"], "discovery-friction"
+        if qid == "q2": return df[df["category"] == "algorithm_mismatch"], "recommendation-mismatch"
+        if qid == "q4": return df[df["category"] == "repetition_issue"], "repetition"
+        if qid == "q5": return df[df["layer"] == "discovery_specific"], "discovery-specific"
+        if qid == "q6": return df[df["layer"] == "discovery_specific"], "discovery-specific"
+        rx = re.compile(QEVID[qid][0], re.I)
+        return df[df["text"].str.contains(rx)], QEVID[qid][1].lower()
+
+    def _grounding(sub):
+        n = len(sub)
+        if n == 0:
+            return {"n": 0}
+        bs = sub["source"].value_counts(normalize=True)
+        rt = pd.to_numeric(sub["rating"], errors="coerce").dropna()
+        reg = sub["region"].replace("", pd.NA).dropna()
+        return {"n": int(n),
+                "by_source": {k: round(float(v), 3) for k, v in bs.items()},
+                "avg_rating": round(float(rt.mean()), 1) if len(rt) else None,
+                "top_region": (reg.value_counts().idxmax() if len(reg) else None)}
+
+    sh = needs.get("shuffle_repeats_small_pool")
+    PAIN = {
+        "q1": ("recommendations feel too narrow", needs.get("recs_too_narrow_boxed_in")),
+        "q2": (f"{f1['feature']} frustration", f1["mentions"]),
+        "q3": ("wanting control over playback", ctx["control_wanted_mentions"]),
+        "q4": ("shuffle replaying a small pool", sh),
+        "q5": (f"repetition in {af0['cohort']}" if af0 else "repetition concentration",
+               af0["total"] if af0 else ca.get("repetition_issue")),
+        "q6": ("shuffle replaying a small pool", sh),
+        "q7": (f"{f1['feature']} frustration", f1["mentions"]),
+        "q8": (f"demand for {d0['type']}" if d0 else "demand for new music", d0["count"] if d0 else None),
+        "q9": ("Spotify ignoring mood / context", ctx["mood_context_mentions"]),
+        "q10": ("requests for dislike / reset controls", ctx["control_wanted_mentions"]),
+        "q11": (f"switching to {wk0[0]}", wk0[1]),
+        "q12": ("frustration", emotion["distribution"].get("frustration")),
+    }
+    SUBS = {
+        "q1": [("recommendations too narrow", needs.get("recs_too_narrow_boxed_in")),
+               ("can't find new music", needs.get("cant_find_new_music")),
+               ("AI-generated flooding", needs.get("ai_generated_flooding"))],
+        "q2": [(f1["feature"], f1["mentions"]), (f2["feature"], f2["mentions"]),
+               ("recommendations too narrow", needs.get("recs_too_narrow_boxed_in"))],
+        "q3": [(b["behavior"], b["evidence"]) for b in behaviors[:4]],
+        "q4": [("shuffle repeats a small pool", sh),
+               ("forced recs in playlist", needs.get("forced_recs_in_playlist")),
+               ("recommendations too narrow", needs.get("recs_too_narrow_boxed_in"))],
+        "q5": [(c["cohort"], c["total"]) for c in affected[:3]],
+        "q6": [(n["need"].replace("_", " "), n["evidence_count"])
+               for n in engine["theme_detection"]["top_unmet_needs"]],
+        "q7": [(f["feature"], f["mentions"]) for f in feature_map if "mentions" in f][:4],
+        "q8": [(d["type"], d["count"]) for d in desired_top],
+        "q9": [("mood / context mentions", ctx["mood_context_mentions"])],
+        "q10": [("control wanted", ctx["control_wanted_mentions"]),
+                ("lost dislike/reset need", needs.get("lost_dislike_reset_control"))],
+        "q11": [(k, v) for k, v in list(wkr.items())[:4]],
+        "q12": [(k, v) for k, v in list(emotion["distribution"].items())[:5]],
+    }
+    THEMES = {
+        "q1": ["Personalization gaps", "Narrow recommendations", "Discovery fatigue"],
+        "q2": ["Off-taste recommendations", "Algorithm mismatch", "Weak personalization"],
+        "q3": ["Playlist control", "Freshness seeking", "Mood-based listening"],
+        "q4": ["Shuffle repetition", "Small playback pool", "Discovery fatigue"],
+        "q5": ["Power-user repetition", "Regional gaps", "Segment differences"],
+        "q6": ["Shuffle repetition", "Lost feedback controls", "AI-generated flooding"],
+        "q7": ["Smart Shuffle", "Radio repetition", "Release Radar trust"],
+        "q8": ["New songs", "Regional music", "Niche / deep cuts"],
+        "q9": ["Mood / context", "Activity-based", "Contextual discovery"],
+        "q10": ["Dislike / reset controls", "Negative feedback", "Taste tuning"],
+        "q11": ["Cross-platform leakage", "YouTube fallback", "Manual search"],
+        "q12": ["Frustration", "Fatigue", "Boredom / disappointment"],
+    }
+    SEGMENTS = {
+        "q1": ["Users seeking new artists", "Adventurous listeners", "Power users"],
+        "q2": ["Power users", "Premium users", "Genre-specific listeners"],
+        "q3": ["Playlist-heavy users", "Power users", "Casual listeners"],
+        "q4": ["Power users", "Users stuck in repeat loops", "Large-library users"],
+        "q5": ["Power users", "Casual listeners", "Regional / multilingual users"],
+        "q6": ["Power users", "Adventurous listeners", "Long-term users"],
+        "q7": ["Free users", "Power users", "Playlist-heavy users"],
+        "q8": ["Users seeking new artists", "Niche listeners", "Regional / multilingual users"],
+        "q9": ["Mood-driven listeners", "Casual listeners", "Activity-based users"],
+        "q10": ["Power users", "Long-term users", "Adventurous listeners"],
+        "q11": ["Adventurous listeners", "Users seeking new artists", "Power users"],
+        "q12": ["Power users", "Long-term users", "Users stuck in repeat loops"],
+    }
+    RECS = {
+        "q1": ["Add a freshness / diversity control for users stuck in narrow recommendations.",
+               "Surface more genuinely new artists across Home and discovery surfaces.",
+               "Add a 'show me something different' action to break the comfort-zone loop."],
+        "q2": ["Improve ranking relevance to reduce off-taste recommendations.",
+               "Add 'tune my recommendations' so users can correct mismatches.",
+               "Audit the highest-frustration features (Smart Shuffle, Radio)."],
+        "q3": ["Keep user playlists clean — make injected recommendations opt-in.",
+               "Add explicit mood / context inputs to shape each session.",
+               "Give clearer playback controls so user intent is respected."],
+        "q4": ["Widen Smart Shuffle candidate generation to break small-pool loops.",
+               "Add a freshness / diversity slider for large libraries.",
+               "Introduce reset / dislike tuning to escape stale loops."],
+        "q5": ["Prioritize power users and high-repetition regions for diversity fixes.",
+               "Localize discovery coverage for non-English markets.",
+               "Tailor freshness defaults by segment."],
+        "q6": ["Ship shuffle diversity to address the top unmet need.",
+               "Restore dislike / reset / not-interested controls.",
+               "Add authenticity filters against AI-generated flooding."],
+        "q7": ["Audit Smart Shuffle and Radio — highest frustration share.",
+               "Protect Release Radar from AI-generated dilution.",
+               "Make feature behavior more transparent and controllable."],
+        "q8": ["Bias discovery toward new songs first, then regional and niche.",
+               "Add a niche / deep-cut discovery mode.",
+               "Expand regional / non-English catalog surfacing."],
+        "q9": ["Invest in context-aware discovery (mood / activity / time-of-day).",
+               "Add quick mood / context pickers to start sessions.",
+               "Adapt recommendations to short-term listening intent."],
+        "q10": ["Add stronger negative-feedback controls (dislike / not-interested).",
+                "Provide a taste-reset / tune flow.",
+                "Make feedback visibly change future recommendations."],
+        "q11": ["Close the discovery gap driving users to YouTube / Apple Music.",
+                "Match competitor discovery surfaces for surfacing new music.",
+                "Reduce friction in finding genuinely new tracks."],
+        "q12": ["Reduce repetition to protect satisfaction and retention.",
+                "Add freshness controls to relieve fatigue and boredom.",
+                "Rebuild trust with transparent, tunable recommendations."],
+    }
+
     for item in ai_pilot:
-        cfg = QEVID.get(item["id"])
-        if not cfg:
-            item["funnel"] = []; item["quotes"] = []; item["evidence_reviews"] = []
-            continue
+        qid = item["id"]
+        cfg = QEVID.get(qid)
         rx = re.compile(cfg[0], re.I)
         theme = cfg[1]
         reviews_ev = _pick_reviews(rx, theme, k=10)
-        funnel = [{"label": "Total reviews analyzed", "count": total},
-                  {"label": "Discovery-specific", "count": disc_spec}]
-        for lab, cnt in cfg[2]:
-            if cnt is not None:
-                funnel.append({"label": lab, "count": int(cnt)})
-        # 2-3 quotes spanning distinct sources, from the relevant reviews
+        sub, match_label = _match_sub(qid)
+        n_match = int(len(sub))
+        grounding = _grounding(sub)
+        pain_label, pain_count = PAIN.get(qid, (None, None))
+
+        # reconciled funnel: frozen -> discovery-specific -> matching set -> pain
+        funnel = [{"label": "Frozen analysis dataset", "count": total},
+                  {"label": "Discovery-specific reviews", "count": disc_spec}]
+        if n_match and n_match != disc_spec:
+            funnel.append({"label": "Matching evidence reviews", "count": n_match})
+        if pain_count is not None and int(pain_count) not in (n_match, disc_spec):
+            funnel.append({"label": f"Specific pain point · {pain_label}", "count": int(pain_count)})
+
+        # key insight cites the SAME pain number shown in the funnel
+        if pain_count is not None:
+            item["key_insight"] = (f"Within {n_match:,} {match_label} reviews, {pain_label} is the "
+                                   f"strongest signal ({int(pain_count):,} reviews).")
+        item["evidence"] = n_match or item.get("evidence")
+
+        # quotes spanning distinct sources (relevance already enforced by rx)
         quotes, qsrc = [], set()
         for rv in reviews_ev:
             if rv["source"] not in qsrc:
@@ -568,9 +709,16 @@ def build_extra(df, engine):
                 break
         if len(quotes) < 2:
             quotes = reviews_ev[:2]
+
         item["funnel"] = funnel
+        item["grounding"] = grounding
         item["quotes"] = quotes
         item["evidence_reviews"] = reviews_ev
+        item["sub_needs"] = [{"label": l, "count": int(c)} for l, c in SUBS.get(qid, []) if c is not None]
+        item["match_label"] = match_label
+        item["themes"] = THEMES.get(qid, [])
+        item["segments"] = SEGMENTS.get(qid, [])
+        item["recommendations"] = RECS.get(qid, [])
 
     return {
         "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",

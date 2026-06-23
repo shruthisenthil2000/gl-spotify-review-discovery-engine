@@ -213,3 +213,21 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
 .ans-k { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase;
   letter-spacing: .04em; padding-top: 2px; }
 .ans-v { color: #dcdcdc; line-height: 1.5; }
+
+/* ---- AI Pilot: Discovery Copilot layout ---- */
+.copilot-label { font-size: 26px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4px; }
+.copilot-panel { background: linear-gradient(180deg, #181818 0%, #141414 100%);
+  border: 1px solid var(--border); border-radius: 18px; padding: 24px 26px; }
+.copilot-head { display: flex; gap: 14px; align-items: center; }
+.copilot-head h2 { font-size: 20px; }
+.copilot-icon { width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, #1ed760, #1a9446); display: flex; align-items: center;
+  justify-content: center; box-shadow: 0 4px 16px rgba(29,185,84,.25); }
+.copilot-cards-label { color: #8a8a8a; font-size: 11px; font-weight: 800; letter-spacing: .09em;
+  text-transform: uppercase; margin: 18px 0 10px; }
+.copilot-panel .qopts { grid-template-columns: 1fr 1fr; }
+@media (max-width: 760px) { .copilot-panel .qopts { grid-template-columns: 1fr; } }
+.copilot-bar { margin-top: 14px; position: sticky; bottom: 16px; background: var(--bg);
+  padding: 10px; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,.4); }
+.copilot-bar input { background: var(--bg3); }
+.copilot-panel .chatlog { background: #0d0d0d; }

@@ -232,17 +232,9 @@ export default function AiPilot() {
           </div>
         </div>
 
-        <div className="copilot-cards-label">Research questions</div>
-        <div className="qopts">
-          {ITEMS.map((it, i) => (
-            <button className="qopt" key={it.id} onClick={() => ask(it.q, it.id)}>
-              <span className="qopt-n">{String(i + 1).padStart(2, "0")}</span><span>{it.q}</span>
-            </button>
-          ))}
-        </div>
-
+        {/* Answer(s) appear here — directly above the question cards, in-panel */}
         {msgs.length > 0 && (
-          <div className="chatlog" ref={logRef} style={{ marginTop: 16 }}>
+          <div className="chatlog" ref={logRef}>
             {msgs.map((m, i) => {
               if (m.role === "user") return <div className="bubble-user" key={i}>{m.text}</div>;
               if (m.role === "bot-fallback") return <div className="qa" key={i}><div className="a">{FALLBACK_MSG}</div></div>;
@@ -252,13 +244,23 @@ export default function AiPilot() {
             })}
           </div>
         )}
-      </div>
 
-      <form className="chatbar copilot-bar" onSubmit={(e) => { e.preventDefault(); ask(input); }}>
-        <input type="text" placeholder="Ask about discovery, recommendations, repetition, segments, or unmet needs…"
-          value={input} onChange={(e) => setInput(e.target.value)} style={{ flex: 1 }} />
-        <button type="submit" className="send-btn">Send</button>
-      </form>
+        <div className="copilot-cards-label">{msgs.length ? "Ask another research question" : "Research questions"}</div>
+        <div className="qopts">
+          {ITEMS.map((it, i) => (
+            <button className="qopt" key={it.id} onClick={() => ask(it.q, it.id)}>
+              <span className="qopt-n">{String(i + 1).padStart(2, "0")}</span><span>{it.q}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* input bar — normal page flow inside the panel, never sticky/overlapping */}
+        <form className="chatbar copilot-bar" onSubmit={(e) => { e.preventDefault(); ask(input); }}>
+          <input type="text" placeholder="Ask about discovery, recommendations, repetition, segments, or unmet needs…"
+            value={input} onChange={(e) => setInput(e.target.value)} style={{ flex: 1 }} />
+          <button type="submit" className="send-btn">Send</button>
+        </form>
+      </div>
 
       {modalAnswer && <EvidenceDrawer answer={modalAnswer} onClose={() => setModalId(null)} />}
     </>

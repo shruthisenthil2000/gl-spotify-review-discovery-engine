@@ -227,10 +227,13 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
   text-transform: uppercase; margin: 18px 0 10px; }
 .copilot-panel .qopts { grid-template-columns: 1fr 1fr; }
 @media (max-width: 760px) { .copilot-panel .qopts { grid-template-columns: 1fr; } }
-.copilot-bar { margin-top: 14px; position: sticky; bottom: 16px; background: var(--bg);
-  padding: 10px; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,.4); }
-.copilot-bar input { background: var(--bg3); }
-.copilot-panel .chatlog { background: #0d0d0d; }
+/* input bar lives in normal page flow inside the panel — never sticky */
+.copilot-bar { margin-top: 16px; background: var(--bg3); padding: 10px;
+  border: 1px solid var(--border); border-radius: 12px; }
+.copilot-bar input { background: var(--bg2); }
+/* in-panel answers flow naturally above the cards (no nested scrollbox) */
+.copilot-panel .chatlog { max-height: none; overflow: visible; background: transparent;
+  padding: 0; margin: 14px 0 6px; gap: 14px; }
 
 /* ---- AI Pilot: dataset status ---- */
 .dataset-status { display: inline-block; background: var(--bg3); border: 1px solid var(--border);

@@ -231,3 +231,46 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
   padding: 10px; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,.4); }
 .copilot-bar input { background: var(--bg3); }
 .copilot-panel .chatlog { background: #0d0d0d; }
+
+/* ---- AI Pilot: dataset status ---- */
+.dataset-status { display: inline-block; background: var(--bg3); border: 1px solid var(--border);
+  color: #9a9a9a; font-size: 11.5px; padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+
+/* ---- discovery funnel ---- */
+.funnel { margin: 6px 0 12px; display: flex; flex-direction: column; gap: 6px; }
+.funnel-row { display: flex; align-items: center; gap: 12px; }
+.funnel-bar { height: 22px; border-radius: 5px; flex-shrink: 0; min-width: 22px;
+  background: linear-gradient(90deg, #1ed760, #1a9446); }
+.funnel-meta { display: flex; gap: 8px; align-items: baseline; font-size: 12.5px; flex-wrap: wrap; }
+.funnel-label { color: var(--muted); }
+.funnel-meta b { color: #fff; font-variant-numeric: tabular-nums; }
+.funnel-pct { color: #777; font-size: 11px; }
+
+/* ---- evidence button + reviews label ---- */
+.ev-btn { background: rgba(29,185,84,.12); border: 1px solid rgba(29,185,84,.4); color: var(--green);
+  font-weight: 700; font-size: 12.5px; padding: 4px 12px; border-radius: 999px; cursor: pointer; }
+.ev-btn:hover { background: rgba(29,185,84,.2); }
+.rev-label { color: #8a8a8a; font-size: 11px; font-weight: 800; letter-spacing: .08em;
+  text-transform: uppercase; margin: 14px 0 6px; }
+
+/* ---- follow-ups ---- */
+.followups { display: flex; flex-wrap: wrap; gap: 8px; }
+.followup-chip { background: var(--bg3); border: 1px solid var(--border); color: #d2d2d2;
+  font-size: 12px; padding: 7px 12px; border-radius: 999px; cursor: pointer; text-align: left; }
+.followup-chip:hover { border-color: var(--green); color: var(--green); }
+
+/* ---- evidence drawer ---- */
+.drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 50;
+  display: flex; justify-content: flex-end; }
+.drawer { width: min(560px, 96vw); height: 100%; background: #141414; border-left: 1px solid var(--border);
+  padding: 22px; overflow-y: auto; box-shadow: -10px 0 40px rgba(0,0,0,.5); }
+.drawer-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+.ev-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.ev-status { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.filter-chip { display: inline-block; background: rgba(29,185,84,.12); color: var(--green);
+  border-radius: 999px; padding: 1px 9px; font-size: 11px; font-weight: 700; margin-left: 6px; }
+.ev-list { display: flex; flex-direction: column; gap: 10px; }
+.ev-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 13px 15px; }
+.ev-meta { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.ev-text { color: #e3e3e3; font-size: 13.5px; line-height: 1.55; }
+.ev-theme { color: var(--green); font-size: 11px; margin-top: 8px; font-weight: 600; }

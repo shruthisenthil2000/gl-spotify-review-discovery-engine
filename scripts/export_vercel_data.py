@@ -451,6 +451,127 @@ def build_extra(df, engine):
         item["implication"] = AI_PILOT_IMPL[i] if i < len(AI_PILOT_IMPL) else ""
         item["key_insight"] = AI_PILOT_KEY[i] if i < len(AI_PILOT_KEY) else ""
 
+    # ---- per-answer evidence: funnel + relevant multi-source quotes + reviews ----
+    total = len(df)
+    disc_spec = int((df["layer"] == "discovery_specific").sum())
+    # (regex relevance check, theme label, extra funnel stages [(label,count)...])
+    QEVID = {
+        "q1": (r"discover|find new|new music|new artist|stuck|can.?t find|too narrow|same (boring|kind)",
+               "Discovery friction",
+               [("Discovery-issue reviews", ca.get("discovery_issue")),
+                ("Recs-too-narrow signal", needs.get("recs_too_narrow_boxed_in"))]),
+        "q2": (r"recommend|suggestion|algorithm|for you|irrelevant|not match|off.?taste|wrong song",
+               "Recommendation mismatch",
+               [("Algorithm-mismatch reviews", ca.get("algorithm_mismatch")),
+                (f"{f1['feature']} mentions", f1["mentions"])]),
+        "q3": (r"my (own )?playlist|let me (play|choose)|i just want|hear my|control|mood|songs i (chose|want)",
+               "Listening-intent signals",
+               [("Own-playlist intent", behaviors[0]["evidence"]),
+                ("Freshness intent", behaviors[1]["evidence"])]),
+        "q4": (r"same song|repeat|repetitive|shuffle|over and over|\bloop\b|same \d+ songs",
+               "Repetition / shuffle",
+               [("Repetition-issue reviews", ca.get("repetition_issue")),
+                ("Shuffle-small-pool signal", needs.get("shuffle_repeats_small_pool"))]),
+        "q5": (r"premium|for years|since 20|thousands|huge library|my library|power user|\d{3,}\s*songs",
+               "Segment / power-user signals",
+               [("Repetition-issue reviews", ca.get("repetition_issue")),
+                (f"Most-affected: {af0['cohort'] if af0 else 'n/a'}",
+                 af0["total"] if af0 else None)]),
+        "q6": (r"shuffle|dislike|not interested|\breset\b|too narrow|ai (generated|music)|can.?t find new",
+               "Unmet needs",
+               [("Shuffle-small-pool need", needs.get("shuffle_repeats_small_pool")),
+                ("Lost dislike/reset need", needs.get("lost_dislike_reset_control"))]),
+        "q7": (r"discover weekly|release radar|daily mix|\bradio\b|smart shuffle|\bai dj\b|home (screen|feed)",
+               "Feature frustration",
+               [(f"{f1['feature']} mentions", f1["mentions"]),
+                (f"{f2['feature']} mentions", f2["mentions"])]),
+        "q8": (r"new songs?|new artist|new genre|niche|regional|deep ?cut|underground|indie",
+               "Desired discovery types",
+               [(f"{d0['type'] if d0 else 'New music'} mentions", d0["count"] if d0 else None)]),
+        "q9": (r"\bmood\b|\bvibe\b|context|workout|study|sleep|driving|focus|relax|morning|night",
+               "Mood / context",
+               [("Mood/context mentions", ctx["mood_context_mentions"])]),
+        "q10": (r"dislike|not interested|\breset\b|\btune\b|\bblock\b|more control|thumbs? down",
+                "Control signals",
+                [("Control-wanted mentions", ctx["control_wanted_mentions"])]),
+        "q11": (r"youtube|tiktok|apple music|soundcloud|shazam|switch|alternative|instead of spotify",
+                "Workarounds",
+                [(f"{wk0[0]} mentions", wk0[1])]),
+        "q12": (r"\bbored|boring|stale|monoton|fatigue|tired of|same old|lost interest|"
+                r"disappoint|distrust|fed up|sick of",
+                "Emotional reaction",
+                [("Negative-emotion reviews", neg_emo)]),
+    }
+
+    def _review_row(r, theme, rx):
+        ts = str(r.get("timestamp", "") or "")
+        full = " ".join(str(r["text"]).split())
+        m = rx.search(full)
+        if m and len(full) > 300:                 # snippet around the matched keyword
+            start = max(0, m.start() - 70)
+            snippet = ("…" if start > 0 else "") + full[start:start + 280] + \
+                      ("…" if start + 280 < len(full) else "")
+        else:
+            snippet = full[:300]
+        return {"source": r["source"], "region": r.get("region", ""),
+                "lang": r.get("lang", ""), "rating": str(r.get("rating", "") or ""),
+                "date": ts[:10], "text": snippet, "matched_theme": theme}
+
+    def _pick_reviews(rx, theme, k=10):
+        sub = df[df["text"].str.contains(rx)]
+        sub = sub[sub["text"].str.len() >= 30]
+        # round-robin across sources for diversity (concise stores first), English first
+        per_src = {}
+        for src in ["app_store", "play_store", "reddit", "forums"]:
+            s = sub[sub["source"] == src]
+            s_en = s[s["lang"].astype(str).str.startswith("en")]
+            per_src[src] = list(s_en.itertuples(index=False)) + \
+                list(s[~s["lang"].astype(str).str.startswith("en")].itertuples(index=False))
+        cols = list(sub.columns)
+        out, seen = [], set()
+        idx = 0
+        while len(out) < k and any(per_src.values()):
+            for src in ["app_store", "play_store", "reddit", "forums"]:
+                lst = per_src[src]
+                if idx < len(lst):
+                    r = dict(zip(cols, lst[idx]))
+                    key = " ".join(str(r["text"]).split())[:40].lower()
+                    if key not in seen:
+                        seen.add(key)
+                        out.append(_review_row(r, theme, rx))
+                        if len(out) >= k:
+                            break
+            idx += 1
+            if idx > 4000:
+                break
+        return out
+
+    for item in ai_pilot:
+        cfg = QEVID.get(item["id"])
+        if not cfg:
+            item["funnel"] = []; item["quotes"] = []; item["evidence_reviews"] = []
+            continue
+        rx = re.compile(cfg[0], re.I)
+        theme = cfg[1]
+        reviews_ev = _pick_reviews(rx, theme, k=10)
+        funnel = [{"label": "Total reviews analyzed", "count": total},
+                  {"label": "Discovery-specific", "count": disc_spec}]
+        for lab, cnt in cfg[2]:
+            if cnt is not None:
+                funnel.append({"label": lab, "count": int(cnt)})
+        # 2-3 quotes spanning distinct sources, from the relevant reviews
+        quotes, qsrc = [], set()
+        for rv in reviews_ev:
+            if rv["source"] not in qsrc:
+                qsrc.add(rv["source"]); quotes.append(rv)
+            if len(quotes) >= 3:
+                break
+        if len(quotes) < 2:
+            quotes = reviews_ev[:2]
+        item["funnel"] = funnel
+        item["quotes"] = quotes
+        item["evidence_reviews"] = reviews_ev
+
     return {
         "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
         "friction": friction,

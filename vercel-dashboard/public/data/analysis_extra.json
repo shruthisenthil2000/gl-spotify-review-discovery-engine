@@ -603,7 +603,146 @@
       },
       "id": "q1",
       "implication": "Prioritize a freshness/discovery mode and broaden candidate generation beyond familiar history.",
-      "key_insight": "Shuffle replaying a small pool (967) is the single biggest discovery blocker."
+      "key_insight": "Shuffle replaying a small pool (967) is the single biggest discovery blocker.",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Discovery-issue reviews",
+          "count": 7542
+        },
+        {
+          "label": "Recs-too-narrow signal",
+          "count": 67
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2026-06-20",
+          "text": "…. First a true weekly offering of every new ALBUM not just singles of new music across genres like Apple Music. Secondly when searching for the newest album of an artist, Spotify does not list in chronological order. Lastly, I have no idea what songs others are listening to on ne…",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "Advanced algorithms track listening habits to create custom daily mixes, Release Radar, and Discover Weekly playlists.Features like Spotify Jam let multiple users build a shared, real-time queue, while Blend merges the tastes of friends into a unified playlist.",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "Why do people struggle to find new music with Spotify?. Have to be honest, I'm blown away whenever I hear people – and I hear it a lot – complain about Spotify offering repetitive content and/or their not being able to find new music with the platform. Since it was unveiled in 20…",
+          "matched_theme": "Discovery friction"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2026-06-20",
+          "text": "…. First a true weekly offering of every new ALBUM not just singles of new music across genres like Apple Music. Secondly when searching for the newest album of an artist, Spotify does not list in chronological order. Lastly, I have no idea what songs others are listening to on ne…",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "Advanced algorithms track listening habits to create custom daily mixes, Release Radar, and Discover Weekly playlists.Features like Spotify Jam let multiple users build a shared, real-time queue, while Blend merges the tastes of friends into a unified playlist.",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "Why do people struggle to find new music with Spotify?. Have to be honest, I'm blown away whenever I hear people – and I hear it a lot – complain about Spotify offering repetitive content and/or their not being able to find new music with the platform. Since it was unveiled in 20…",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2021-03-18",
+          "text": "...o the same things over and over again which is quite depressing. The point of the song radio or at least how I use it is to new artists that are in the same realm of the artist I'm listening t...",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "…forms out there. The interface is clean and easy to use, and it makes discovering new music feel effortless. I love how personalized the playlists are—especially Discover Weekly and Release Radar, which always seem to match my taste perfectly. The huge library means I can find al…",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "4",
+          "date": "2026-06-21",
+          "text": "It's a really great app, but the way it shuffles its songs sometimes is really really horrible and please equally work on adding more songs, I can't find some songs on the app but i can find them on other streaming platforms",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2025-08-27",
+          "text": "…stuff to everything you've heard before, it's the worst algorithm for discovering complementary sounds. I think \"Struggle\" is a bit assumptive as a term, a bit like saying \"why do people struggle to carry heavy shopping home\". It just uses more effort, like discovering new music …",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2020-12-30",
+          "text": "I would love to have a Discovery level option on Spotify. Currently most of the songs on es or Autoplay are songs that I already liked. This is great but sometimes I am under the i...",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "… has gotten worse and worse. 5 years ago I was in love. Found so much new music using the radio feature.. now the algorithm makes a playlist out of songs I’ve already liked or heard. This last year the songs are skipping while loading?? Is this supposed to make me nostalgic for C…",
+          "matched_theme": "Discovery friction"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "… normally it would fix itself after a few hours, but lately it's been stuck on the same rotation for days. pick a new song and it restarts the rotation. the exact same group of songs.",
+          "matched_theme": "Discovery friction"
+        }
+      ]
     },
     {
       "q": "What are the most common frustrations with recommendations?",
@@ -612,7 +751,146 @@
       "quote": null,
       "id": "q2",
       "implication": "Strengthen ranking relevance and add a 'tune my recommendations' control.",
-      "key_insight": "Feature frustration peaks on Radio (856) and Smart Shuffle (697)."
+      "key_insight": "Feature frustration peaks on Radio (856) and Smart Shuffle (697).",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Algorithm-mismatch reviews",
+          "count": 3338
+        },
+        {
+          "label": "Radio mentions",
+          "count": 856
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "the \"shuffle\" feature doesn't really work and you get the same songs in the same order till the \"algorithm\"?!!! changes it based on a monthly basis???!",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "4",
+          "date": "2026-06-21",
+          "text": "good at all but song suggestions is bad",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…nd it and whatever saved albums/playlists I upkeep. I have no idea if algorithms on other platforms have caught up to it because I have no reason to investigate, but the suggestions DW began offering shortly after I started using it annihilated all others. From the advent of stre…",
+          "matched_theme": "Recommendation mismatch"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "the \"shuffle\" feature doesn't really work and you get the same songs in the same order till the \"algorithm\"?!!! changes it based on a monthly basis???!",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "4",
+          "date": "2026-06-21",
+          "text": "good at all but song suggestions is bad",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…nd it and whatever saved albums/playlists I upkeep. I have no idea if algorithms on other platforms have caught up to it because I have no reason to investigate, but the suggestions DW began offering shortly after I started using it annihilated all others. From the advent of stre…",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2020-01-14",
+          "text": "Any way we can reset seeds?¬† Or maybe update your algorithm for suggestions? Every my is filled with synthpop or sounds of fax machine having an orgasm l...",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "It is a wonderful service , I enjoy it listening to my favorite songs on and the different podcasts that they have available. It’s variety of audio books to listen to on here as well . It’s very easy to use and I recommend it definitely worth it.",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "Advanced algorithms track listening habits to create custom daily mixes, Release Radar, and Discover Weekly playlists.Features like Spotify Jam let multiple users build a shared, real-time queue, while Blend merges the tastes of friends into a unified playlist.",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2025-08-27",
+          "text": "… just similar stuff to everything you've heard before, it's the worst algorithm for discovering complementary sounds. I think \"Struggle\" is a bit assumptive as a term, a bit like saying \"why do people struggle to carry heavy shopping home\". It just uses more effort, like discover…",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2020-11-02",
+          "text": "...ew music to listen to.¬† Is there any way to get and the general recommender system to give me anything different?",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "So good and it’s easy to use. Song recommendations are accurate and there’s a free trial to test it out!",
+          "matched_theme": "Recommendation mismatch"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "Spotify is an excellent music streaming app with a huge collection of songs and podcasts. The interface is easy to use, and the recommendations are very accurate. I enjoy discovering new music every day. Highly recommended!",
+          "matched_theme": "Recommendation mismatch"
+        }
+      ]
     },
     {
       "q": "What listening behaviors are users trying to achieve?",
@@ -621,7 +899,146 @@
       "quote": null,
       "id": "q3",
       "implication": "Respect user intent — keep user playlists clean and make freshness opt-in, not forced.",
-      "key_insight": "Top goal: 'Hear their own playlist/songs without interference' (2113 reviews)."
+      "key_insight": "Top goal: 'Hear their own playlist/songs without interference' (2113 reviews).",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Own-playlist intent",
+          "count": 2113
+        },
+        {
+          "label": "Freshness intent",
+          "count": 1145
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "…t looks more and more like tik tok, with shorts and things like that. I just want to listen to music or podcast not get into a loop of videos and consumerism. The app should allow you to customize and turn off all those add ons",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…fle, with smart shuffle, if I clear the app cache, over 2000 songs in my playlist and it gives me the same small rotation. normally it would fix itself after a few hours, but lately it's been stuck on the same rotation for days. pick a new song and it restarts the rotation. the e…",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "9.0",
+          "date": "",
+          "text": "…esn't improve over time (e.g. week to week). 3rd Party Web sites like moodify try to crack this nut, but the Spotify API doesn't support song downvoting or a deep history of what the user has played, so they can't really improve on what Spotify offers when it comes to music disco…",
+          "matched_theme": "Listening-intent signals"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "…t looks more and more like tik tok, with shorts and things like that. I just want to listen to music or podcast not get into a loop of videos and consumerism. The app should allow you to customize and turn off all those add ons",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…fle, with smart shuffle, if I clear the app cache, over 2000 songs in my playlist and it gives me the same small rotation. normally it would fix itself after a few hours, but lately it's been stuck on the same rotation for days. pick a new song and it restarts the rotation. the e…",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "9.0",
+          "date": "",
+          "text": "…esn't improve over time (e.g. week to week). 3rd Party Web sites like moodify try to crack this nut, but the Spotify API doesn't support song downvoting or a deep history of what the user has played, so they can't really improve on what Spotify offers when it comes to music disco…",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2020-11-02",
+          "text": "...low, music. At this point, I'm going off the platform to get recommendations. The best thing I've been able to do is to create my own playlists and do playlist radio to find n...",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "…ple Music or Amazon. Though it is annoying that songs go missing from my playlist from time to time and then later another version of the same song gets reuploaded but it doesn’t add the song back in my playlist.",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…pp, but smart shuffle is really terrible now. 2. Despite playing from my own playlists, after every 3-4 songs, the music just stops. 3. Song radio feature has also gotten worse. I'm giving the app 2 more months",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2023-11-09",
+          "text": "…radio that's always on. What I want is to tune a radio station for my mood or scene, like working or having people over or being pissed off or whatever, and then be able to upvote / downvote to tune the station. If daily mixes weren't broken they'd kind of work because they at le…",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "NaT",
+          "text": "Since the launch of 'Made for You' playlists, all of my playlists have pretty much warped into monotony.",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-19",
+          "text": "My algorithms are perfect for every mood I set just amazing",
+          "matched_theme": "Listening-intent signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…remium yep i will say again don't download this cause it will ruin ur mood of listening to ur fav song NOT RECOMMENDED ytmusic is far better atleast let u skip ads",
+          "matched_theme": "Listening-intent signals"
+        }
+      ]
     },
     {
       "q": "What causes users to repeatedly listen to the same content?",
@@ -635,7 +1052,146 @@
       },
       "id": "q4",
       "implication": "Fix shuffle diversity so large libraries don't loop a small pool.",
-      "key_insight": "Even large libraries loop a small set — shuffle diversity is the core fix (967)."
+      "key_insight": "Even large libraries loop a small set — shuffle diversity is the core fix (967).",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Repetition-issue reviews",
+          "count": 4753
+        },
+        {
+          "label": "Shuffle-small-pool signal",
+          "count": 967
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "the \"shuffle\" feature doesn't really work and you get the same songs in the same order till the \"algorithm\"?!!! changes it based on a monthly basis???!",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "…mit for how many songs you can queue every day or something. 4. Smart shuffle being default is annoying. I can't listen to a specific playlist/album without it changing to a different artist. 5. Add a your top songs every month when its time for the yearly wrap. - ♠️",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…I hear people – and I hear it a lot – complain about Spotify offering repetitive content and/or their not being able to find new music with the platform. Since it was unveiled in 2015, Discover Weekly has been just about the only feature I care to engage with on the app, and that…",
+          "matched_theme": "Repetition / shuffle"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "the \"shuffle\" feature doesn't really work and you get the same songs in the same order till the \"algorithm\"?!!! changes it based on a monthly basis???!",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "…mit for how many songs you can queue every day or something. 4. Smart shuffle being default is annoying. I can't listen to a specific playlist/album without it changing to a different artist. 5. Add a your top songs every month when its time for the yearly wrap. - ♠️",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…I hear people – and I hear it a lot – complain about Spotify offering repetitive content and/or their not being able to find new music with the platform. Since it was unveiled in 2015, Discover Weekly has been just about the only feature I care to engage with on the app, and that…",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2021-03-18",
+          "text": "...o the same things over and over again which is quite depressing. The point of the song radio or at least how I use it is to new artists that are in the same realm of the artist I'm listening t...",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "…hen you last played them, channeling you into playing the same things over and over again. The \"Made for You\" playlists have no concept of genre. In addition, there is an increasing amount if AI slop (e.g. \"Warm Pages) cluttering my recommendations and no way for me to edit or cl…",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "4",
+          "date": "2026-06-21",
+          "text": "It's a really great app, but the way it shuffles its songs sometimes is really really horrible and please equally work on adding more songs, I can't find some songs on the app but i can find them on other streaming platforms",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "9.0",
+          "date": "",
+          "text": "…t you get to downvote songs you don't like. Daily mixes are extremely repetitive and I see no way to fix that- skipping over a song you've hated the last 10 times you've heard it seems to have no effect, it just gets played an 11th time for you. Being able to downvote songs would…",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2016-07-22",
+          "text": "For the past month or so, I've had so many repeats of songs on my playlist.¬† Now, I can count on 5-10 songs that I've had before on the playlist.¬† Is there a way to mix u...",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "4",
+          "date": "2026-06-20",
+          "text": "The songs need to be shuffled around more so you don’t here the same songs on your playlist",
+          "matched_theme": "Repetition / shuffle"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "Over 1,500 songs in my list... on shuffle, it plays the same rotation EVERY. SINGLE. TIME. Shuffle is abysmal at best. Yes, I've done \"sort\" different. If I want to hear ALL the songs, I can't have it on shuffle. This isn't a radio station. I don't do just one genre!",
+          "matched_theme": "Repetition / shuffle"
+        }
+      ]
     },
     {
       "q": "Which user segments experience different discovery challenges?",
@@ -644,7 +1200,146 @@
       "quote": null,
       "id": "q5",
       "implication": "Target power users and the highest-repetition regions first.",
-      "key_insight": "Most affected: tr (48% repetition); power users exceed casual."
+      "key_insight": "Most affected: tr (48% repetition); power users exceed casual.",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Repetition-issue reviews",
+          "count": 4753
+        },
+        {
+          "label": "Most-affected: tr",
+          "count": 1222
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "…and Release Radar, which always seem to match my taste perfectly. The huge library means I can find almost any song or artist I’m looking for, and the ability to create and share playlists is a big plus. The only downside is the ads on the free version, but overall, Spotify offer…",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "1. You need premium for almost every good feature. 2. The ads are annoying. I get like 3 ads every 4 songs, which is too much. 3. I can't queue much songs because there is a limit for how many songs you can queue every day or something. 4. Smart shuffle being default is annoying.…",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2023-11-09",
+          "text": "…roblem is I've never bothered with playlists- I just have a jumble of 500 songs I like. Some are bluegrass, some death metal, some EBM, some chill background music, some steel drum music, some ambient, some psychedelic, etc. Sites like every noise at once are good for intentinal …",
+          "matched_theme": "Segment / power-user signals"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "…and Release Radar, which always seem to match my taste perfectly. The huge library means I can find almost any song or artist I’m looking for, and the ability to create and share playlists is a big plus. The only downside is the ads on the free version, but overall, Spotify offer…",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "1. You need premium for almost every good feature. 2. The ads are annoying. I get like 3 ads every 4 songs, which is too much. 3. I can't queue much songs because there is a limit for how many songs you can queue every day or something. 4. Smart shuffle being default is annoying.…",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2023-11-09",
+          "text": "…roblem is I've never bothered with playlists- I just have a jumble of 500 songs I like. Some are bluegrass, some death metal, some EBM, some chill background music, some steel drum music, some ambient, some psychedelic, etc. Sites like every noise at once are good for intentinal …",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2020-06-05",
+          "text": "Hi all, I'm relatively new to Spotify Premium and have been enjoying the es. But I increasingly find that the same songs recur endlessly. It's even worse if I have \"l...",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "I’ve tried Apple Music and YouTube music. Spotify is best, especially if you have premium. I would recommend family premium to save, even if it’s not your family you’re sharing with 🤫 and the wrapped features are very cool. No paid off bot review, just given my honest opinion to other people.",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "The additional addon makes having premium worth getting, and making people with no premium suggest to buy premium, which it's unfair for those who don't have any digital money to pay.",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1.0",
+          "date": "",
+          "text": "…tist add procedures. Well, almost three years later I’ve gotten to 10,000 songs which is apparently the max a spotify playlist can handle. I decided to share this out there for other people to take part and see what they like about it. I’ve also started a new one that’s at about …",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "I absolutely love Spotify. I’m a bit biased, considering I have premium, but still. I love the interface, love how it recommends you stuff. They aren’t random! A lot of my favorite bands or artists are from the recommendations! (:",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "Over 1,500 songs in my list... on shuffle, it plays the same rotation EVERY. SINGLE. TIME. Shuffle is abysmal at best. Yes, I've done \"sort\" different. If I want to hear ALL the songs, I can't have it on shuffle. This isn't a radio station. I don't do just one genre!",
+          "matched_theme": "Segment / power-user signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…wed down and became very repetitive. Now I’ve got 4 months of Spotify Premium, and I’d like to really learn how to use it properly — not to over-optimize, but to give the algorithm a fair chance to surprise me again. I’m curious: – Have some of you gone through a similar “music f…",
+          "matched_theme": "Segment / power-user signals"
+        }
+      ]
     },
     {
       "q": "What unmet needs emerge consistently across reviews?",
@@ -653,7 +1348,146 @@
       "quote": null,
       "id": "q6",
       "implication": "Ship shuffle diversity, dislike/reset controls, and authenticity filters.",
-      "key_insight": "Biggest gaps: shuffle repeats small pool (967) and lost dislike/reset controls."
+      "key_insight": "Biggest gaps: shuffle repeats small pool (967) and lost dislike/reset controls.",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Shuffle-small-pool need",
+          "count": 967
+        },
+        {
+          "label": "Lost dislike/reset need",
+          "count": 123
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "the \"shuffle\" feature doesn't really work and you get the same songs in the same order till the \"algorithm\"?!!! changes it based on a monthly basis???!",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "…mit for how many songs you can queue every day or something. 4. Smart shuffle being default is annoying. I can't listen to a specific playlist/album without it changing to a different artist. 5. Add a your top songs every month when its time for the yearly wrap. - ♠️",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1.0",
+          "date": "",
+          "text": "…si=RXUc5FTzSdOO0ATB1saU4A) By 2015 I had gotten bored with my pandora shuffle. I maxed out pandora channels sometime in 2013 and had been shuffling in new stations as I could then playing shuffle all. It was just getting repetitive as a streaming platform. I was growing tired of …",
+          "matched_theme": "Unmet needs"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "the \"shuffle\" feature doesn't really work and you get the same songs in the same order till the \"algorithm\"?!!! changes it based on a monthly basis???!",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "…mit for how many songs you can queue every day or something. 4. Smart shuffle being default is annoying. I can't listen to a specific playlist/album without it changing to a different artist. 5. Add a your top songs every month when its time for the yearly wrap. - ♠️",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1.0",
+          "date": "",
+          "text": "…si=RXUc5FTzSdOO0ATB1saU4A) By 2015 I had gotten bored with my pandora shuffle. I maxed out pandora channels sometime in 2013 and had been shuffling in new stations as I could then playing shuffle all. It was just getting repetitive as a streaming platform. I was growing tired of …",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2020-01-14",
+          "text": "Any way we can reset seeds?¬† Or maybe update your algorithm for suggestions? Every my is filled with synthpop or sounds of fax machine having an orgasm l...",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "4",
+          "date": "2026-06-20",
+          "text": "The songs need to be shuffled around more so you don’t here the same songs on your playlist",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "4",
+          "date": "2026-06-21",
+          "text": "It's a really great app, but the way it shuffles its songs sometimes is really really horrible and please equally work on adding more songs, I can't find some songs on the app but i can find them on other streaming platforms",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…ateau. Lately I’ve been feeling kind of saturated with music. I don’t dislike what I hear, but nothing really hits anymore. I often loop the same things, and I feel like the algorithm just reinforces that instead of opening new doors. I’ve had this especially with YouTube Music: …",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "NaT",
+          "text": "Ability to dislike or block unwanted content so it can be removed from recommendations.",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "3",
+          "date": "2026-06-20",
+          "text": "I don’t really like the fact that all my songs are in shuffle because I don’t wanna pay a monthly payment. It’s really annoying that I only have 6 skips in an hour if I can’t even go back to a different song. But overall it’s good",
+          "matched_theme": "Unmet needs"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "Over 1,500 songs in my list... on shuffle, it plays the same rotation EVERY. SINGLE. TIME. Shuffle is abysmal at best. Yes, I've done \"sort\" different. If I want to hear ALL the songs, I can't have it on shuffle. This isn't a radio station. I don't do just one genre!",
+          "matched_theme": "Unmet needs"
+        }
+      ]
     },
     {
       "q": "Which Spotify discovery features frustrate users the most?",
@@ -667,7 +1501,146 @@
       },
       "id": "q7",
       "implication": "Audit the highest-frustration features (Radio, Smart Shuffle, Release Radar).",
-      "key_insight": "Radio (856) and Smart Shuffle (697) lead feature frustration."
+      "key_insight": "Radio (856) and Smart Shuffle (697) lead feature frustration.",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Radio mentions",
+          "count": 856
+        },
+        {
+          "label": "Smart Shuffle mentions",
+          "count": 697
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "…feel effortless. I love how personalized the playlists are—especially Discover Weekly and Release Radar, which always seem to match my taste perfectly. The huge library means I can find almost any song or artist I’m looking for, and the ability to create and share playlists is a …",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "…s a limit for how many songs you can queue every day or something. 4. Smart shuffle being default is annoying. I can't listen to a specific playlist/album without it changing to a different artist. 5. Add a your top songs every month when its time for the yearly wrap. - ♠️",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…e to find new music with the platform. Since it was unveiled in 2015, Discover Weekly has been just about the only feature I care to engage with on the app, and that's simply because it's so damn good I have no need for anything else beyond it and whatever saved albums/playlists …",
+          "matched_theme": "Feature frustration"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "…feel effortless. I love how personalized the playlists are—especially Discover Weekly and Release Radar, which always seem to match my taste perfectly. The huge library means I can find almost any song or artist I’m looking for, and the ability to create and share playlists is a …",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "2",
+          "date": "2026-06-21",
+          "text": "…s a limit for how many songs you can queue every day or something. 4. Smart shuffle being default is annoying. I can't listen to a specific playlist/album without it changing to a different artist. 5. Add a your top songs every month when its time for the yearly wrap. - ♠️",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…e to find new music with the platform. Since it was unveiled in 2015, Discover Weekly has been just about the only feature I care to engage with on the app, and that's simply because it's so damn good I have no need for anything else beyond it and whatever saved albums/playlists …",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2025-01-10",
+          "text": "The platform is increasingly flooded with AI-generated songs (especially the Release Radar), making it harder for users to authentic, human-created music. To improve the listening e...",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "4",
+          "date": "2026-06-20",
+          "text": "Yay I get access to music, more ads than the radio",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "Advanced algorithms track listening habits to create custom daily mixes, Release Radar, and Discover Weekly playlists.Features like Spotify Jam let multiple users build a shared, real-time queue, while Blend merges the tastes of friends into a unified playlist.",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2025-08-27",
+          "text": "…is when I've dug deeper into the tastes of those who find no use with Discover Weekly, it is nearly 100% because their idea of what \"good music\" is is so incredibly narrow as to render any recommendation tool useless. In fact, it's as though these people hold a distaste for ANY s…",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2021-03-18",
+          "text": "...o the same things over and over again which is quite depressing. The point of the song radio or at least how I use it is to new artists that are in the same realm of the artist I'm listening t...",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "…d worse. 5 years ago I was in love. Found so much new music using the radio feature.. now the algorithm makes a playlist out of songs I’ve already liked or heard. This last year the songs are skipping while loading?? Is this supposed to make me nostalgic for CDs? Seriously consid…",
+          "matched_theme": "Feature frustration"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "Over 1,500 songs in my list... on shuffle, it plays the same rotation EVERY. SINGLE. TIME. Shuffle is abysmal at best. Yes, I've done \"sort\" different. If I want to hear ALL the songs, I can't have it on shuffle. This isn't a radio station. I don't do just one genre!",
+          "matched_theme": "Feature frustration"
+        }
+      ]
     },
     {
       "q": "What kind of new music do users want to find?",
@@ -676,7 +1649,142 @@
       "quote": null,
       "id": "q8",
       "implication": "Bias discovery toward new songs first, then regional and niche coverage.",
-      "key_insight": "Users most want New songs (1028), then Regional music (398)."
+      "key_insight": "Users most want New songs (1028), then Regional music (398).",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "New songs mentions",
+          "count": 1028
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "4",
+          "date": "2026-06-20",
+          "text": "Was great has been declining with the tech issues and poor discoverability of new artists. But seems like it’s been getting better recently. Too many ads if you don’t pay to play though. But still accessible to everyone so not that bad..",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…urs, but lately it's been stuck on the same rotation for days. pick a new song and it restarts the rotation. the exact same group of songs.",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2025-08-27",
+          "text": "… these days, but only because DW consistently offers up unique, often deep cuts from artists spanning the popularity spectrum. The irony of your take is when I've dug deeper into the tastes of those who find no use with Discover Weekly, it is nearly 100% because their idea of wha…",
+          "matched_theme": "Desired discovery types"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "4",
+          "date": "2026-06-20",
+          "text": "Was great has been declining with the tech issues and poor discoverability of new artists. But seems like it’s been getting better recently. Too many ads if you don’t pay to play though. But still accessible to everyone so not that bad..",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…urs, but lately it's been stuck on the same rotation for days. pick a new song and it restarts the rotation. the exact same group of songs.",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2025-08-27",
+          "text": "… these days, but only because DW consistently offers up unique, often deep cuts from artists spanning the popularity spectrum. The irony of your take is when I've dug deeper into the tastes of those who find no use with Discover Weekly, it is nearly 100% because their idea of wha…",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2021-03-18",
+          "text": "...o the same things over and over again which is quite depressing. The point of the song radio or at least how I use it is to new artists that are in the same realm of the artist I'm listening t...",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-12",
+          "text": "This app is a great for new songs playlists and to try new music.Personally it’s my favourite app!",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "Great music app, and premium makes it pretty much always a go to unless you are looking for very niche artist that are only on YouTube and SoundCloud, overall pleased lowk, awesome app would recommend getting the premium tho, and its not even that expensive.",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1.0",
+          "date": "",
+          "text": "… that I listen to. I think it leans heavy on classic rock, jam bands, indie rock and electronica. However, there’s a little bit of almost everything I listen to sprinkled in. There’s a lot of my time in here and I hope just a few people can enjoy it as there’s probably 800 hours …",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "NaT",
+          "text": "Song Radio is essentially just an echo chamber and does not help discover new artists or songs.",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "app_store",
+          "region": "UK/Ireland",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-19",
+          "text": "I love the DJ selection as it brings up songs and artists you haven’t played in ages and throws them with all your favourite and introduces new artists and I have found a few great songs and bands",
+          "matched_theme": "Desired discovery types"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "Spotify offers an amazing music library with excellent recommendations. The app is easy to use, and discovering new songs and artists is always enjoyable.",
+          "matched_theme": "Desired discovery types"
+        }
+      ]
     },
     {
       "q": "Does Spotify understand users' mood and current listening context?",
@@ -685,7 +1793,142 @@
       "quote": null,
       "id": "q9",
       "implication": "Invest in context-aware discovery (mood / activity / time-of-day).",
-      "key_insight": "1038 reviews cite mood/context — discovery rarely adapts to it."
+      "key_insight": "1038 reviews cite mood/context — discovery rarely adapts to it.",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Mood/context mentions",
+          "count": 1038
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "3",
+          "date": "2026-06-19",
+          "text": "…and this is the time I need my musics the most, they are what help me sleep, or why do you think I subscribe, I have been a subscriber since 2023 after I discovered the app now what’s going on, I had uninstalled and installed more than ten times already, what’s going on? I need t…",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…remium yep i will say again don't download this cause it will ruin ur mood of listening to ur fav song NOT RECOMMENDED ytmusic is far better atleast let u skip ads",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2023-11-09",
+          "text": "…radio that's always on. What I want is to tune a radio station for my mood or scene, like working or having people over or being pissed off or whatever, and then be able to upvote / downvote to tune the station. If daily mixes weren't broken they'd kind of work because they at le…",
+          "matched_theme": "Mood / context"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "3",
+          "date": "2026-06-19",
+          "text": "…and this is the time I need my musics the most, they are what help me sleep, or why do you think I subscribe, I have been a subscriber since 2023 after I discovered the app now what’s going on, I had uninstalled and installed more than ten times already, what’s going on? I need t…",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…remium yep i will say again don't download this cause it will ruin ur mood of listening to ur fav song NOT RECOMMENDED ytmusic is far better atleast let u skip ads",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2023-11-09",
+          "text": "…radio that's always on. What I want is to tune a radio station for my mood or scene, like working or having people over or being pissed off or whatever, and then be able to upvote / downvote to tune the station. If daily mixes weren't broken they'd kind of work because they at le…",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "NaT",
+          "text": "I don't want my sleep playlists to influence discovery algorithms.",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-19",
+          "text": "My algorithms are perfect for every mood I set just amazing",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "4",
+          "date": "2026-06-21",
+          "text": "Spotify is one of my favorite app🎀 like it's recommendation are absolutely accurate,the only concern for me is that after every 30 minutes there are absolute 5 non skipping ads I really hate that like it just change the mood of listening to the song..",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2020-07-03",
+          "text": "Do the discover playlist provide you the name of the participant? I think if it does, that might cause problems with your IRB board. Also I might have a fun idea worth exploring in this context you can DM me if you want to discuss.",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "3",
+          "date": "2026-06-09",
+          "text": "…at doesn’t count towards the minutes listened since ppl like to fall asleep to audiobooks and need to be able to replay missed chapters",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "App wajib ada dalam fon! \"Layan gila Spotify ni, terutamanya playlist 'Discover Weekly' dia. Macam tahu-tahu je mood kita tengah macam mana. Kualiti audio pun mantap, lepas tu boleh download dengar offline masa drive atau joging. Tak rugi bayar premium bulan-bulan, berbaloi teruk!\"",
+          "matched_theme": "Mood / context"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "244.0",
+          "date": "",
+          "text": "…erent songs (different decades/genres). For example I just put in: * \"Nightcall\" by Kavinsky, * \"Addicted to Love\" by Robert Palmer * \"Encome Part II\" by Daft Punk. Then I let it play past the last song. Then Spotify always gives me AMAZING recommendations. I just did this and go…",
+          "matched_theme": "Mood / context"
+        }
+      ]
     },
     {
       "q": "Do users want more control over their recommendations?",
@@ -694,7 +1937,142 @@
       "quote": null,
       "id": "q10",
       "implication": "Add stronger negative-feedback and taste-reset controls.",
-      "key_insight": "704 reviews explicitly ask for dislike / reset / 'not interested'."
+      "key_insight": "704 reviews explicitly ask for dislike / reset / 'not interested'.",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Control-wanted mentions",
+          "count": 704
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "It shows podcast I am not interested in and I am not able to take them out of my home page. The app has worsen and it looks more and more like tik tok, with shorts and things like that. I just want to listen to music or podcast not get into a loop of videos and consumerism. The a…",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-15",
+          "text": "New widget is stupid! It keeps changing and is distracting. Stay on the last thing I played. I'm not interested in your recommendations.",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "9.0",
+          "date": "",
+          "text": "…sic discovery is to create radio stations, seed them with songs, then tune them with upvote / downvote and a \"discover new music\" slider. Instead, Spotify has a number of broken music discovery features: Discover Weekly and Release Radar don't filter to genre or music type, so if…",
+          "matched_theme": "Control signals"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "It shows podcast I am not interested in and I am not able to take them out of my home page. The app has worsen and it looks more and more like tik tok, with shorts and things like that. I just want to listen to music or podcast not get into a loop of videos and consumerism. The a…",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-15",
+          "text": "New widget is stupid! It keeps changing and is distracting. Stay on the last thing I played. I'm not interested in your recommendations.",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "9.0",
+          "date": "",
+          "text": "…sic discovery is to create radio stations, seed them with songs, then tune them with upvote / downvote and a \"discover new music\" slider. Instead, Spotify has a number of broken music discovery features: Discover Weekly and Release Radar don't filter to genre or music type, so if…",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2020-01-14",
+          "text": "Any way we can reset seeds?¬† Or maybe update your algorithm for suggestions? Every my is filled with synthpop or sounds of fax machine having an orgasm l...",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "3",
+          "date": "2026-06-09",
+          "text": "…looks like a glitched app. The app was better when it was possible to dislike songs to improve the algorithm recommendations. The audiobooks need a feature to allow replay that doesn’t count towards the minutes listened since ppl like to fall asleep to audiobooks and need to be a…",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-15",
+          "text": "Terrible. All that AI Scrap and no way to remove/block it. It used to be such a great platform, but they had to ruin it for money. Well, there are many alternatives out there these days - I'd recommend switching to something like Quobuz, Tidal...",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2023-11-09",
+          "text": "…g, but I'm thinking more of radio that's always on. What I want is to tune a radio station for my mood or scene, like working or having people over or being pissed off or whatever, and then be able to upvote / downvote to tune the station. If daily mixes weren't broken they'd kin…",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "NaT",
+          "text": "Ability to dislike or block unwanted content so it can be removed from recommendations.",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "app_store",
+          "region": "UK/Ireland",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2026-06-18",
+          "text": "There’s no block or silence function for podcasts you are not interested in, and Spotify will only ever auto play suggested podcasts you are not interested in. I follow/subscribe to so many podcasts yet Spotify is intent in autoplaying something I don’t want to listen to instead …",
+          "matched_theme": "Control signals"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "3",
+          "date": "2026-06-14",
+          "text": "…, whilst also recommending you songs, so if you get a random song you dislike, you can't skip it. The rating fluctuates depending on whether or not you have premium. I understand the 6 skips, but the recommended songs? Too far.",
+          "matched_theme": "Control signals"
+        }
+      ]
     },
     {
       "q": "Where do users go when Spotify discovery fails?",
@@ -703,7 +2081,142 @@
       "quote": null,
       "id": "q11",
       "implication": "Discovery leakage to YouTube/Apple Music is a retention risk — close the gap.",
-      "key_insight": "YouTube (1020) is the top fallback when Spotify discovery fails."
+      "key_insight": "YouTube (1020) is the top fallback when Spotify discovery fails.",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "YouTube mentions",
+          "count": 1020
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2026-06-20",
+          "text": "…g of every new ALBUM not just singles of new music across genres like Apple Music. Secondly when searching for the newest album of an artist, Spotify does not list in chronological order. Lastly, I have no idea what songs others are listening to on new albums. It’s a complete clu…",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "… it starts behaving like smart mode or something is on. I got all the switched off, including autoplay is off too, but still it keeps coming back. I have tried calling Spotify support but they clearly don't know anything themselves. Not better than a standard bot, plus ends with …",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…rces that instead of opening new doors. I’ve had this especially with YouTube Music: at first the recommendations felt surprisingly open and interesting, then over time they narrowed down and became very repetitive. Now I’ve got 4 months of Spotify Premium, and I’d like to really…",
+          "matched_theme": "Workarounds"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "2",
+          "date": "2026-06-20",
+          "text": "…g of every new ALBUM not just singles of new music across genres like Apple Music. Secondly when searching for the newest album of an artist, Spotify does not list in chronological order. Lastly, I have no idea what songs others are listening to on new albums. It’s a complete clu…",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "… it starts behaving like smart mode or something is on. I got all the switched off, including autoplay is off too, but still it keeps coming back. I have tried calling Spotify support but they clearly don't know anything themselves. Not better than a standard bot, plus ends with …",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "11.0",
+          "date": "",
+          "text": "…rces that instead of opening new doors. I’ve had this especially with YouTube Music: at first the recommendations felt surprisingly open and interesting, then over time they narrowed down and became very repetitive. Now I’ve got 4 months of Spotify Premium, and I’d like to really…",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "5",
+          "date": "2026-06-20",
+          "text": "I’ve tried Apple Music and YouTube music. Spotify is best, especially if you have premium. I would recommend family premium to save, even if it’s not your family you’re sharing with 🤫 and the wrapped features are very cool. No paid off bot review, just given my honest opinion to other people.",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "5",
+          "date": "2026-06-21",
+          "text": "Great music app, and premium makes it pretty much always a go to unless you are looking for very niche artist that are only on YouTube and SoundCloud, overall pleased lowk, awesome app would recommend getting the premium tho, and its not even that expensive.",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "3",
+          "date": "2026-01-02",
+          "text": "…tends to be repetitive no matter what. Just say you had a good spacey alternative rock playlist, and you clicked playlist radio. That playlist would be good, but when you clicked again on a playlist of a different genre, the playlist radio pertaining to the different genre would …",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "3",
+          "date": "2026-06-20",
+          "text": "Why do I have to pay to pick my own songs and I can’t take it off shuffle like why was starting to like Spotify but I might as well go back to Apple Music",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "…ious with the constant going down and loading issues. it's funny that apple music works better on Android than Spotify does. \"Further more have you tried a quick re install?\" Are you people serious? Read the room and improve your product instead of giving common sense lack luster…",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "5.0",
+          "date": "",
+          "text": "…singles** in that scene, updated weekly - Jump straight to **Spotify, Apple Music, or a variety of other platforms** when something hits Basically: “What’s going on in this genre right now?” without having to fight the main Spotify / Apple Music UI. --- **Time Travel (aka “show m…",
+          "matched_theme": "Workarounds"
+        },
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "…stalgic for CDs? Seriously considering ditching my 100+ playlists and switching services. Spotify should’ve been for the artists and music lovers, but you messed that up. It’s clear you’re just going to push whatever gets you paid 🤑 Thank you for being another example of a compan…",
+          "matched_theme": "Workarounds"
+        }
+      ]
     },
     {
       "q": "How do users feel when recommendations become repetitive or irrelevant?",
@@ -717,7 +2230,142 @@
       },
       "id": "q12",
       "implication": "Repetition drives frustration/fatigue — reducing it protects satisfaction and retention.",
-      "key_insight": "Frustration (1476) and fatigue (648) dominate when recs repeat."
+      "key_insight": "Frustration (1476) and fatigue (648) dominate when recs repeat.",
+      "funnel": [
+        {
+          "label": "Total reviews analyzed",
+          "count": 26823
+        },
+        {
+          "label": "Discovery-specific",
+          "count": 19620
+        },
+        {
+          "label": "Negative-emotion reviews",
+          "count": 2822
+        }
+      ],
+      "quotes": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-11",
+          "text": "…ts REALLY unfair that this is only available for premium members. i’m disappointed.",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…s Sherlock, that I figured out myself, but it shouldn't be necessary. Disappointing! Time for a change I guess...",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1.0",
+          "date": "",
+          "text": "…iAARKKI1bPbOyZuJ3Nbyk?si=RXUc5FTzSdOO0ATB1saU4A) By 2015 I had gotten bored with my pandora shuffle. I maxed out pandora channels sometime in 2013 and had been shuffling in new stations as I could then playing shuffle all. It was just getting repetitive as a streaming platform. I…",
+          "matched_theme": "Emotional reaction"
+        }
+      ],
+      "evidence_reviews": [
+        {
+          "source": "app_store",
+          "region": "North America",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-11",
+          "text": "…ts REALLY unfair that this is only available for premium members. i’m disappointed.",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-21",
+          "text": "…s Sherlock, that I figured out myself, but it shouldn't be necessary. Disappointing! Time for a change I guess...",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "1.0",
+          "date": "",
+          "text": "…iAARKKI1bPbOyZuJ3Nbyk?si=RXUc5FTzSdOO0ATB1saU4A) By 2015 I had gotten bored with my pandora shuffle. I maxed out pandora channels sometime in 2013 and had been shuffling in new stations as I could then playing shuffle all. It was just getting repetitive as a streaming platform. I…",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "2019-12-18",
+          "text": "Hey, Whatever you guys did @ Spotify to make es more robust - THANK YOU! I started to feel months ago they were getting stale and , but I've noticed in the last m...",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "app_store",
+          "region": "ANZ",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-06-18",
+          "text": "… only people who are rich enough can. what is this inequality. i’m so disappointed, it’s 2026, be better.",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "…y though and it's stuck in an AI generated song loop. Before if I got bored of a genre I could skip a few songs and it would change the genre. Now it just keeps spitting out, and I hate this term but it fits here, AI slop. I should be able to skip the AI songs",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "reddit",
+          "region": "Reddit(global)",
+          "lang": "en/unknown",
+          "rating": "3.0",
+          "date": "",
+          "text": "Which playlist on spotify updates daily?. Where should I find a Spotify playlist that updates daily? I am tired of listening to a repetitive playlist, and they don't get an update until a month I guess ( The original Spotify playlists ). Something like Discover weekly, But sooner to get an update",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "forums",
+          "region": "Forum(global)",
+          "lang": "en/unknown",
+          "rating": "",
+          "date": "NaT",
+          "text": "Since the launch of 'Made for You' playlists, all of my playlists have pretty much warped into monotony.",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "app_store",
+          "region": "ANZ",
+          "lang": "en/unknown",
+          "rating": "1",
+          "date": "2026-02-16",
+          "text": "I can’t believe this update. It’s disappointing that you now need premium just to control what songs you play, and even the playlist shuffle doesn’t feel fair anymore.",
+          "matched_theme": "Emotional reaction"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "lang": "en",
+          "rating": "1",
+          "date": "2026-06-20",
+          "text": "Very disappointing. It is hard to enjoy music when I can't even play the song I select and basic features like repeat and replay are restricted. Randomly playing other songs instead of the one I chose makes the experience frustrating and inconvenient. It feels like these limitati…",
+          "matched_theme": "Emotional reaction"
+        }
+      ]
     }
   ]
 }

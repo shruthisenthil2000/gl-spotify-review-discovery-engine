@@ -155,3 +155,42 @@ export function Histogram({ data, fmtLabel }:
 export function Tag({ children }: { children: React.ReactNode }) {
   return <div className="section-tag">{children}</div>;
 }
+
+// Donut chart from [label, value, color] tuples.
+export function Donut({ data, size = 180, center }:
+  { data: [string, number, string][]; size?: number; center?: React.ReactNode }) {
+  if (!data || data.length === 0) return <div className="na">{NA}</div>;
+  const total = data.reduce((s, d) => s + d[1], 0) || 1;
+  const r = size / 2, stroke = size * 0.16, rad = r - stroke / 2, circ = 2 * Math.PI * rad;
+  let offset = 0;
+  return (
+    <div style={{ display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" }}>
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ flexShrink: 0 }}>
+        <g transform={`rotate(-90 ${r} ${r})`}>
+          {data.map(([label, val, color]) => {
+            const frac = val / total, dash = frac * circ;
+            const el = (
+              <circle key={label} cx={r} cy={r} r={rad} fill="none" stroke={color}
+                strokeWidth={stroke} strokeDasharray={`${dash} ${circ - dash}`}
+                strokeDashoffset={-offset} />
+            );
+            offset += dash;
+            return el;
+          })}
+        </g>
+        {center && <text x={r} y={r} textAnchor="middle" dominantBaseline="central"
+          fill="#fff" fontSize={size * 0.16} fontWeight="800">{center}</text>}
+      </svg>
+      <div>
+        {data.map(([label, val, color]) => (
+          <div key={label} style={{ display: "flex", alignItems: "center", gap: 8, margin: "5px 0", fontSize: 13 }}>
+            <span style={{ width: 10, height: 10, borderRadius: 2, background: color, flexShrink: 0 }} />
+            <span style={{ color: "var(--muted)", minWidth: 150 }}>{label}</span>
+            <b>{val.toLocaleString()}</b>
+            <span className="muted" style={{ fontSize: 11 }}>({((val / total) * 100).toFixed(0)}%)</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

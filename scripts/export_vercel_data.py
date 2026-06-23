@@ -288,6 +288,126 @@ def build_extra(df, engine):
          "why": "Conversational guidance toward genuinely new music."},
     ]
 
+    # --- Free vs Paid split (heuristic from review text signals) ---
+    paid_rx = re.compile(r"\bi.?m? (a )?premium\b|i pay for|paying for|my (premium|subscription)|"
+                         r"i.?m? subscrib|family plan|duo plan|premium user|i have premium|"
+                         r"been (a )?premium|currently premium", re.I)
+    free_rx = re.compile(r"free (user|version|tier|account|plan)|without (paying|premium)|"
+                         r"don.?t pay|can.?t afford|too expensive|the ads are|too many ads|"
+                         r"need premium to|to get premium|free users|on the free", re.I)
+    is_paid = df["text"].str.contains(paid_rx)
+    is_free = df["text"].str.contains(free_rx) & ~is_paid
+    paid_n, free_n = int(is_paid.sum()), int(is_free.sum())
+    unknown_n = int(len(df) - paid_n - free_n)
+    free_paid = {
+        "heuristic": True,
+        "label": "Heuristic split based on review signals (premium/paid vs free/ads cues)",
+        "paid": paid_n, "free": free_n, "unknown": unknown_n,
+        "paid_share": round(paid_n / len(df), 3), "free_share": round(free_n / len(df), 3),
+    }
+
+    # --- Desired discovery types (keyword evidence; else 'Not enough evidence') ---
+    DESIRED = {
+        "New artists": r"new artist|discover artist|find (new )?artist|other artists",
+        "New songs": r"new songs?|new music|new tracks?|fresh songs",
+        "New genres": r"new genre|different genre|other genres|explore genre|new styles",
+        "Niche music": r"niche|underground|indie|obscure|unsigned|small artist",
+        "Regional music": r"regional|local artist|local music|my country|my language|desi|k-?pop|latin",
+        "Deeper cuts": r"deep ?cut|deeper cut|album track|lesser known|hidden gem|b-?side|under.?rated",
+    }
+    desired = []
+    for name, pat in DESIRED.items():
+        n = int(df["text"].str.contains(re.compile(pat, re.I)).sum())
+        desired.append({"type": name, "evidence": n if n >= 15 else "Not enough evidence",
+                        "count": n})
+    desired.sort(key=lambda d: -d["count"])
+
+    # --- Listening behaviors users are trying to achieve ---
+    own_rx = r"my (own )?playlist|my own (music|songs)|songs i (chose|added|want|like)|let me (play|choose)|play what i"
+    behaviors = [
+        {"behavior": "Hear their own playlist/songs without interference",
+         "evidence": int(df["text"].str.contains(re.compile(own_rx, re.I)).sum())},
+        {"behavior": "Find fresh / new music effortlessly",
+         "evidence": int(df["text"].str.contains(FRESH_RX).sum())},
+        {"behavior": "Match music to mood / context / activity",
+         "evidence": int(df["text"].str.contains(MOODCTX_RX).sum())},
+        {"behavior": "Control / correct what gets recommended",
+         "evidence": int(df["text"].str.contains(CTRL_RX).sum())},
+        {"behavior": "Replay familiar favorites (comfort listening)",
+         "evidence": int(df["text"].str.contains(RETENTION_RX).sum())},
+    ]
+    behaviors.sort(key=lambda d: -d["evidence"])
+
+    # --- AI Pilot: 12 evidence-backed Q&A (numbers are REAL; text summarizes them) ---
+    ca = cat_counts
+    feat_rank = sorted([f for f in feature_map if "frustration_rate" in f],
+                       key=lambda f: -(f["mentions"] * f.get("frustration_rate", 0)))
+    topfeat = ", ".join(f"{f['feature']} ({f['mentions']})" for f in feat_rank[:3])
+    topneeds = engine["theme_detection"]["top_unmet_needs"][:3]
+    topneeds_s = "; ".join(f"{n['need'].replace('_',' ')} ({n['evidence_count']})" for n in topneeds)
+    affected = seg.get("most_affected_by_repetition", [])[:3]
+    affected_s = "; ".join(f"{c['cohort']} ({c['repetition_rate']*100:.0f}% repetition)" for c in affected)
+    wkr = ctx["workarounds"]
+    wkr_s = ", ".join(f"{k} ({v})" for k, v in list(wkr.items())[:4])
+    emo = emotion["distribution"]
+    neg_emo = sum(emo.get(k, 0) for k in ["frustration", "fatigue", "boredom", "disappointment", "distrust"])
+    desired_top = [d for d in desired if isinstance(d["evidence"], int)][:4]
+    desired_s = ", ".join(f"{d['type']} ({d['count']})" for d in desired_top) or "Not enough evidence"
+    ins = engine.get("insights", [])
+    q1_quote = ins[0]["representative_quotes"][0] if ins and ins[0]["representative_quotes"] else None
+
+    ai_pilot = [
+        {"q": "Why do users struggle to discover new music?",
+         "a": f"{ca.get('discovery_issue')} reviews describe discovery friction. The biggest "
+              f"blockers are recommendations that feel too narrow and trouble surfacing fresh "
+              f"music (top unmet needs: {topneeds_s}).",
+         "evidence": ca.get("discovery_issue"), "quote": q1_quote},
+        {"q": "What are the most common frustrations with recommendations?",
+         "a": f"{ca.get('algorithm_mismatch')} reviews flag off-taste/irrelevant recommendations. "
+              f"The most frustration-heavy features are {topfeat}.",
+         "evidence": ca.get("algorithm_mismatch"), "quote": None},
+        {"q": "What listening behaviors are users trying to achieve?",
+         "a": "Top goals by evidence: " + "; ".join(f"{b['behavior']} ({b['evidence']})" for b in behaviors[:3]) + ".",
+         "evidence": behaviors[0]["evidence"], "quote": None},
+        {"q": "What causes users to repeatedly listen to the same content?",
+         "a": f"{ca.get('repetition_issue')} repetition reviews. The dominant driver is shuffle "
+              f"replaying a small pool of a large library "
+              f"({needs.get('shuffle_repeats_small_pool')} reviews).",
+         "evidence": ca.get("repetition_issue"),
+         "quote": (ins[1]["representative_quotes"][0] if len(ins) > 1 and ins[1]["representative_quotes"] else None)},
+        {"q": "Which user segments experience different discovery challenges?",
+         "a": f"Most repetition-affected cohorts: {affected_s}. Power users show higher repetition "
+              f"than casual listeners.",
+         "evidence": None, "quote": None},
+        {"q": "What unmet needs emerge consistently across reviews?",
+         "a": f"Consistently: {topneeds_s} — plus lost dislike/reset controls and AI-generated flooding.",
+         "evidence": topneeds[0]["evidence_count"] if topneeds else None, "quote": None},
+        {"q": "Which Spotify discovery features frustrate users the most?",
+         "a": f"By mention × frustration: {topfeat}.",
+         "evidence": feat_rank[0]["mentions"] if feat_rank else None,
+         "quote": (feat_rank[0].get("quote") if feat_rank else None)},
+        {"q": "What kind of new music do users want to find?",
+         "a": f"Desired discovery types (by evidence): {desired_s}.",
+         "evidence": desired_top[0]["count"] if desired_top else None, "quote": None},
+        {"q": "Does Spotify understand users' mood and current listening context?",
+         "a": f"{ctx['mood_context_mentions']} reviews reference mood, context, or activity "
+              f"(workout, study, sleep, driving…). Many feel discovery ignores it.",
+         "evidence": ctx["mood_context_mentions"], "quote": None},
+        {"q": "Do users want more control over their recommendations?",
+         "a": f"{ctx['control_wanted_mentions']} reviews ask for stronger controls: dislike, "
+              f"'not interested', block, or reset taste profile.",
+         "evidence": ctx["control_wanted_mentions"], "quote": None},
+        {"q": "Where do users go when Spotify discovery fails?",
+         "a": f"Named alternatives/workarounds: {wkr_s}.",
+         "evidence": sum(list(wkr.values())[:4]), "quote": None},
+        {"q": "How do users feel when recommendations become repetitive or irrelevant?",
+         "a": f"Dominant negative emotions: frustration ({emo.get('frustration',0)}), "
+              f"fatigue ({emo.get('fatigue',0)}), disappointment ({emo.get('disappointment',0)}), "
+              f"boredom ({emo.get('boredom',0)}).",
+         "evidence": neg_emo,
+         "quote": emotion["quotes"].get("frustration")},
+    ]
+
     return {
         "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
         "friction": friction,
@@ -299,6 +419,10 @@ def build_extra(df, engine):
         "root_cause_table": root_cause,
         "opportunities": opportunities,
         "top5_insights": engine.get("insights", [])[:5],
+        "free_paid": free_paid,
+        "desired_discovery_types": desired,
+        "listening_behaviors": behaviors,
+        "ai_pilot": ai_pilot,
     }
 
 

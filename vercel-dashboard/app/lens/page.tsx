@@ -22,8 +22,10 @@ export default function Lens() {
   return (
     <>
       <h1>Discovery Lens</h1>
-      <p className="page-sub">Derived heuristic signals — Discovery Friction Score, user Journey
-        Stage, and Emotion Detection. All transparent, keyword/category-based (no ML, no invented data).</p>
+      <p className="page-sub">Derived heuristic signals that explain <b>why users struggle to discover
+        new music</b>, <b>what causes repeat listening</b>, <b>whether mood/context is understood</b>,
+        and <b>how users feel when recommendations go stale</b> — via a Discovery Friction Score,
+        Journey Stage classification, and Emotion Detection. Transparent, keyword/category-based (no ML).</p>
 
       <Tag>Discovery Friction Score</Tag>
       <div className="grid cards">

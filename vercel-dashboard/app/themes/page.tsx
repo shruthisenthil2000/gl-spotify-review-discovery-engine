@@ -33,7 +33,7 @@ export default function Themes() {
         </table>
       </Card>
 
-      <Tag>Recommendation Failure Themes</Tag>
+      <Tag>Recommendation Frustrations</Tag>
       <Card>
         <table>
           <thead><tr><th className="num">Reviews</th><th>Cluster (top terms)</th></tr></thead>
@@ -58,6 +58,25 @@ export default function Themes() {
       <Card>
         <BarList data={td.top_unmet_needs.map((n) =>
           [n.need.replace(/_/g, " "), n.evidence_count] as [string, number])} />
+      </Card>
+
+      <Tag>Desired Discovery Types — what new music users want</Tag>
+      <Card>
+        {!x ? <span className="na">Loading…</span> : (
+          <table>
+            <thead><tr><th>Discovery type</th><th className="num">Evidence</th></tr></thead>
+            <tbody>
+              {x.desired_discovery_types.map((d, i) => (
+                <tr key={i}>
+                  <td>{d.type}</td>
+                  <td className="num">{typeof d.evidence === "number"
+                    ? d.evidence.toLocaleString()
+                    : <span className="na">Not enough evidence</span>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </Card>
 
       <Tag>Feature Frustration Map</Tag>

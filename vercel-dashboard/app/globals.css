@@ -23,10 +23,9 @@ a { color: inherit; text-decoration: none; }
 
 /* AI engine name */
 .brand-block { display: flex; align-items: center; gap: 11px; padding: 0 4px 4px; }
-.brand-logo { width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
-  background: radial-gradient(circle at 30% 30%, #1ed760, #1a9446);
-  display: flex; align-items: center; justify-content: center; font-size: 19px;
-  box-shadow: 0 0 0 1px rgba(29,185,84,.4), 0 4px 14px rgba(29,185,84,.18); }
+.brand-logo { width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: #000; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 1px rgba(29,185,84,.45), 0 4px 14px rgba(29,185,84,.20); }
 .brand-name { font-weight: 800; font-size: 15.5px; line-height: 1.15; letter-spacing: -0.01em; }
 .brand-name .dot { color: var(--green); }
 .brand-tag { color: var(--muted); font-size: 10.5px; margin-top: 2px; letter-spacing: .02em; }
@@ -157,3 +156,29 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
 .kv .k { color: var(--muted); }
 .note { background: rgba(29,185,84,.07); border: 1px solid rgba(29,185,84,.25);
   border-radius: 10px; padding: 10px 14px; font-size: 12.5px; color: #bfe6cd; margin: 10px 0; }
+
+/* ---- supporting accents + KPI variants ---- */
+:root { --blue: #4a90e6; --purple: #b18cf2; --teal: #2dd4bf; }
+.kpi-accent { border-top: 3px solid var(--green); }
+.kpi-accent.blue { border-top-color: var(--blue); }
+.kpi-accent.amber { border-top-color: var(--amber); }
+.kpi-accent.purple { border-top-color: var(--purple); }
+.kpi-accent.red { border-top-color: var(--red); }
+
+/* ---- AI Pilot answer cards ---- */
+.qa { background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 20px; margin-bottom: 12px; border-left: 3px solid var(--green); }
+.qa .q { font-weight: 800; font-size: 15px; margin-bottom: 8px; color: #fff; display: flex; gap: 10px; }
+.qa .q .qnum { color: var(--green); }
+.qa .a { color: #d6d6d6; font-size: 14px; line-height: 1.6; }
+.qa .ev { display: inline-block; margin-top: 8px; font-size: 11px; color: var(--green);
+  background: rgba(29,185,84,.12); padding: 2px 9px; border-radius: 999px; font-weight: 700; }
+
+/* ---- pills / mini ---- */
+.pill { display: inline-flex; align-items: center; gap: 6px; background: var(--bg3);
+  border: 1px solid var(--border); border-radius: 999px; padding: 4px 11px; font-size: 12px;
+  color: #ddd; margin: 0 6px 6px 0; }
+.pill b { color: var(--green); }
+.split-bar { display: flex; height: 26px; border-radius: 8px; overflow: hidden; margin: 8px 0; }
+.split-bar span { display: flex; align-items: center; justify-content: center; font-size: 11px;
+  font-weight: 700; color: #04130a; }

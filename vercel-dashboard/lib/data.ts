@@ -109,6 +109,16 @@ export interface Extra {
   root_cause_table: { theme: string; root_cause: string; opportunity: string; evidence: number | null }[];
   opportunities: { name: string; user_pain: string; evidence: number | null; segment: string; why: string }[];
   top5_insights: Insight[];
+  free_paid: {
+    heuristic: boolean; label: string; paid: number; free: number; unknown: number;
+    paid_share: number; free_share: number;
+  };
+  desired_discovery_types: { type: string; evidence: number | string; count: number }[];
+  listening_behaviors: { behavior: string; evidence: number }[];
+  ai_pilot: {
+    q: string; a: string; evidence: number | null;
+    quote?: { text: string; source: string; region: string; rating: string } | null;
+  }[];
 }
 
 export const getEngine = () => fetchJSON<Engine>("/data/engine_output.json");

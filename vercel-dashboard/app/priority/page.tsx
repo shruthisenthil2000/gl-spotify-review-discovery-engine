@@ -74,6 +74,36 @@ export default function Priority() {
         </div>
       )}
 
+      <Tag>Most Affected User Segments</Tag>
+      <p className="page-sub">Which cohorts face the most repetition / discovery friction, and the
+        product implication for each. Power-user and casual splits are real; others are heuristic.</p>
+      {!x ? <p className="na">Loading…</p> : (
+        <div className="card-grid">
+          {x.segment_cards.map((sgc) => (
+            <div className="scard" key={sgc.segment}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <h3>{sgc.segment}</h3>
+                {sgc.heuristic && <span className="badge grey">heuristic</span>}
+              </div>
+              <div className="row"><span className="k">Reviews</span><span>{sgc.total.toLocaleString()}</span></div>
+              <div className="row"><span className="k">Repetition rate</span><span>{(sgc.repetition_rate * 100).toFixed(1)}%</span></div>
+              <div className="row"><span className="k">Problem rate</span><span>{(sgc.problem_rate * 100).toFixed(1)}%</span></div>
+              <div className="row"><span className="k">Top pain</span><span>{sgc.top_pain_point}</span></div>
+              <div className="impl"><b>Implication:</b> {sgc.product_implication}</div>
+            </div>
+          ))}
+        </div>
+      )}
+      <Card title="Most affected by repetition (region / language)">
+        {e.segmentation?.most_affected_by_repetition
+          ? <table><thead><tr><th>Cohort</th><th className="num">Reviews</th><th className="num">Repetition rate</th><th className="num">Problem rate</th></tr></thead>
+            <tbody>{e.segmentation.most_affected_by_repetition.slice(0, 8).map((c, i) => (
+              <tr key={i}><td>{c.cohort}</td><td className="num">{c.total.toLocaleString()}</td>
+                <td className="num">{(c.repetition_rate * 100).toFixed(1)}%</td>
+                <td className="num">{(c.problem_rate * 100).toFixed(1)}%</td></tr>))}</tbody></table>
+          : <span className="na">{NA}</span>}
+      </Card>
+
       <Tag>PM-ready insights</Tag>
       <p className="page-sub">severity = 0.45·frequency + 0.35·negativity + 0.20·reach (0–100)</p>
       {insights.length === 0 && <p className="na">{NA}</p>}

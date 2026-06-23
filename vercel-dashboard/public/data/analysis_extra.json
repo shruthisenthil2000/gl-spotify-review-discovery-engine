@@ -526,5 +526,162 @@
       ],
       "severity_score": 60.1
     }
+  ],
+  "free_paid": {
+    "heuristic": true,
+    "label": "Heuristic split based on review signals (premium/paid vs free/ads cues)",
+    "paid": 1028,
+    "free": 1638,
+    "unknown": 24157,
+    "paid_share": 0.038,
+    "free_share": 0.061
+  },
+  "desired_discovery_types": [
+    {
+      "type": "New songs",
+      "evidence": 1028,
+      "count": 1028
+    },
+    {
+      "type": "Regional music",
+      "evidence": 398,
+      "count": 398
+    },
+    {
+      "type": "New artists",
+      "evidence": 191,
+      "count": 191
+    },
+    {
+      "type": "Niche music",
+      "evidence": 109,
+      "count": 109
+    },
+    {
+      "type": "New genres",
+      "evidence": 66,
+      "count": 66
+    },
+    {
+      "type": "Deeper cuts",
+      "evidence": 24,
+      "count": 24
+    }
+  ],
+  "listening_behaviors": [
+    {
+      "behavior": "Hear their own playlist/songs without interference",
+      "evidence": 2113
+    },
+    {
+      "behavior": "Find fresh / new music effortlessly",
+      "evidence": 1145
+    },
+    {
+      "behavior": "Match music to mood / context / activity",
+      "evidence": 1038
+    },
+    {
+      "behavior": "Control / correct what gets recommended",
+      "evidence": 704
+    },
+    {
+      "behavior": "Replay familiar favorites (comfort listening)",
+      "evidence": 381
+    }
+  ],
+  "ai_pilot": [
+    {
+      "q": "Why do users struggle to discover new music?",
+      "a": "7542 reviews describe discovery friction. The biggest blockers are recommendations that feel too narrow and trouble surfacing fresh music (top unmet needs: shuffle repeats small pool (967); ai generated flooding (246); lost dislike reset control (123)).",
+      "evidence": 7542,
+      "quote": {
+        "source": "play_store",
+        "region": "North America",
+        "rating": "1",
+        "text": "auto shuffle doesn't make sense. its annoying and too many ads in between. m sure of finding better app than this. everytime i m driving, I can't select each song. n that's the only time I get to listen to music. so this app is big no to me"
+      }
+    },
+    {
+      "q": "What are the most common frustrations with recommendations?",
+      "a": "3338 reviews flag off-taste/irrelevant recommendations. The most frustration-heavy features are Radio (856), Smart Shuffle (697), Discover Weekly (331).",
+      "evidence": 3338,
+      "quote": null
+    },
+    {
+      "q": "What listening behaviors are users trying to achieve?",
+      "a": "Top goals by evidence: Hear their own playlist/songs without interference (2113); Find fresh / new music effortlessly (1145); Match music to mood / context / activity (1038).",
+      "evidence": 2113,
+      "quote": null
+    },
+    {
+      "q": "What causes users to repeatedly listen to the same content?",
+      "a": "4753 repetition reviews. The dominant driver is shuffle replaying a small pool of a large library (967 reviews).",
+      "evidence": 4753,
+      "quote": {
+        "source": "play_store",
+        "region": "North America",
+        "rating": "1",
+        "text": "the app is designed to intentional create a poor experience for you if you don't have premium. With 4 back to back Ad's combined over a minute long, unskipable and repetitive plus strange limits on what you can listen to and how many times."
+      }
+    },
+    {
+      "q": "Which user segments experience different discovery challenges?",
+      "a": "Most repetition-affected cohorts: tr (48% repetition); MEA (38% repetition); id (30% repetition). Power users show higher repetition than casual listeners.",
+      "evidence": null,
+      "quote": null
+    },
+    {
+      "q": "What unmet needs emerge consistently across reviews?",
+      "a": "Consistently: shuffle repeats small pool (967); ai generated flooding (246); lost dislike reset control (123) — plus lost dislike/reset controls and AI-generated flooding.",
+      "evidence": 967,
+      "quote": null
+    },
+    {
+      "q": "Which Spotify discovery features frustrate users the most?",
+      "a": "By mention × frustration: Radio (856), Smart Shuffle (697), Discover Weekly (331).",
+      "evidence": 856,
+      "quote": {
+        "text": "Really BAD ako for liste.ming via bluetooth, makes idiotic requests ,works trough radio sttions% Steeldfrequencies",
+        "source": "app_store",
+        "region": "Europe",
+        "rating": "1"
+      }
+    },
+    {
+      "q": "What kind of new music do users want to find?",
+      "a": "Desired discovery types (by evidence): New songs (1028), Regional music (398), New artists (191), Niche music (109).",
+      "evidence": 1028,
+      "quote": null
+    },
+    {
+      "q": "Does Spotify understand users' mood and current listening context?",
+      "a": "1038 reviews reference mood, context, or activity (workout, study, sleep, driving…). Many feel discovery ignores it.",
+      "evidence": 1038,
+      "quote": null
+    },
+    {
+      "q": "Do users want more control over their recommendations?",
+      "a": "704 reviews ask for stronger controls: dislike, 'not interested', block, or reset taste profile.",
+      "evidence": 704,
+      "quote": null
+    },
+    {
+      "q": "Where do users go when Spotify discovery fails?",
+      "a": "Named alternatives/workarounds: YouTube (1020), Apple Music (258), SoundCloud (80), TikTok (56).",
+      "evidence": 1414,
+      "quote": null
+    },
+    {
+      "q": "How do users feel when recommendations become repetitive or irrelevant?",
+      "a": "Dominant negative emotions: frustration (1476), fatigue (648), disappointment (382), boredom (46).",
+      "evidence": 2822,
+      "quote": {
+        "text": "He's the only one without a premium in my family and he's getting frustrated because he can't skip music without limits, repeat music, please fix this Edit: I kinda like that they censor bad words in the lyrics, kinda cool",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "1"
+      }
+    }
   ]
 }

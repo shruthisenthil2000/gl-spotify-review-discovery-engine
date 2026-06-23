@@ -277,3 +277,40 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
 .ev-meta { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
 .ev-text { color: #e3e3e3; font-size: 13.5px; line-height: 1.55; }
 .ev-theme { color: var(--green); font-size: 11px; margin-top: 8px; font-weight: 600; }
+
+/* ======== AI Pilot — premium/minimal answer card ======== */
+.dataset-note { color: #6f6f6f; font-size: 11px; margin: 6px 0 14px; max-width: 640px; line-height: 1.45; }
+
+/* lighter, narrower answer card inside the panel */
+.copilot-panel .qa { background: #1b1b1b; border: 1px solid #262626; border-radius: 14px;
+  padding: 16px 18px; max-width: 760px; align-self: flex-start; }
+.a-direct { color: #ededed; font-size: 14.5px; line-height: 1.55; }
+.a-keyline { margin-top: 10px; font-size: 13px; color: #cdebd7; line-height: 1.5;
+  background: rgba(29,185,84,.08); border-radius: 8px; padding: 8px 11px; }
+.a-keyk { display: inline-block; color: var(--green); font-weight: 800; font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: .05em; margin-right: 8px; }
+
+/* compact evidence row: button + mini stepper */
+.a-evrow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 12px 0 2px; }
+.mini-funnel { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.mf-step { display: inline-flex; align-items: center; gap: 6px; }
+.mf-cl { display: flex; flex-direction: column; line-height: 1.1; }
+.mf-count { font-weight: 800; color: #fff; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.mf-label { color: #7f7f7f; font-size: 10px; }
+.mf-arrow { color: #444; font-size: 14px; }
+
+/* compact quotes (2 lines max) */
+.a-quotes { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.qmini { border-left: 2px solid #2f7d4c; padding: 2px 0 2px 11px; }
+.qmini-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; color: #d6d6d6; font-size: 12.5px; line-height: 1.5; font-style: italic; }
+.qmini-meta { color: #6f6f6f; font-size: 10.5px; margin-top: 3px; }
+.link-btn { align-self: flex-start; background: none; border: none; color: var(--green);
+  font-size: 12px; font-weight: 700; cursor: pointer; padding: 2px 0; }
+.link-btn:hover { text-decoration: underline; }
+
+.a-impl { margin-top: 12px; font-size: 12.5px; color: #c6c6c6; line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.a-impl b { color: var(--green); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; }
+
+.copilot-panel .qa .followups { margin-top: 14px; }

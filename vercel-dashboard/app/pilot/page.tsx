@@ -66,22 +66,25 @@ const FALLBACK_MSG =
 const fmt = (n: number) => n.toLocaleString();
 const pct = (n: number, d: number) => (d ? `${((n / d) * 100).toFixed(n / d < 0.01 ? 2 : 1)}%` : "—");
 
-/* ---------- Funnel ---------- */
-function Funnel({ stages }: { stages: { label: string; count: number }[] }) {
-  if (!stages?.length) return null;
-  const top = stages[0].count || 1;
-  const disc = stages[1]?.count;
+/* ---------- Compact mini-funnel (stepper) ---------- */
+const STEP_LABELS = ["Frozen analysis dataset", "Discovery-specific", "Matching evidence reviews", "Specific pain point"];
+function MiniFunnel({ item }: { item: PilotAnswer }) {
+  const raw = (item.funnel ?? []).slice(0, 4);
+  if (!raw.length) return null;
+  const steps = raw.map((s, i) => ({
+    count: s.count, label: STEP_LABELS[i] || s.label,
+    sub: i === 3 ? s.label.replace(/ (signal|need|reviews|mentions)$/i, "") : undefined,
+  }));
   return (
-    <div className="funnel">
-      {stages.map((s, i) => (
-        <div className="funnel-row" key={i}>
-          <div className="funnel-bar" style={{ width: `${Math.max((s.count / top) * 100, 6)}%` }} />
-          <div className="funnel-meta">
-            <span className="funnel-label">{s.label}</span>
-            <b>{fmt(s.count)}</b>
-            <span className="funnel-pct">{pct(s.count, top)} of total{i > 1 && disc ? ` · ${pct(s.count, disc)} of discovery` : ""}</span>
-          </div>
-        </div>
+    <div className="mini-funnel">
+      {steps.map((s, i) => (
+        <span className="mf-step" key={i}>
+          <span className="mf-cl">
+            <span className="mf-count">{fmt(s.count)}</span>
+            <span className="mf-label">{s.label}{s.sub ? ` · ${s.sub}` : ""}</span>
+          </span>
+          {i < steps.length - 1 && <span className="mf-arrow">›</span>}
+        </span>
       ))}
     </div>
   );
@@ -152,42 +155,43 @@ function EvidenceDrawer({ answer, onClose }: { answer: PilotAnswer; onClose: () 
 /* ---------- Reusable Answer card ---------- */
 function AnswerCard({ item, onEvidence, onAsk }:
   { item: PilotAnswer; onEvidence: (id: string) => void; onAsk: (id: string) => void }) {
-  const quotes = item.quotes ?? [];
+  const quotes = (item.quotes ?? []).slice(0, 2);
   const idx = ITEMS.findIndex((x) => x.id === item.id);
   const followups = [1, 2, 3].map((o) => ITEMS[(idx + o) % ITEMS.length]).filter((f) => f.id !== item.id);
   return (
     <div className="qa">
-      <div className="q"><span className="qnum">AI</span>{item.q}</div>
-      <Funnel stages={item.funnel ?? []} />
-      <div className="a">{item.a || "Not available"}</div>
-      <div className="ans-grid">
-        <div className="ans-row"><span className="ans-k">Evidence</span>
-          {item.evidence != null
-            ? <button className="ev-btn" onClick={() => onEvidence(item.id)}>{fmt(item.evidence)} reviews ↗ inspect</button>
-            : <span className="na">Not available</span>}</div>
-        <div className="ans-row"><span className="ans-k">Key insight</span>
-          <span className="ans-v">{item.key_insight || "Not available"}</span></div>
+      <div className="a-direct">{item.a || "Not available"}</div>
+      {item.key_insight && (
+        <div className="a-keyline"><span className="a-keyk">Key insight</span>{item.key_insight}</div>
+      )}
+
+      <div className="a-evrow">
+        {item.evidence != null
+          ? <button className="ev-btn" onClick={() => onEvidence(item.id)}>Inspect {fmt(item.evidence)} matching reviews</button>
+          : <span className="na">Evidence: Not available</span>}
+        <MiniFunnel item={item} />
       </div>
 
-      <div className="rev-label">Representative reviews</div>
-      {quotes.length === 0 ? <div className="na">Evidence details not available</div> :
-        quotes.map((q, i) => (
-          <div className="quote" key={i}>{q.text}
-            <span className="meta">— {SRC_LABEL[q.source] || q.source}
-              {q.region ? ` · ${q.region}` : ""}{q.rating ? ` · ★${q.rating}` : ""}{q.date ? ` · ${q.date}` : ""}</span></div>
-        ))}
+      <div className="a-quotes">
+        {quotes.length === 0 ? <div className="na">Evidence details not available</div> :
+          quotes.map((q, i) => (
+            <div className="qmini" key={i}>
+              <div className="qmini-text">{q.text}</div>
+              <div className="qmini-meta">{SRC_LABEL[q.source] || q.source}
+                {q.region ? ` · ${q.region}` : ""}{q.rating ? ` · ★${q.rating}` : ""}{q.date ? ` · ${q.date}` : ""}</div>
+            </div>
+          ))}
+        <button className="link-btn" onClick={() => onEvidence(item.id)}>View more evidence →</button>
+      </div>
 
-      <div className="impl" style={{ marginTop: 12 }}><b>PM implication:</b> {item.implication || "Not available"}</div>
+      <div className="a-impl"><b>PM implication</b> · {item.implication || "Not available"}</div>
 
       {followups.length > 0 && (
-        <>
-          <div className="rev-label" style={{ marginTop: 14 }}>Follow-up questions</div>
-          <div className="followups">
-            {followups.map((f) => (
-              <button className="followup-chip" key={f.id} onClick={() => onAsk(f.id)}>{f.q}</button>
-            ))}
-          </div>
-        </>
+        <div className="followups">
+          {followups.map((f) => (
+            <button className="followup-chip" key={f.id} onClick={() => onAsk(f.id)}>{f.q}</button>
+          ))}
+        </div>
       )}
     </div>
   );
@@ -217,8 +221,9 @@ export default function AiPilot() {
   return (
     <>
       <div className="copilot-label">Discovery Copilot</div>
-      <p className="page-sub" style={{ margin: "2px 0 6px" }}>Ask the AI product analyst about Spotify discovery feedback.</p>
-      <div className="dataset-status">Frozen v1 · 26,823 reviews analyzed · Dataset freeze date: Not available</div>
+      <p className="page-sub" style={{ margin: "2px 0 8px" }}>Ask the AI product analyst about Spotify discovery feedback.</p>
+      <span className="dataset-status">Frozen v1 · 26,823 curated reviews analyzed</span>
+      <div className="dataset-note">Frozen v1 is the curated analysis dataset after filtering, cleaning, and relevance selection.</div>
 
       <div className="copilot-panel">
         <div className="copilot-head">
@@ -228,7 +233,7 @@ export default function AiPilot() {
           </span>
           <div>
             <h2 style={{ margin: 0 }}>How can I help your discovery research?</h2>
-            <div className="muted" style={{ fontSize: 13, marginTop: 3 }}>Evidence-backed answers from 26,823 Spotify reviews, Reddit discussions, and community forum posts.</div>
+            <div className="muted" style={{ fontSize: 13, marginTop: 3 }}>I analyze Spotify reviews and discussions to answer PM discovery questions with evidence-backed insights.</div>
           </div>
         </div>
 

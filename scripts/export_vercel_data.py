@@ -378,7 +378,7 @@ def build_extra(df, engine):
         {"q": "Which user segments experience different discovery challenges?",
          "a": f"Most repetition-affected cohorts: {affected_s}. Power users show higher repetition "
               f"than casual listeners.",
-         "evidence": None, "quote": None},
+         "evidence": int((df["layer"] == "discovery_specific").sum()), "quote": None},
         {"q": "What unmet needs emerge consistently across reviews?",
          "a": f"Consistently: {topneeds_s} — plus lost dislike/reset controls and AI-generated flooding.",
          "evidence": topneeds[0]["evidence_count"] if topneeds else None, "quote": None},
@@ -447,6 +447,7 @@ def build_extra(df, engine):
         f"Frustration ({emo.get('frustration',0)}) and fatigue ({emo.get('fatigue',0)}) dominate when recs repeat.",
     ]
     for i, item in enumerate(ai_pilot):
+        item["id"] = f"q{i + 1}"                         # stable question id
         item["implication"] = AI_PILOT_IMPL[i] if i < len(AI_PILOT_IMPL) else ""
         item["key_insight"] = AI_PILOT_KEY[i] if i < len(AI_PILOT_KEY) else ""
 
@@ -538,6 +539,14 @@ def main():
     extra = build_extra(df, engine)
     json.dump(extra, open(os.path.join(OUT_DIR, "analysis_extra.json"), "w"),
               indent=2, ensure_ascii=False)
+
+    # Also emit the AI-Pilot answers into the app source so they are bundled at
+    # build time (static import) — the page never depends on a runtime fetch.
+    pilot_path = os.path.join(ROOT, "vercel-dashboard", "app", "pilot", "pilot_answers.json")
+    if os.path.isdir(os.path.dirname(pilot_path)):
+        json.dump(extra["ai_pilot"], open(pilot_path, "w"), indent=2, ensure_ascii=False)
+        print(f"  wrote {os.path.relpath(pilot_path, ROOT)}  "
+              f"({os.path.getsize(pilot_path) // 1024} KB)")
 
     for f in ["engine_output.json", "dashboard_summary.json", "reviews_sample.json",
               "analysis_extra.json"]:

@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import Nav from "./components/Nav";
 
 export const metadata: Metadata = {
-  title: "Review Discovery Engine",
-  description: "Spotify music-discovery review intelligence — static Vercel dashboard.",
+  title: "Spotify Discovery AI · Discovery Insights Dashboard",
+  description: "Spotify Discovery AI — AI-powered review intelligence for music discovery.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

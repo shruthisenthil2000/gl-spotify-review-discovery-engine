@@ -123,3 +123,35 @@ export function useJSON<T>(loader: () => Promise<T>): T | null {
   React.useEffect(() => { loader().then(setData).catch(() => setData(null)); }, []);
   return data;
 }
+
+export function CopyButton({ text }: { text: string }) {
+  const [done, setDone] = React.useState(false);
+  return (
+    <button className="copy-btn" onClick={() => {
+      navigator.clipboard?.writeText(text).then(() => {
+        setDone(true); setTimeout(() => setDone(false), 1200);
+      });
+    }}>{done ? "✓ copied" : "copy quote"}</button>
+  );
+}
+
+export function Histogram({ data, fmtLabel }:
+  { data: [string, number][]; fmtLabel?: (k: string) => string }) {
+  if (!data || data.length === 0) return <div className="na">{NA}</div>;
+  const max = Math.max(...data.map((d) => d[1]), 1);
+  return (
+    <div className="histo">
+      {data.map(([k, v]) => (
+        <div className="col" key={k}>
+          <div className="val">{v.toLocaleString()}</div>
+          <div className="bar" style={{ height: `${(v / max) * 100}%` }} />
+          <div className="lab">{fmtLabel ? fmtLabel(k) : k}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function Tag({ children }: { children: React.ReactNode }) {
+  return <div className="section-tag">{children}</div>;
+}

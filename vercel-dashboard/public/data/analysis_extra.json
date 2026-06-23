@@ -1,0 +1,530 @@
+{
+  "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
+  "friction": {
+    "average": 52.0,
+    "distribution": {
+      "0-20": 6944,
+      "20-40": 4246,
+      "40-60": 2523,
+      "60-80": 8557,
+      "80-100": 4553
+    },
+    "by_category": {
+      "repetition_issue": 92.3,
+      "algorithm_mismatch": 76.7,
+      "discovery_issue": 65.7,
+      "general_music_experience": 28.6,
+      "discovery_positive": 0.0
+    },
+    "explanation": "Heuristic score from category base (repetition/algorithm = high, discovery_issue = medium-high, positive = low) adjusted by sentiment. Not ML.",
+    "top_high_friction_themes": [
+      {
+        "theme": "repetition issue",
+        "avg_friction": 92.3,
+        "count": 4753
+      },
+      {
+        "theme": "algorithm mismatch",
+        "avg_friction": 76.7,
+        "count": 3338
+      },
+      {
+        "theme": "discovery issue",
+        "avg_friction": 65.7,
+        "count": 7542
+      }
+    ]
+  },
+  "journey": {
+    "heuristic": true,
+    "distribution": {
+      "Unmapped": 10119,
+      "Recommendation": 7818,
+      "Exploration": 7553,
+      "Feedback": 704,
+      "Retention": 360,
+      "Input": 269
+    },
+    "avg_friction_by_stage": {
+      "Exploration": 60.6,
+      "Feedback": 57.4,
+      "Input": 66.3,
+      "Recommendation": 85.7,
+      "Retention": 43.2,
+      "Unmapped": 19.2
+    },
+    "most_painful_stage": "Recommendation",
+    "implications": {
+      "Input": "Spotify mis-reads taste/mood at intake — invest in explicit taste & context capture.",
+      "Recommendation": "Recommendations feel repetitive/irrelevant — diversify candidate generation & ranking.",
+      "Exploration": "Users can't reach fresh music — add a dedicated freshness/discovery mode.",
+      "Feedback": "Users can't correct the algorithm — ship stronger negative-feedback & reset controls.",
+      "Retention": "Users fall back to old playlists — re-engage with trustworthy, low-effort discovery.",
+      "Unmapped": "No clear journey-stage signal in the text."
+    }
+  },
+  "emotion": {
+    "heuristic": true,
+    "distribution": {
+      "excitement": 3463,
+      "frustration": 1476,
+      "fatigue": 648,
+      "disappointment": 382,
+      "distrust": 270,
+      "boredom": 46
+    },
+    "quotes": {
+      "boredom": {
+        "text": "Since the launch of 'Made for You' playlists, all of my playlists have pretty much warped into monotony.",
+        "source": "forums",
+        "region": "Forum(global)",
+        "rating": ""
+      },
+      "frustration": {
+        "text": "He's the only one without a premium in my family and he's getting frustrated because he can't skip music without limits, repeat music, please fix this Edit: I kinda like that they censor bad words in the lyrics, kinda cool",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "1"
+      },
+      "distrust": {
+        "text": "Lack of controls of what’s content is suggested. Bombarded with suggestions for audiobooks, podcasts regardless of if they’re of interest and no way to turn them off. More and more AI slop finding its way to the app.",
+        "source": "app_store",
+        "region": "UK/Ireland",
+        "rating": "1"
+      },
+      "fatigue": {
+        "text": "Updating the price again and again without any better deals for artists is frustrating",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "2"
+      },
+      "disappointment": {
+        "text": "I can’t believe this update. It’s disappointing that you now need premium just to control what songs you play, and even the playlist shuffle doesn’t feel fair anymore.",
+        "source": "app_store",
+        "region": "ANZ",
+        "rating": "1"
+      },
+      "excitement": {
+        "text": "This music is awesome! Easy to listen to and the Ai shuffle feature is great. It plays songs that I’ve never heard that are amazing!! Use Spotify for music",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "5"
+      }
+    },
+    "explanation": "Keyword-based heuristic over review text; a review may match multiple emotions. Labels are indicative, not per-review ground truth."
+  },
+  "feature_frustration_map": [
+    {
+      "feature": "Radio",
+      "mentions": 856,
+      "frustration_rate": 0.771,
+      "quote": {
+        "text": "Really BAD ako for liste.ming via bluetooth, makes idiotic requests ,works trough radio sttions% Steeldfrequencies",
+        "source": "app_store",
+        "region": "Europe",
+        "rating": "1"
+      }
+    },
+    {
+      "feature": "Smart Shuffle",
+      "mentions": 697,
+      "frustration_rate": 0.822,
+      "quote": {
+        "text": "i tried to listen to an album but it wouldn’t let me because of smart shuffle",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "1"
+      }
+    },
+    {
+      "feature": "Discover Weekly",
+      "mentions": 331,
+      "frustration_rate": 0.583,
+      "quote": {
+        "text": "Please add tagging for AI music. was having a good day until AI was forced upon me in my discovery weekly. Ew",
+        "source": "app_store",
+        "region": "SE Asia",
+        "rating": "1"
+      }
+    },
+    {
+      "feature": "AI DJ",
+      "mentions": 267,
+      "frustration_rate": 0.558,
+      "quote": {
+        "text": "Can’t even shuffle my songs, always playing the same one even after I click shuffle, and yes I’ve redownload the app as well. I do have premium as well. Also the dj need some work as well. Seems like app is geting worse and worse.",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "1"
+      }
+    },
+    {
+      "feature": "Release Radar",
+      "mentions": 152,
+      "frustration_rate": 0.783,
+      "quote": {
+        "text": "And repeats. Too expensive. Disliking a song on release radar does nothing",
+        "source": "app_store",
+        "region": "ANZ",
+        "rating": "1"
+      }
+    },
+    {
+      "feature": "Home",
+      "mentions": 149,
+      "frustration_rate": 0.617,
+      "quote": {
+        "text": "Latest update ruined the home page for me. Before there were tons of good album recommendations, and now there are just 10 useless story cards. This really might be the last straw to make me switch to Tidal or Apple Music.",
+        "source": "app_store",
+        "region": "Europe",
+        "rating": "1"
+      }
+    },
+    {
+      "feature": "Daily Mix",
+      "mentions": 144,
+      "frustration_rate": 0.639,
+      "quote": {
+        "text": "this app sucks, I can't choose songs to listen to from my daily mix like it used to be back then.",
+        "source": "play_store",
+        "region": "North America",
+        "rating": "1"
+      }
+    }
+  ],
+  "context_signals": {
+    "mood_context_mentions": 1038,
+    "control_wanted_mentions": 704,
+    "workarounds": {
+      "YouTube": 1020,
+      "Apple Music": 258,
+      "SoundCloud": 80,
+      "TikTok": 56,
+      "Manual search": 16,
+      "Shazam": 14,
+      "Reddit": 14
+    }
+  },
+  "segment_cards": [
+    {
+      "total": 6379,
+      "heuristic": true,
+      "repetition_rate": 0.223,
+      "problem_rate": 0.598,
+      "top_pain_point": "discovery issue",
+      "quote": {
+        "text": "He's the only one without a premium in my family and he's getting frustrated because he can't skip music without limits, repeat music, please fix this Edit: I kinda like that they censor bad words in the lyrics, kinda cool",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "1"
+      },
+      "segment": "Power users",
+      "product_implication": "Largest libraries hit repetition hardest — prioritize shuffle diversity & freshness for them."
+    },
+    {
+      "total": 20444,
+      "heuristic": true,
+      "repetition_rate": 0.163,
+      "problem_rate": 0.578,
+      "top_pain_point": "discovery issue",
+      "quote": {
+        "text": "the \"shuffle\" feature doesn't really work and you get the same songs in the same order till the \"algorithm\"?!!! changes it based on a monthly basis???!",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "1"
+      },
+      "segment": "Casual listeners",
+      "product_implication": "Lean on lightweight, trustworthy discovery surfaces (Home, DJ)."
+    },
+    {
+      "total": 5265,
+      "heuristic": true,
+      "repetition_rate": 0.098,
+      "problem_rate": 0.294,
+      "top_pain_point": "discovery issue",
+      "quote": {
+        "text": "repeats the same 30 songs from my favorites playlist mind you I have hundreds of songs on there.",
+        "source": "app_store",
+        "region": "North America",
+        "rating": "1"
+      },
+      "segment": "Playlist-heavy users",
+      "product_implication": "Protect user playlists from intrusive recs; add per-playlist discovery."
+    },
+    {
+      "total": 130,
+      "heuristic": true,
+      "repetition_rate": 0.185,
+      "problem_rate": 0.569,
+      "top_pain_point": "discovery issue",
+      "quote": {
+        "text": "Discovery Weekly becomes filled with unwanted or random songs (including regional mismatch issues)",
+        "source": "forums",
+        "region": "Forum(global)",
+        "rating": ""
+      },
+      "segment": "Niche listeners",
+      "product_implication": "Build a niche/deep-cut discovery mode beyond mainstream candidates."
+    },
+    {
+      "total": 8577,
+      "heuristic": true,
+      "repetition_rate": 0.226,
+      "problem_rate": 0.771,
+      "top_pain_point": "algorithm mismatch",
+      "quote": {
+        "text": "muy buena aplicación me sirve para mi día a día con mi música fav 100% recomendada",
+        "source": "play_store",
+        "region": "LATAM",
+        "rating": "5"
+      },
+      "segment": "Regional / multilingual users",
+      "product_implication": "Localized discovery coverage; non-English markets show higher repetition."
+    },
+    {
+      "total": 832,
+      "heuristic": true,
+      "repetition_rate": 0.161,
+      "problem_rate": 0.466,
+      "top_pain_point": "discovery issue",
+      "quote": {
+        "text": "I have been using this App for YEARS. And the algorithm still can’t provide any decent song of my taste? It keeps repeating same songs as well",
+        "source": "app_store",
+        "region": "Europe",
+        "rating": "1"
+      },
+      "segment": "Long-term users",
+      "product_implication": "Combat taste-staleness with periodic taste-refresh nudges."
+    }
+  ],
+  "root_cause_table": [
+    {
+      "theme": "Repetitive recommendations",
+      "root_cause": "Algorithm overuses familiar listening history",
+      "opportunity": "Add discovery freshness control",
+      "evidence": 4753
+    },
+    {
+      "theme": "Irrelevant recommendations",
+      "root_cause": "Weak feedback loop",
+      "opportunity": "Add 'tune my recommendations'",
+      "evidence": 3338
+    },
+    {
+      "theme": "Shuffle repeats small pool",
+      "root_cause": "Playback candidate pool too narrow",
+      "opportunity": "Improve shuffle diversity",
+      "evidence": 967
+    },
+    {
+      "theme": "Lost dislike/reset controls",
+      "root_cause": "Users cannot correct taste profile",
+      "opportunity": "Stronger negative-feedback controls",
+      "evidence": 123
+    },
+    {
+      "theme": "AI-generated flooding",
+      "root_cause": "Release Radar trust erosion",
+      "opportunity": "Authenticity / creator filter",
+      "evidence": 246
+    }
+  ],
+  "opportunities": [
+    {
+      "name": "Freshness slider",
+      "user_pain": "Recs feel repetitive / familiar-heavy",
+      "evidence": 4753,
+      "segment": "tr",
+      "why": "Lets users dial how far recommendations stray from known taste."
+    },
+    {
+      "name": "Stronger negative-feedback system",
+      "user_pain": "Can't tell Spotify 'not this'",
+      "evidence": 123,
+      "segment": "Power users",
+      "why": "Restores the dislike/hide signals users repeatedly ask for."
+    },
+    {
+      "name": "Taste reset / tune recommendations",
+      "user_pain": "Taste profile feels stuck/wrong",
+      "evidence": 123,
+      "segment": "Long-term users",
+      "why": "A reset/tune flow corrects a drifted or polluted profile."
+    },
+    {
+      "name": "Discovery mode for niche / regional music",
+      "user_pain": "Only mainstream surfaces",
+      "evidence": 6741,
+      "segment": "Niche / multilingual",
+      "why": "Coverage for deep cuts and non-English markets."
+    },
+    {
+      "name": "Context-aware discovery mode",
+      "user_pain": "Spotify ignores mood/context",
+      "evidence": 1038,
+      "segment": "Casual listeners",
+      "why": "Surfaces music matched to mood, activity, and time of day."
+    },
+    {
+      "name": "Shuffle diversity control",
+      "user_pain": "Shuffle loops a small pool",
+      "evidence": 967,
+      "segment": "tr",
+      "why": "Widens the playback pool so large libraries feel fresh."
+    },
+    {
+      "name": "AI discovery coach",
+      "user_pain": "No guided way to break the loop",
+      "evidence": 7542,
+      "segment": "All segments",
+      "why": "Conversational guidance toward genuinely new music."
+    }
+  ],
+  "top5_insights": [
+    {
+      "title": "Discovery friction: can't surface new music",
+      "category": "discovery_issue",
+      "evidence_count": 7542,
+      "negativity": 0.568,
+      "reach_regions": 11,
+      "affected_segment": "North America (power-user share 25%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "auto shuffle doesn't make sense. its annoying and too many ads in between. m sure of finding better app than this. everytime i m driving, I can't select each song. n that's the only time I get to listen to music. so this app is big no to me"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "horrible. I have to pay for premium to manually change songs on my playlist. they limit me to only being able to choose about 10 songs per day, and then the rest is a shuffle. Spotify has become greedy and ruined my experience with the app."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "freaking hate this app now. like everytime I tried to find a good song or recommend a song for my friends it wouldnt let me see it or find it again. And why the flip is there so many ads like im trying to listen to music not advertisements."
+        }
+      ],
+      "severity_score": 84.9
+    },
+    {
+      "title": "Repetition: same songs/artists on repeat",
+      "category": "repetition_issue",
+      "evidence_count": 4753,
+      "negativity": 0.599,
+      "reach_regions": 11,
+      "affected_segment": "North America (power-user share 30%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "the app is designed to intentional create a poor experience for you if you don't have premium. With 4 back to back Ad's combined over a minute long, unskipable and repetitive plus strange limits on what you can listen to and how many times."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "music is fine,except one thing whenever I try to find music it kicks me out and it makes me to log in again and again I'm pretty tired of this you guys should fix this and it also makes me get kicked out when I press the old button plz help"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "2",
+          "text": "i used to love this app,but now im starting to think of moving to a different app,shuffle does 3 og songs then just repeats them like 50 times,and now theu have DOUBLE ADS OR EVEN TRIPLE???im starting to rlly hate tjis app,spotify do better"
+        }
+      ],
+      "severity_score": 83.6
+    },
+    {
+      "title": "Shuffle replays a small pool of a large library",
+      "category": "unmet_need",
+      "evidence_count": 967,
+      "negativity": 0.645,
+      "reach_regions": 7,
+      "affected_segment": "North America (power-user share 36%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "2",
+          "text": "i used to love this app,but now im starting to think of moving to a different app,shuffle does 3 og songs then just repeats them like 50 times,and now theu have DOUBLE ADS OR EVEN TRIPLE???im starting to rlly hate tjis app,spotify do better"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "The shuffle is terrible and constantly plays all the same songs over and over. The same thing with their AI DJ, same songs over and over again even when you ask for new ones. terrible streaming app that overcharges you and underpays artists"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "not sure why I have to pay for a premium account if the app is garbage. Most of the time the app will not even open, just a black screen. The shuffle literally only plays the same 20 songs on repeat in the same order. Terrible app design."
+        }
+      ],
+      "severity_score": 70.0
+    },
+    {
+      "title": "Recommendation mismatch: recs off-taste",
+      "category": "algorithm_mismatch",
+      "evidence_count": 3338,
+      "negativity": 0.232,
+      "reach_regions": 7,
+      "affected_segment": "Europe (power-user share 15%)",
+      "representative_quotes": [
+        {
+          "source": "app_store",
+          "region": "MEA",
+          "rating": "2",
+          "text": "When listening via autoplay/recommended tracks, the songs are poorly selected! They don’t align to my taste. I bet I’m not the only one. I just want Google to fix YouTube music UI so I can switch. DO SOMETHING ABOUT YOUR ALGORITHM!!!!!!"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "Why can't there be simple buttons for add to playlists and song radio. So many options that are never used. And algorithm for song radio is so bad. Can't they use any other metric than genre? Tempo, groove, instrument? So uninspired."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "2",
+          "text": "The apps functionality gets worse every update and they have the nerve to increase the price and flood the app with ai slop. I do not recommend this app for audiophile at all. this sucks so bad. The app worked better a decade ago🫩"
+        }
+      ],
+      "severity_score": 61.7
+    },
+    {
+      "title": "AI-generated tracks flooding discovery surfaces",
+      "category": "unmet_need",
+      "evidence_count": 246,
+      "negativity": 0.768,
+      "reach_regions": 3,
+      "affected_segment": "North America (power-user share 24%)",
+      "representative_quotes": [
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "Ai slop masquerading as music. absolutely trash discovery algo and same music plays over and over even if you have shuffle on. also no option to get rid of podcasts. they removed family plan and new price doesn't justify what they offer."
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "I cancelled Spotify yesterday because 1. they pay artists very poorly 2. they use AI generated music (which is based on original artists' work) to fill playlists, and so pay real artists even less 3. they now run recruitment ads for ICE"
+        },
+        {
+          "source": "play_store",
+          "region": "North America",
+          "rating": "1",
+          "text": "Experience getting worse and worse every year. Now they integrate AI music into your algorithms so they can pay even less to real musicians. CEO is a multi millionaire. A cancer on the music industry, change over to tidal or qobuz."
+        }
+      ],
+      "severity_score": 60.1
+    }
+  ]
+}

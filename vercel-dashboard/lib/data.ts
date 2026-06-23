@@ -75,9 +75,78 @@ async function fetchJSON<T>(path: string): Promise<T> {
   return res.json();
 }
 
+export interface Extra {
+  friction: {
+    average: number; distribution: Record<string, number>;
+    by_category: Record<string, number>; explanation: string;
+    top_high_friction_themes: { theme: string; avg_friction: number; count: number }[];
+  };
+  journey: {
+    heuristic: boolean; distribution: Record<string, number>;
+    avg_friction_by_stage: Record<string, number>;
+    most_painful_stage: string; implications: Record<string, string>;
+  };
+  emotion: {
+    heuristic: boolean; distribution: Record<string, number>;
+    quotes: Record<string, { text: string; source: string; region: string; rating: string }>;
+    explanation: string;
+  };
+  feature_frustration_map: {
+    feature: string; mentions: number; evidence?: string;
+    frustration_rate?: number;
+    quote?: { text: string; source: string; region: string; rating: string } | null;
+  }[];
+  context_signals: {
+    mood_context_mentions: number; control_wanted_mentions: number;
+    workarounds: Record<string, number>;
+  };
+  segment_cards: {
+    segment: string; total: number; heuristic: boolean;
+    repetition_rate: number; problem_rate: number; top_pain_point: string;
+    product_implication: string;
+    quote?: { text: string; source: string; region: string; rating: string } | null;
+  }[];
+  root_cause_table: { theme: string; root_cause: string; opportunity: string; evidence: number | null }[];
+  opportunities: { name: string; user_pain: string; evidence: number | null; segment: string; why: string }[];
+  top5_insights: Insight[];
+}
+
 export const getEngine = () => fetchJSON<Engine>("/data/engine_output.json");
 export const getSummary = () => fetchJSON<Summary>("/data/dashboard_summary.json");
 export const getReviews = () => fetchJSON<ReviewsFile>("/data/reviews_sample.json");
+export const getExtra = () => fetchJSON<Extra>("/data/analysis_extra.json");
+
+export const PROJECT = {
+  title: "Spotify Discovery Intelligence Engine",
+  subtitle:
+    "AI-powered review analysis of Spotify discovery, recommendation quality, and repetitive listening behavior.",
+  context:
+    "Spotify has strong recommendation systems, but users still return to repeat playlists, " +
+    "familiar artists, and previously discovered tracks. This engine analyzes user feedback at " +
+    "scale to identify where discovery breaks, who is affected, and what Spotify should build next.",
+  coreQuestions: [
+    "Why do Spotify users keep returning to repeat playlists, familiar artists, and previously discovered songs?",
+    "What specific recommendation failures make users feel stuck in a repetition loop?",
+    "Which Spotify discovery features create the most frustration: Discover Weekly, Release Radar, Daily Mix, Radio, Smart Shuffle, AI DJ, or Home?",
+    "What types of discovery do users actually want: new artists, new songs, new genres, niche music, regional music, or deeper cuts?",
+    "Do users feel Spotify understands their current mood, context, and short-term listening intent?",
+    "What signals do users want more control over: likes, dislikes, skips, blocks, reset taste profile, or 'not interested'?",
+    "Which user segments face different discovery problems: casual listeners, power users, playlist-heavy users, niche listeners, multilingual listeners, or long-term users?",
+    "What workarounds do users use when Spotify discovery fails, such as TikTok, YouTube, Reddit, friends, manual search, or old playlists?",
+    "What emotional reactions appear most often in reviews: boredom, frustration, distrust, fatigue, disappointment, or loss of excitement?",
+    "What unmet needs appear repeatedly across App Store reviews, Play Store reviews, Reddit, forums, and social conversations?",
+  ],
+  helpsDecide: [
+    "Where music discovery breaks down across the user journey",
+    "Which user segments and regions are most affected by repetition",
+    "Which discovery features (Discover Weekly, Release Radar, Shuffle…) frustrate users most",
+    "Which product opportunities to prioritize by Impact × Frequency",
+  ],
+  sourceLabels: {
+    play_store: "Play Store", app_store: "App Store",
+    reddit: "Reddit", forums: "Spotify Community Forums",
+  } as Record<string, string>,
+};
 
 // --- formatting helpers (show "Not available" when a metric is missing) ---
 export const num = (v: number | null | undefined) =>

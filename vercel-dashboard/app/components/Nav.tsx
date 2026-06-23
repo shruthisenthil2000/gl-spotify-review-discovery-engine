@@ -8,6 +8,7 @@ const LINKS = [
   ["/themes", "Themes"],
   ["/segments", "Segments"],
   ["/priority", "PM Priority Radar"],
+  ["/lens", "Discovery Lens"],
   ["/pulse", "Weekly Pulse"],
 ];
 
@@ -15,8 +16,8 @@ export default function Nav() {
   const path = usePathname();
   return (
     <aside className="sidebar">
-      <div className="brand">🎧 Discovery <span className="dot">Engine</span></div>
-      <div className="sub">Frozen v1 · 26,823 reviews</div>
+      <div className="brand">🎧 Spotify <span className="dot">Discovery</span><br />Intelligence Engine</div>
+      <div className="sub">Frozen v1 · 26,823 reviews analyzed</div>
       <nav className="nav">
         {LINKS.map(([href, label]) => {
           const active = href === "/" ? path === "/" : path.startsWith(href);

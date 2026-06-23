@@ -116,7 +116,7 @@ export interface Extra {
   desired_discovery_types: { type: string; evidence: number | string; count: number }[];
   listening_behaviors: { behavior: string; evidence: number }[];
   ai_pilot: {
-    q: string; a: string; evidence: number | null;
+    q: string; a: string; evidence: number | null; implication?: string;
     quote?: { text: string; source: string; region: string; rating: string } | null;
   }[];
 }

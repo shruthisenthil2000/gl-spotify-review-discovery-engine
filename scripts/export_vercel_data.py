@@ -408,6 +408,23 @@ def build_extra(df, engine):
          "quote": emotion["quotes"].get("frustration")},
     ]
 
+    AI_PILOT_IMPL = [
+        "Prioritize a freshness/discovery mode and broaden candidate generation beyond familiar history.",
+        "Strengthen ranking relevance and add a 'tune my recommendations' control.",
+        "Respect user intent — keep user playlists clean and make freshness opt-in, not forced.",
+        "Fix shuffle diversity so large libraries don't loop a small pool.",
+        "Target power users and the highest-repetition regions first.",
+        "Ship shuffle diversity, dislike/reset controls, and authenticity filters.",
+        "Audit the highest-frustration features (Radio, Smart Shuffle, Release Radar).",
+        "Bias discovery toward new songs first, then regional and niche coverage.",
+        "Invest in context-aware discovery (mood / activity / time-of-day).",
+        "Add stronger negative-feedback and taste-reset controls.",
+        "Discovery leakage to YouTube/Apple Music is a retention risk — close the gap.",
+        "Repetition drives frustration/fatigue — reducing it protects satisfaction and retention.",
+    ]
+    for i, item in enumerate(ai_pilot):
+        item["implication"] = AI_PILOT_IMPL[i] if i < len(AI_PILOT_IMPL) else ""
+
     return {
         "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
         "friction": friction,

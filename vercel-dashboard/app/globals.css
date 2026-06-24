@@ -842,11 +842,11 @@ html, body { overflow-x: clip; }
 .rc-top b { font-size: 14.5px; }
 .rc-ev { font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 999px;
   border: 1px solid; white-space: nowrap; }
-.rc-cause, .rc-opp { font-size: 12.8px; line-height: 1.5; margin-top: 6px; }
-.rc-cause { color: #ef8e8e; }
-.rc-k { display: inline-block; min-width: 78px; color: var(--muted); font-size: 11px;
+.rc-cause, .rc-opp { font-size: 12.8px; line-height: 1.5; margin-top: 6px; color: #d3d3d3; }
+.rc-k { display: inline-block; min-width: 78px; font-size: 11px;
   font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
-.rc-opp { color: #6fdc97; }
+.rc-k.cause { color: #ef8e8e; }
+.rc-k.opp { color: #6fdc97; }
 
 /* severity description forced onto one line */
 .sec-desc.wide-line { max-width: none; }

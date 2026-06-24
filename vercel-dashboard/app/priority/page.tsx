@@ -8,6 +8,13 @@ const QCOLOR: Record<string, string> = {
 };
 const PAL = ["#1db954", "#4a9ee6", "#e6b34a", "#b18cf2", "#e6843a", "#3ec6c6", "#e64a4a"];
 const TOTAL = 26823;
+// humanise the region/language codes that appear as a "segment"
+const SEG_LABEL: Record<string, string> = {
+  tr: "Turkish listeners", id: "Indonesian listeners", es: "Spanish-speaking listeners",
+  pt: "Portuguese-speaking listeners", MEA: "Middle East & Africa", LATAM: "Latin America",
+  ANZ: "Australia & New Zealand", "SE Asia": "Southeast Asia", "Forum(global)": "Community forum (global)",
+};
+const segLabel = (s: string) => SEG_LABEL[s] || s;
 
 export default function Priority() {
   const e = useJSON(getEngine);
@@ -19,12 +26,10 @@ export default function Priority() {
   return (
     <>
       <h1>PM Priority Radar</h1>
-      <p className="page-sub wide">Product strategy view — opportunities ranked by Impact × Frequency.
-        Top-right means high impact and high frequency, so act on those first.</p>
+      <p className="page-sub wide wide-line">Product strategy view — opportunities ranked by impact × frequency; top-right means high impact and high frequency, so act there first.</p>
 
       <Tag>Impact × Frequency matrix</Tag>
-      <p className="sec-desc">Each bubble is an opportunity — further right = mentioned more often,
-        higher up = more severe. The top-right corner deserves attention first.</p>
+      <p className="sec-desc wide-line">Each bubble is an opportunity — further right = mentioned more often, higher up = more severe; the top-right corner deserves attention first.</p>
       <Card>
         <Scatter points={radar.map((r, i) => ({
           x: r.frequency, y: r.impact, r: r.priority_score,
@@ -33,8 +38,7 @@ export default function Priority() {
       </Card>
 
       <Tag>Ranked opportunities</Tag>
-      <p className="sec-desc">Every opportunity scored and ordered by priority — impact weighted by how
-        often it shows up in the reviews.</p>
+      <p className="sec-desc wide-line">Every opportunity scored and ordered by priority — impact weighted by how often it shows up in the reviews.</p>
       <Card>
         <table>
           <thead><tr><th className="num">#</th><th>Theme</th><th className="num">Impact</th><th className="num">Evidence</th>
@@ -47,15 +51,11 @@ export default function Priority() {
             ))}
           </tbody>
         </table>
-        <div className="note"><b>How to read it:</b> <b>Impact</b> = how severe the pain is (0–100) ·
-          <b> Evidence</b> = number of reviews raising it · <b>Priority</b> = impact blended with frequency
-          (0–100), so a higher number means act on it sooner.</div>
+        <div className="note wide-line"><b>How to read it:</b> <b>Impact</b> = how severe the pain is (0–100) · <b>Evidence</b> = number of reviews raising it · <b>Priority</b> = impact weighted by evidence, so a higher number means act on it sooner.</div>
       </Card>
 
       <Tag>Root Cause → Product Opportunity</Tag>
-      <p className="sec-desc">What is driving each theme (in <span style={{ color: "#ef8e8e" }}>red</span>),
-        and the product move that fixes it (in <span style={{ color: "#6fdc97" }}>green</span>). The badge
-        shows how many reviews raise the theme and its share of all 26,823.</p>
+      <p className="sec-desc wide-line">What is driving each theme, and the product move that fixes it; the badge shows how many reviews raise it and its share of all 26,823.</p>
       {!x ? <span className="na">Loading…</span> : (
         <div className="rc-grid">
           {x.root_cause_table.map((r, i) => {
@@ -67,8 +67,8 @@ export default function Priority() {
                   <b style={{ color: c }}>{r.theme}</b>
                   {ev != null && <span className="rc-ev" style={{ color: c, background: `${c}22`, borderColor: `${c}55` }}>{ev.toLocaleString()} reviews · {((ev / TOTAL) * 100).toFixed(1)}% of all</span>}
                 </div>
-                <div className="rc-cause"><span className="rc-k">Root cause</span> {r.root_cause}</div>
-                <div className="rc-opp"><span className="rc-k">Opportunity</span> {r.opportunity}</div>
+                <div className="rc-cause"><span className="rc-k cause">Root cause</span> {r.root_cause}</div>
+                <div className="rc-opp"><span className="rc-k opp">Opportunity</span> {r.opportunity}</div>
               </div>
             );
           })}
@@ -76,8 +76,7 @@ export default function Priority() {
       )}
 
       <Tag>Most Affected User Segments</Tag>
-      <p className="sec-desc">Which cohorts hit the most repetition and discovery friction — and what
-        that implies for the product.</p>
+      <p className="sec-desc wide-line">Which cohorts hit the most repetition and discovery friction — and what that implies for the product.</p>
       {!x ? <p className="na">Loading…</p> : (
         <div className="card-grid">
           {x.segment_cards.map((sgc, i) => {
@@ -98,20 +97,8 @@ export default function Priority() {
           })}
         </div>
       )}
-      <div style={{ marginTop: 18 }}>
-      <Card title="Most affected by repetition (region / language)">
-        {e.segmentation?.most_affected_by_repetition
-          ? <table><thead><tr><th>Cohort</th><th className="num">Reviews</th><th className="num">Repetition rate</th><th className="num">Problem rate</th></tr></thead>
-            <tbody>{e.segmentation.most_affected_by_repetition.slice(0, 8).map((c, i) => (
-              <tr key={i}><td>{c.cohort}</td><td className="num">{c.total.toLocaleString()}</td>
-                <td className="num">{(c.repetition_rate * 100).toFixed(1)}%</td>
-                <td className="num">{(c.problem_rate * 100).toFixed(1)}%</td></tr>))}</tbody></table>
-          : <span className="na">{NA}</span>}
-      </Card>
-      </div>
-
       <Tag>What Should Spotify Build?</Tag>
-      <p className="sec-desc">The highest-leverage things to ship — and a one-line reason each one matters.</p>
+      <p className="sec-desc wide-line">The highest-leverage things to ship — and a one-line reason each one matters.</p>
       {!x ? <p className="na">Loading…</p> : (
         <div className="card-grid">
           {x.opportunities.map((o, i) => (
@@ -119,7 +106,7 @@ export default function Priority() {
               <h3 style={{ color: PAL[i % PAL.length] }}>{o.name}</h3>
               <div className="row"><span className="k">User pain</span><span style={{ textAlign: "right", maxWidth: 180 }}>{o.user_pain}</span></div>
               <div className="row"><span className="k">Evidence</span><span>{o.evidence == null ? NA : `${o.evidence.toLocaleString()} (${((o.evidence / TOTAL) * 100).toFixed(1)}%)`}</span></div>
-              <div className="row"><span className="k">Affected segment</span><span>{o.segment}</span></div>
+              <div className="row"><span className="k">Affected segment</span><span>{segLabel(o.segment)}</span></div>
               <div className="impl"><b>Why it matters:</b> {o.why}</div>
             </div>
           ))}
@@ -127,7 +114,7 @@ export default function Priority() {
       )}
 
       <Tag>Expected Impact · data-backed</Tag>
-      <p className="sec-desc">How each build helps users, sized against the reviews we actually scraped.</p>
+      <p className="sec-desc wide-line">How each build helps users, sized against the reviews we actually scraped.</p>
       {!x ? <p className="na">Loading…</p> : (
         <div className="card-grid">
           {x.opportunities.map((o, i) => {
@@ -137,8 +124,8 @@ export default function Priority() {
               <div className="scard" key={o.name} style={{ borderLeft: `4px solid ${c}` }}>
                 <h3 style={{ color: c }}>{o.name}</h3>
                 <div className="row"><span className="k">Backed by</span><span>{ev == null ? NA : `${ev.toLocaleString()} reviews (${((ev / TOTAL) * 100).toFixed(1)}%)`}</span></div>
-                <div className="row"><span className="k">Helps most</span><span>{o.segment}</span></div>
-                <div className="impl"><b>Expected impact:</b> directly relieves “{o.user_pain.toLowerCase()}” for {o.segment.toLowerCase()}{ev != null && <> — addressing the {ev.toLocaleString()} scraped reviews that raise it</>}.</div>
+                <div className="row"><span className="k">Helps most</span><span>{segLabel(o.segment)}</span></div>
+                <div className="impl"><b>Expected impact:</b> directly relieves “{o.user_pain.toLowerCase()}” for {segLabel(o.segment).toLowerCase()}{ev != null && <> — addressing the {ev.toLocaleString()} scraped reviews that raise it</>}.</div>
               </div>
             );
           })}

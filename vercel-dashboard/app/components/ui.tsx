@@ -183,11 +183,11 @@ export function Donut({ data, size = 180, center }:
       </svg>
       <div>
         {data.map(([label, val, color]) => (
-          <div key={label} style={{ display: "flex", alignItems: "center", gap: 8, margin: "5px 0", fontSize: 13 }}>
+          <div key={label} style={{ display: "flex", alignItems: "center", gap: 10, margin: "7px 0", fontSize: 13 }}>
             <span style={{ width: 10, height: 10, borderRadius: 2, background: color, flexShrink: 0 }} />
-            <span style={{ color: "var(--muted)", minWidth: 150 }}>{label}</span>
-            <b>{val.toLocaleString()}</b>
-            <span className="muted" style={{ fontSize: 11 }}>({((val / total) * 100).toFixed(0)}%)</span>
+            <span style={{ color: "var(--muted)", flex: 1, whiteSpace: "nowrap", paddingRight: 8 }}>{label}</span>
+            <b style={{ minWidth: 62, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{val.toLocaleString()}</b>
+            <span className="muted" style={{ fontSize: 11, minWidth: 40, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>({((val / total) * 100).toFixed(0)}%)</span>
           </div>
         ))}
       </div>

@@ -24,6 +24,8 @@ const RATE_COLOR = ["#e64a4a", "#e6843a", "#e6b34a", "#8bc34a", "#1db954"];
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const kfmt = (n: number) => n >= 1000 ? `${(n / 1000).toFixed(1)}k` : `${n}`;
 const stars = (r: string) => { const n = Math.max(0, Math.min(5, parseInt(r) || 0)); return "★".repeat(n) + "☆".repeat(5 - n); };
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const fmtDate = (d: string) => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ""); return m ? `${parseInt(m[3])} ${MONTHS[parseInt(m[2]) - 1]} ${m[1]}` : d; };
 const EMO_DESC: Record<string, string> = {
   frustration: "Exasperated when recommendations ignore their taste and the same songs keep returning.",
   fatigue: "Worn down by hearing the same rotation over and over, with little variety.",
@@ -69,6 +71,7 @@ export default function Overview() {
   const cats: [string, number][] = Object.entries(s.by_category || {})
     .sort((a, b) => b[1] - a[1]).map(([k, v]) => [CAT_LABEL[k] || k, v]);
   const catMax = Math.max(...cats.map((c) => c[1]), 1);
+  const catTotal = cats.reduce((a, c) => a + c[1], 0) || 1;
   const sources = x?.source_detail || [];
   const tp = x?.top_problem;
   const top5 = x?.top5_insights || [];
@@ -181,7 +184,7 @@ export default function Overview() {
               <div className="catbar" key={name}>
                 <span className="catbar-name">{name}</span>
                 <div className="catbar-track"><div className="catbar-fill" style={{ width: `${(val / catMax) * 100}%`, background: CAT_COLOR[name] || "#1db954" }} /></div>
-                <span className="catbar-val">{val.toLocaleString()}</span>
+                <span className="catbar-val">{val.toLocaleString()} <span className="catbar-pct">({((val / catTotal) * 100).toFixed(0)}%)</span></span>
               </div>
             ))}
           </div>
@@ -274,8 +277,10 @@ export default function Overview() {
             <div className="voice" key={i}>
               <div className="voice-q">“{r.text}”</div>
               <div className="voice-foot">
-                <span className="voice-who">{SRC_EMOJI[r.source] || "📱"} {SRC_LABEL[r.source] || r.source}{r.region ? ` · ${r.region}` : ""}{r.date ? ` · ${r.date}` : ""}</span>
-                {r.rating && <span className="voice-stars">{stars(r.rating)}</span>}
+                <span className="voice-who">{SRC_EMOJI[r.source] || "📱"} {SRC_LABEL[r.source] || r.source}{r.region ? ` · ${r.region}` : ""}{r.date ? ` · ${fmtDate(r.date)}` : ""}</span>
+                {(() => { const rn = parseInt(r.rating); return rn >= 1 && rn <= 5
+                  ? <span className="voice-rate" style={{ background: `${RATE_COLOR[rn - 1]}22`, color: RATE_COLOR[rn - 1], borderColor: `${RATE_COLOR[rn - 1]}66` }}>{rn}/5 ★</span>
+                  : null; })()}
               </div>
             </div>
           ))}

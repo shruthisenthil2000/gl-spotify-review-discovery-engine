@@ -13,7 +13,7 @@ export default function TopHeader() {
   return (
     <div className="apphdr">
       <div>
-        <div className="apphdr-title">🎧 {PROJECT.title} <span className="ai-badge">⚡ AI-POWERED</span></div>
+        <div className="apphdr-title">🎧 <span className="apphdr-name">{PROJECT.title}</span> <span className="ai-badge">⚡ AI-POWERED</span></div>
         <div className="apphdr-sub">{PROJECT.subtitle}</div>
         <div className="apphdr-sub2">26,823 reviews from Play Store, App Store, Reddit &amp; Community — analyzed for discovery friction, recommendation quality, and repeat listening.</div>
       </div>

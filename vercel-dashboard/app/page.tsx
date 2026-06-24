@@ -43,6 +43,19 @@ const PLATFORMS: [string, string][] = [
 const RANGES: [string, string][] = [
   ["all", "All time"], ["2024", "Since 2024"], ["2025", "Since 2025"], ["2026", "2026 only"],
 ];
+function KIcon({ d }: { d: string }) {
+  return (
+    <span className="kpi-ic">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1db954" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" dangerouslySetInnerHTML={{ __html: d }} />
+    </span>
+  );
+}
+const IC = {
+  reviews: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
+  star: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>',
+  zap: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>',
+  tag: '<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2"/>',
+};
 
 export default function Overview() {
   const s = useJSON(getSummary);
@@ -110,23 +123,23 @@ export default function Overview() {
       {/* KPI cards — all clickable, pulsing, change with platform + range */}
       <div className="kpi-row">
         <button className="kpi pulse" onClick={() => setModal("reviews")}>
-          <div className="kpi-top"><span className="kpi-ic">📊</span>
+          <div className="kpi-top"><KIcon d={IC.reviews} />
             {trend != null && <span className={`kpi-trend ${trend >= 0 ? "up" : "down"}`}>{trend >= 0 ? "↗" : "↘"} {pct(trend)}</span>}</div>
           <div className="kpi-num">{num(pp?.reviews)}</div><div className="kpi-lbl">Reviews Analysed</div>
           <div className="kpi-link">Click for details ↗</div>
         </button>
         <button className="kpi pulse" onClick={() => setModal("rating")}>
-          <div className="kpi-top"><span className="kpi-ic">⭐</span></div>
+          <div className="kpi-top"><KIcon d={IC.star} /></div>
           <div className="kpi-num">{ratingShown ? `${pp!.avg_rating}` : "—"}</div><div className="kpi-lbl">Average Rating</div>
           <div className="kpi-link">Click for details ↗</div>
         </button>
         <button className="kpi pulse" onClick={() => setModal("sentiment")}>
-          <div className="kpi-top"><span className="kpi-ic">💚</span></div>
+          <div className="kpi-top"><KIcon d={IC.zap} /></div>
           <div className="kpi-num">{pp ? pct(pp.positive_pct) : NA}</div><div className="kpi-lbl">Sentiment Score</div>
           <div className="kpi-link">Click for details ↗</div>
         </button>
         <button className="kpi pulse" onClick={() => setModal("themes")}>
-          <div className="kpi-top"><span className="kpi-ic">🏷️</span></div>
+          <div className="kpi-top"><KIcon d={IC.tag} /></div>
           <div className="kpi-num">{pp?.theme_count ?? NA}</div><div className="kpi-lbl">Theme Count</div>
           <div className="kpi-link">Click for details ↗</div>
         </button>

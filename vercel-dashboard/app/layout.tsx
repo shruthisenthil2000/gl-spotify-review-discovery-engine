@@ -15,7 +15,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="layout">
           <Nav />
-          <main className="main"><TopHeader /><TopTabs />{children}</main>
+          <main className="main">
+            <div className="topbar"><TopHeader /><TopTabs /></div>
+            {children}
+          </main>
         </div>
       </body>
     </html>

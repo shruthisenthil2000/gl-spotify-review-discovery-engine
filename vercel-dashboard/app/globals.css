@@ -652,3 +652,35 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
 /* equal-spacing rhythm for top blocks */
 .filter-bar { margin-bottom: 16px; }
 .kpi-row { margin-bottom: 0; }
+
+/* ===== sticky top portion (header + tabs stay pinned) ===== */
+.topbar { position: sticky; top: 0; z-index: 30; background: var(--bg);
+  padding-top: 6px; margin: 0 -48px 0; padding-left: 48px; padding-right: 48px;
+  box-shadow: 0 10px 20px -12px rgba(0,0,0,.8); }
+@media (max-width: 1100px) { .topbar { margin: 0 -28px 0; padding-left: 28px; padding-right: 28px; } }
+.apphdr { padding-bottom: 18px; }
+.top-tabs { margin: 0; padding: 2px 0 0; }
+
+/* ===== breathable spacing for the top blocks ===== */
+.filter-bar { margin: 26px 0 22px !important; padding: 14px 18px; }
+.kpi-row { grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 10px; }
+.kpi { padding: 24px 24px 22px !important; min-height: 188px; display: flex; flex-direction: column; }
+.kpi-top { margin-bottom: 26px !important; }
+.kpi-ic { width: 46px; height: 46px; border-radius: 13px; background: rgba(29,185,84,.13);
+  border: 1px solid rgba(29,185,84,.18); display: flex; align-items: center; justify-content: center; }
+.kpi-num { font-size: 33px; }
+.kpi-lbl { font-size: 13.5px; margin-top: 7px; }
+.kpi-link { margin-top: auto; padding-top: 16px; }
+.kpi-trend { font-size: 12.5px; padding: 4px 10px; }
+
+/* visible pulse on the four cards */
+@keyframes kpipulse {
+  0% { box-shadow: 0 0 0 0 rgba(29,185,84,.5); }
+  70% { box-shadow: 0 0 0 13px rgba(29,185,84,0); }
+  100% { box-shadow: 0 0 0 0 rgba(29,185,84,0); }
+}
+.kpi.pulse { animation: kpipulse 2.6s ease-out infinite; }
+/* stagger so all four don't flash in unison */
+.kpi.pulse:nth-child(2) { animation-delay: .65s; }
+.kpi.pulse:nth-child(3) { animation-delay: 1.3s; }
+.kpi.pulse:nth-child(4) { animation-delay: 1.95s; }

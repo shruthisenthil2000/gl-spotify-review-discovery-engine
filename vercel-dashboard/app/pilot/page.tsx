@@ -266,7 +266,7 @@ export default function AiPilot() {
   const [input, setInput] = useState("");
   const [modalId, setModalId] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
-  useEffect(() => { if (msgs.length) endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs]);
+  useEffect(() => { if (msgs.length) endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [msgs]);
 
   const ask = (text: string, id?: string) => {
     if (!text.trim() && !id) return;
@@ -282,25 +282,17 @@ export default function AiPilot() {
     <>
       <div className="copilot-header">
         <span className="copilot-icon big">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#04130a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#04130a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 3v3M5 8h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" /><circle cx="9" cy="13" r="1" /><circle cx="15" cy="13" r="1" /></svg>
         </span>
         <div>
           <h1 style={{ margin: 0 }}>Discovery Copilot</h1>
-          <div className="muted" style={{ fontSize: 14 }}>Ask the AI product analyst about music-discovery feedback.</div>
         </div>
       </div>
-      <span className="dataset-status">Frozen v1 · 26,823 curated reviews analyzed</span>
-      <div className="dataset-note">Frozen v1 is the curated analysis dataset after filtering, cleaning, and relevance selection.</div>
+      <span className="dataset-status">Curated dataset · 26,823 reviews analyzed</span>
+      <div className="dataset-note">A cleaned, de-duplicated and relevance-filtered set of real Spotify user reviews, quality-checked before analysis.</div>
 
       <div className="copilot-body">
-        {msgs.length === 0 && (
-          <div className="copilot-empty">
-            <h2 style={{ margin: "0 0 4px" }}>How can I help your discovery research?</h2>
-            <div className="muted" style={{ fontSize: 13.5 }}>I analyze Spotify reviews and discussions to answer PM discovery questions with evidence-backed insights.</div>
-          </div>
-        )}
-
         {msgs.map((m, i) => {
           if (m.role === "user") return <div className="bubble-user" key={i}>{m.text}</div>;
           if (m.role === "bot-fallback") return <div className="ac" key={i}><div className="ac-summary">{FALLBACK_MSG}</div></div>;
@@ -308,6 +300,7 @@ export default function AiPilot() {
           return item ? <AnswerCard key={i} item={item} onEvidence={setModalId} onAsk={(id) => ask("", id)} />
             : <div className="ac" key={i}><div className="ac-summary na">Not available.</div></div>;
         })}
+        <div ref={endRef} />
 
         <div className="copilot-cards-label">{msgs.length ? "Suggested questions" : "Research questions"}</div>
         <div className="qopts">
@@ -317,16 +310,14 @@ export default function AiPilot() {
             </button>
           ))}
         </div>
-        <div ref={endRef} />
       </div>
 
-      <form className="copilot-bar" onSubmit={(e) => { e.preventDefault(); ask(input); }}>
+      <form className="copilot-bar pulse" onSubmit={(e) => { e.preventDefault(); ask(input); }}>
         <div className="copilot-bar-row">
-          <input type="text" placeholder="Ask about discovery, recommendations, themes, segments…"
+          <input type="text" placeholder="Type a question, or tap one below to begin…"
             value={input} onChange={(e) => setInput(e.target.value)} />
-          <button type="submit" className="send-btn">Send</button>
+          <button type="submit" className="send-btn pulse">Send</button>
         </div>
-        <div className="ground-note">Answers are grounded in real reviews via RAG.</div>
       </form>
 
       {modalAnswer && <EvidenceDrawer answer={modalAnswer} onClose={() => setModalId(null)} />}

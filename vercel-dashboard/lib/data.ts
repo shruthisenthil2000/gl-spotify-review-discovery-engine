@@ -130,6 +130,8 @@ export interface Extra {
   year_distribution?: Record<string, number>;
   rating_distribution?: Record<string, number>;
   plan_breakdown?: Record<string, number>;
+  per_platform?: Record<string, { reviews: number; avg_rating: number | null;
+    positive_pct: number; frustrated_pct: number; theme_count: number; trend_reviews: number | null }>;
   desired_discovery_types: { type: string; evidence: number | string; count: number }[];
   listening_behaviors: { behavior: string; evidence: number }[];
   ai_pilot: {

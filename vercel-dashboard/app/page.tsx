@@ -24,7 +24,6 @@ const RATE_COLOR = ["#e64a4a", "#e6843a", "#e6b34a", "#8bc34a", "#1db954"];
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const kfmt = (n: number) => n >= 1000 ? `${(n / 1000).toFixed(1)}k` : `${n}`;
 const stars = (r: string) => { const n = Math.max(0, Math.min(5, parseInt(r) || 0)); return "★".repeat(n) + "☆".repeat(5 - n); };
-
 const EMO_DESC: Record<string, string> = {
   frustration: "Exasperated when recommendations ignore their taste and the same songs keep returning.",
   fatigue: "Worn down by hearing the same rotation over and over, with little variety.",
@@ -39,14 +38,12 @@ const PLAN: [string, string, string][] = [
   ["premium_student", "Premium Student", "🎓"], ["premium_duo", "Premium Duo", "👥"],
   ["premium_family", "Premium Family", "👨‍👩‍👧"],
 ];
-// horizontal tabs mirror the left sidebar (Discovery IQ workspace)
-const TABS: [string, string][] = [
-  ["/", "Overview"], ["/lens", "Analytics"], ["/themes", "Theme Intelligence"],
-  ["/priority", "PM Priority Radar"], ["/pilot", "Discovery Copilot"],
-];
 const PLATFORMS: [string, string][] = [
   ["", "All"], ["play_store", "Play Store"], ["app_store", "App Store"],
   ["reddit", "Reddit"], ["forums", "Community Forum"],
+];
+const RANGES: [string, string][] = [
+  ["all", "All time"], ["2024", "Since 2024"], ["2025", "Since 2025"], ["2026", "2026 only"],
 ];
 
 export default function Overview() {
@@ -54,8 +51,17 @@ export default function Overview() {
   const x = useJSON(getExtra);
   const [modal, setModal] = useState(false);
   const [platform, setPlatform] = useState("");
+  const [range, setRange] = useState("all");
+  const [syncing, setSyncing] = useState(false);
+  const [syncedAt, setSyncedAt] = useState<string | null>(null);
   if (!s) return <p className="muted">Loading…</p>;
   const t = s.totals || {};
+
+  const sync = async () => {
+    setSyncing(true);
+    try { await Promise.all([getSummary(), getExtra()]); setSyncedAt(new Date().toLocaleTimeString()); }
+    finally { setSyncing(false); }
+  };
 
   const cats: [string, number][] = Object.entries(s.by_category || {})
     .sort((a, b) => b[1] - a[1]).map(([k, v]) => [CAT_LABEL[k] || k, v]);
@@ -73,85 +79,106 @@ export default function Overview() {
   const yearDist = x?.year_distribution || {};
   const rateDist = x?.rating_distribution || {};
   const plans = x?.plan_breakdown || {};
+  const pp = (x?.per_platform || {})[platform || "all"] || (x?.per_platform || {}).all;
 
   const sentDonut: [string, number, string][] = [
     ["Frustrated", sent.frustrated || 0, "#e64a4a"], ["Neutral", sent.neutral || 0, "#e6b34a"],
     ["Positive", sent.positive || 0, "#1db954"]].filter((d) => (d[1] as number) > 0) as [string, number, string][];
   const srcDonut: [string, number, string][] = sources.map((d) =>
     [d.label, d.count, SRC_COLOR[d.source] || "#888"] as [string, number, string]);
-  const yearBars: [string, number][] = Object.entries(yearDist).sort((a, b) => a[0].localeCompare(b[0]));
+  const yearBars: [string, number][] = Object.entries(yearDist)
+    .filter(([y]) => range === "all" || (range === "2026" ? y === "2026" : y >= range))
+    .sort((a, b) => a[0].localeCompare(b[0]));
   const rateMax = Math.max(...Object.values(rateDist), 1);
   const rateTotal = Object.values(rateDist).reduce((a, b) => a + b, 0) || 1;
-  const avgRating = (Object.entries(rateDist).reduce((a, [r, c]) => a + Number(r) * c, 0) / rateTotal).toFixed(1);
   const oneStarShare = pct((rateDist["1"] || 0) / rateTotal);
   const sevColor = (v: number) => v >= 80 ? "#e64a4a" : v >= 65 ? "#e6b34a" : "#1db954";
+  const ratingShown = pp && pp.avg_rating != null && platform !== "reddit" && platform !== "forums";
 
   return (
     <>
-      <div className="hero">
-        <h1>🎧 {PROJECT.title}</h1>
-        <div className="subtitle">{PROJECT.subtitle}</div>
-        <p className="lead">{PROJECT.context}</p>
+      {/* header row: title + AI badge + sync */}
+      <div className="ovh">
+        <div>
+          <div className="ovh-title">🎧 {PROJECT.title} <span className="ai-badge">⚡ AI-POWERED</span></div>
+          <div className="ovh-sub">{PROJECT.subtitle}</div>
+          <div className="ovh-sub2">Review corpus overview · KPIs · sentiment · PM radar — across 26,823 Spotify reviews.</div>
+        </div>
+        <div className="ovh-actions">
+          <button className="sync-btn" onClick={sync} disabled={syncing}>🔄 {syncing ? "Syncing…" : "Sync Reviews"}</button>
+          {syncedAt && <span className="sync-note">Synced ✓ {syncedAt}</span>}
+        </div>
       </div>
 
-      {/* horizontal workspace tabs */}
-      <nav className="top-tabs">
-        {TABS.map(([href, label]) => (
-          <a key={href} href={href} className={`top-tab ${href === "/" ? "active" : ""}`}>{label}</a>
-        ))}
-      </nav>
-
-      {/* platform selector (filters Recent Reviews) */}
-      <div className="platform-bar">
-        <span className="pf-lbl">PLATFORM</span>
-        {PLATFORMS.map(([k, label]) => (
-          <button key={k} className={`pf-chip ${platform === k ? "active" : ""}`} onClick={() => setPlatform(k)}>{label}</button>
-        ))}
-      </div>
-
-      {/* SUMMARY BAND */}
-      <div className="summary-band">
-        <button className="sb-total pulse-card" onClick={() => setModal(true)} aria-label="Open reviews analysed details">
-          <span className="pulse-ring" />
-          <div className="sb-total-num">{num(t.total_reviews)}</div>
-          <div className="sb-total-lbl">curated reviews analyzed 🎧</div>
-          <div className="sb-total-note">Filtered, cleaned & relevance-scored from 4 sources across 2016–2026. <span className="sb-click">Click to enlarge ↗</span></div>
-          <div className="sb-split">
-            <div className="sb-pill blue"><b>🎯 {num(t.discovery_specific)}</b><span>Discovery-specific</span></div>
-            <div className="sb-pill purple"><b>🧭 {num(t.adjacent_signal)}</b><span>Discovery-adjacent</span></div>
-            <div className="sb-pill red"><b>⚠️ {pct(t.problem_rate)}</b><span>Problem rate</span></div>
-          </div>
-        </button>
-        <div className="sb-sources">
-          <div className="sb-head">Sources analyzed · with year coverage</div>
-          {sources.length === 0 ? <span className="na">{NA}</span> : sources.map((d) => (
-            <div className="sb-src" key={d.source}>
-              <span className="sb-src-emoji" style={{ color: SRC_COLOR[d.source] }}>{SRC_EMOJI[d.source] || "•"}</span>
-              <span className="sb-src-name">{d.label}</span>
-              <span className="sb-src-time">📅 {d.year_min}–{d.year_max} · ⭐ peak {d.top_year}</span>
-              <span className="sb-src-box" style={{ borderColor: SRC_COLOR[d.source], color: "#fff" }}>{d.count.toLocaleString()}</span>
-            </div>
+      {/* filter bar: platform + time range (both functional) */}
+      <div className="filter-bar">
+        <div className="fb-group">
+          <span className="pf-lbl">PLATFORM</span>
+          {PLATFORMS.map(([k, label]) => (
+            <button key={k} className={`pf-chip ${platform === k ? "active" : ""}`} onClick={() => setPlatform(k)}>{label}</button>
+          ))}
+        </div>
+        <div className="fb-group">
+          <span className="pf-lbl">TIME RANGE</span>
+          {RANGES.map(([k, label]) => (
+            <button key={k} className={`pf-chip ${range === k ? "active" : ""}`} onClick={() => setRange(k)}>{label}</button>
           ))}
         </div>
       </div>
 
-      {/* plan mentions — moved up, top area */}
+      {/* KPI cards — change with platform */}
+      <div className="kpi-row">
+        <button className="kpi click" onClick={() => setModal(true)}>
+          <div className="kpi-top"><span className="kpi-ic">📊</span>
+            {pp?.trend_reviews != null && <span className={`kpi-trend ${pp.trend_reviews >= 0 ? "up" : "down"}`}>{pp.trend_reviews >= 0 ? "↗" : "↘"} {pct(pp.trend_reviews)}</span>}</div>
+          <div className="kpi-num">{num(pp?.reviews)}</div><div className="kpi-lbl">Reviews Analysed</div>
+          <div className="kpi-link">Click for details ↗</div>
+        </button>
+        <div className="kpi">
+          <div className="kpi-top"><span className="kpi-ic">⭐</span></div>
+          <div className="kpi-num">{ratingShown ? `${pp!.avg_rating}` : "—"}</div><div className="kpi-lbl">Average Rating</div>
+          <div className="kpi-sub">{ratingShown ? "out of 5★" : "no star ratings"}</div>
+        </div>
+        <div className="kpi">
+          <div className="kpi-top"><span className="kpi-ic">💚</span></div>
+          <div className="kpi-num">{pp ? pct(pp.positive_pct) : NA}</div><div className="kpi-lbl">Sentiment Score</div>
+          <div className="kpi-sub">positive share</div>
+        </div>
+        <div className="kpi">
+          <div className="kpi-top"><span className="kpi-ic">🏷️</span></div>
+          <div className="kpi-num">{pp?.theme_count ?? NA}</div><div className="kpi-lbl">Theme Count</div>
+          <div className="kpi-sub">discovery categories</div>
+        </div>
+      </div>
+
+      {/* sources strip — 4 equal cards */}
+      <Tag>Sources analyzed · with year coverage</Tag>
+      {sources.length === 0 ? <p className="na">{NA}</p> : (
+        <div className="src-strip">
+          {sources.map((d) => (
+            <div className="src-card" key={d.source} style={{ borderTop: `3px solid ${SRC_COLOR[d.source]}` }}>
+              <div className="src-card-top"><span>{SRC_EMOJI[d.source]} {d.label}</span></div>
+              <div className="src-card-num">{d.count.toLocaleString()}</div>
+              <div className="src-card-time">📅 {d.year_min}–{d.year_max} · ⭐ peak {d.top_year}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* plan mentions */}
       <Tag>Plan mentions in reviews</Tag>
       <Card>
         <div className="plan-grid">
           {PLAN.map(([k, label, e]) => (
-            <div className="plan-cell" key={k}>
-              <div className="plan-e">{e}</div>
-              <div className="plan-num">{(plans[k] || 0).toLocaleString()}</div>
-              <div className="plan-lbl">{label}</div>
-            </div>
+            <div className="plan-cell" key={k}><div className="plan-e">{e}</div>
+              <div className="plan-num">{(plans[k] || 0).toLocaleString()}</div><div className="plan-lbl">{label}</div></div>
           ))}
         </div>
         <div className="note">Plan tier is inferred only when users mention Free, Premium, Student, Duo, or Family in review text. Most reviews do not state plan type.</div>
       </Card>
 
-      {/* reviews by year timeline */}
-      <Tag>Reviews by Year · Timeline</Tag>
+      {/* reviews by year timeline (time range filters this) */}
+      <Tag>Reviews by Year · Timeline {range !== "all" && `· ${RANGES.find((r) => r[0] === range)?.[1]}`}</Tag>
       <Card><Histogram data={yearBars} /></Card>
 
       {/* category + sources pie */}
@@ -171,7 +198,6 @@ export default function Overview() {
         <Card title="Reviews by source"><Donut data={srcDonut} center={kfmt(t.total_reviews)} /></Card>
       </div>
 
-      {/* #1 problem */}
       {tp && (
         <div className="num1">
           <div className="num1-badge">#1 Problem</div>
@@ -193,7 +219,6 @@ export default function Overview() {
         </div>
       )}
 
-      {/* top 5 coloured */}
       <Tag>Top 5 Discovery Pain Points</Tag>
       {top5.length === 0 ? <p className="na">{NA}</p> : (
         <div className="grid">
@@ -250,7 +275,6 @@ export default function Overview() {
         </div>
       </div>
 
-      {/* recent reviews — rectangular cards with star ratings */}
       <Tag>Recent Reviews {platform && `· ${SRC_LABEL[platform] || platform}`}</Tag>
       {recent.length === 0 ? <p className="na">No recent reviews for this platform.</p> : (
         <div className="grid">
@@ -272,7 +296,6 @@ export default function Overview() {
         </div>
       )}
 
-      {/* Reviews Analysed modal */}
       {modal && (
         <div className="modal-overlay" onClick={() => setModal(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -280,16 +303,17 @@ export default function Overview() {
               <h2 style={{ margin: 0, fontSize: 20 }}>Reviews Analysed</h2>
               <button className="copy-btn" onClick={() => setModal(false)}>✕</button>
             </div>
-            <p className="muted" style={{ fontSize: 13, marginTop: 6 }}>Total curated reviews ingested, deduped, and analyzed from all four sources (2016–2026).</p>
+            <p className="muted" style={{ fontSize: 13, marginTop: 6 }}>
+              {platform ? `${SRC_LABEL[platform] || platform} — ` : "All sources — "}reviews ingested, deduped, and analyzed (2016–2026).</p>
             <div className="modal-rows">
-              <div className="modal-row"><span>Total reviews</span><b>{num(t.total_reviews)}</b></div>
-              <div className="modal-row"><span>Discovery-specific</span><b>{num(t.discovery_specific)}</b></div>
-              <div className="modal-row"><span>Discovery-adjacent</span><b>{num(t.adjacent_signal)}</b></div>
-              <div className="modal-row"><span>Problem rate</span><b>{pct(t.problem_rate)}</b></div>
-              <div className="modal-row"><span>Average rating</span><b>{avgRating} ★</b></div>
-              <div className="modal-row"><span>Sentiment (frustrated)</span><b>{pct((sent.frustrated || 0) / sentTotal)}</b></div>
-              <div className="modal-row"><span>Theme / category count</span><b>{cats.length}</b></div>
-              <div className="modal-row"><span>1★ share</span><b>{oneStarShare}</b></div>
+              <div className="modal-row"><span>Reviews analysed</span><b>{num(pp?.reviews)}</b></div>
+              <div className="modal-row"><span>Average rating</span><b>{ratingShown ? `${pp!.avg_rating} ★` : "—"}</b></div>
+              <div className="modal-row"><span>Positive sentiment</span><b>{pp ? pct(pp.positive_pct) : NA}</b></div>
+              <div className="modal-row"><span>Frustrated sentiment</span><b>{pp ? pct(pp.frustrated_pct) : NA}</b></div>
+              <div className="modal-row"><span>Theme / category count</span><b>{pp?.theme_count ?? NA}</b></div>
+              <div className="modal-row"><span>Discovery-specific (all)</span><b>{num(t.discovery_specific)}</b></div>
+              <div className="modal-row"><span>Discovery-adjacent (all)</span><b>{num(t.adjacent_signal)}</b></div>
+              <div className="modal-row"><span>1★ share (all)</span><b>{oneStarShare}</b></div>
             </div>
             <button className="modal-close" onClick={() => setModal(false)}>Close</button>
           </div>

@@ -1,5 +1,47 @@
 {
   "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
+  "per_platform": {
+    "all": {
+      "reviews": 26823,
+      "avg_rating": 3.0,
+      "positive_pct": 0.485,
+      "frustrated_pct": 0.423,
+      "theme_count": 5,
+      "trend_reviews": 0.808
+    },
+    "play_store": {
+      "reviews": 24049,
+      "avg_rating": 3.0,
+      "positive_pct": 0.475,
+      "frustrated_pct": 0.433,
+      "theme_count": 5,
+      "trend_reviews": 0.702
+    },
+    "app_store": {
+      "reviews": 2098,
+      "avg_rating": 3.5,
+      "positive_pct": 0.596,
+      "frustrated_pct": 0.297,
+      "theme_count": 5,
+      "trend_reviews": 4.591
+    },
+    "reddit": {
+      "reviews": 508,
+      "avg_rating": 2.2,
+      "positive_pct": 0.648,
+      "frustrated_pct": 0.299,
+      "theme_count": 5,
+      "trend_reviews": -0.65
+    },
+    "forums": {
+      "reviews": 168,
+      "avg_rating": null,
+      "positive_pct": 0.012,
+      "frustrated_pct": 0.935,
+      "theme_count": 5,
+      "trend_reviews": 0.0
+    }
+  },
   "source_detail": [
     {
       "source": "play_store",

@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Nav from "./components/Nav";
+import TopTabs from "./components/TopTabs";
 
 export const metadata: Metadata = {
   title: "Spotify Discovery AI · Discovery Insights Dashboard",
@@ -13,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="layout">
           <Nav />
-          <main className="main">{children}</main>
+          <main className="main"><TopTabs />{children}</main>
         </div>
       </body>
     </html>

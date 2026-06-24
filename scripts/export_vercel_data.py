@@ -848,8 +848,29 @@ def build_extra(df, engine):
         "premium_family": int(_fam.sum()),
     }
 
+    # per-platform KPI aggregates so the platform filter genuinely changes the cards
+    _plats = {"all": df, "play_store": df[df["source"] == "play_store"],
+              "app_store": df[df["source"] == "app_store"],
+              "reddit": df[df["source"] == "reddit"], "forums": df[df["source"] == "forums"]}
+    per_platform = {}
+    for _k, _sub in _plats.items():
+        _n = int(len(_sub))
+        _rt = pd.to_numeric(_sub["rating"], errors="coerce")
+        _rt = _rt[(_rt >= 1) & (_rt <= 5)].dropna()      # stars only (excl. reddit upvotes)
+        _y26 = int((_sub["_year"] == "2026").sum())
+        _y25 = int((_sub["_year"] == "2025").sum())
+        per_platform[_k] = {
+            "reviews": _n,
+            "avg_rating": round(float(_rt.mean()), 1) if len(_rt) else None,
+            "positive_pct": round(float((_sub["sentiment"] == "positive").mean()), 3) if _n else 0,
+            "frustrated_pct": round(float((_sub["sentiment"] == "frustrated").mean()), 3) if _n else 0,
+            "theme_count": int(_sub["category"].nunique()),
+            "trend_reviews": round((_y26 - _y25) / _y25, 3) if _y25 else None,
+        }
+
     return {
         "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
+        "per_platform": per_platform,
         "source_detail": source_detail,
         "top_problem": top_problem,
         "recent_reviews": recent_reviews,

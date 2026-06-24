@@ -14,7 +14,7 @@ const SRC_LABEL: Record<string, string> = {
 const SRC_COLOR: Record<string, string> = {
   play_store: "#1db954", app_store: "#4a90e6", reddit: "#e6b34a", forums: "#b18cf2",
 };
-const SRC_EMOJI: Record<string, string> = { play_store: "🤖", app_store: "🍎", reddit: "👽", forums: "💬" };
+const SRC_EMOJI: Record<string, string> = { play_store: "🤖", app_store: "📱", reddit: "👽", forums: "💬" };
 const CAT_COLOR: Record<string, string> = {
   "Discovery issue": "#e6b34a", "Repetition issue": "#e64a4a",
   "Algorithm mismatch": "#b18cf2", "Discovery positive": "#1db954",
@@ -226,7 +226,7 @@ export default function Overview() {
         </div>
       )}
 
-      <div className="grid cols-2">
+      <div className="grid cols-2 col-stretch">
         <div>
           <Tag>Why Users Are Frustrated</Tag>
           <Card>

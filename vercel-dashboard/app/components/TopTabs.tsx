@@ -5,8 +5,7 @@ import Link from "next/link";
 // Horizontal workspace tabs shown on every page (mirrors the left sidebar).
 const TABS: [string, string, string][] = [
   ["/", "🗂️", "Overview"],
-  ["/lens", "📊", "Analytics"],
-  ["/themes", "🏷️", "Theme Intelligence"],
+  ["/lens", "🔍", "Discovery Lens"],
   ["/priority", "🎯", "PM Priority Radar"],
   ["/pilot", "🤖", "Discovery Copilot"],
 ];

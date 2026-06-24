@@ -2,12 +2,10 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-// 5-item primary nav (Discovery IQ). PM Priority Radar is a first-class nav
-// item — prioritisation is core to this PM project.
+// Primary nav (Discovery IQ). Theme Intelligence is folded into Discovery Lens.
 const LINKS = [
   ["/", "🗂️", "Overview"],
-  ["/lens", "📊", "Analytics"],
-  ["/themes", "🏷️", "Theme Intelligence"],
+  ["/lens", "🔍", "Discovery Lens"],
   ["/priority", "🎯", "PM Priority Radar"],
   ["/pilot", "🤖", "Discovery Copilot"],
 ];

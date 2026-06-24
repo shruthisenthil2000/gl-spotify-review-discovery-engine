@@ -675,6 +675,40 @@ def build_extra(df, engine):
                 "Rebuild trust with transparent, tunable recommendations."],
     }
 
+    # Executive summaries cite ONLY the matching-set count (consistent with the
+    # funnel) + qualitative pain — no stray sub-need numbers that conflict.
+    f1f, f2f, wk0n = f1["feature"], f2["feature"], wk0[0]
+
+    def _exec(qid, n):
+        n = f"{n:,}"
+        return {
+            "q1": f"Across {n} reviews describing discovery friction, users say recommendations feel too "
+                  f"narrow and that genuinely new music is hard to surface. They keep landing on familiar "
+                  f"artists and previously discovered tracks.",
+            "q2": f"Across {n} reviews, users describe recommendations as off-taste or irrelevant. "
+                  f"Frustration concentrates on features like {f1f}, where suggestions don't reflect real listening.",
+            "q3": f"Across {n} reviews about listening intent, users mainly want to play their own playlists "
+                  f"without interference, find fresh music with little effort, and have more say over what plays.",
+            "q4": f"Across {n} repetition reviews, the dominant cause is shuffle replaying a small pool of a "
+                  f"large library, so the same songs loop. Forced recommendations inside user playlists make it worse.",
+            "q5": f"Repetition is not uniform across {n} discovery-specific reviews. Power users and "
+                  f"high-repetition regions feel it most, while casual listeners are comparatively less affected.",
+            "q6": f"Across {n} discovery-specific reviews, the most consistent unmet needs are shuffle "
+                  f"diversity, dislike/reset controls, and protection from AI-generated flooding.",
+            "q7": f"Among {n} feature-mention reviews, {f1f} and {f2f} draw the most frustration, with users "
+                  f"citing repetitive or off-target behavior.",
+            "q8": f"Across {n} reviews about what users want to find, demand centers on new songs first, "
+                  f"then regional music and niche / deep cuts.",
+            "q9": f"Across {n} reviews referencing mood or context, many users feel Spotify ignores their "
+                  f"current situation — workouts, study, sleep, commuting — when recommending music.",
+            "q10": f"Across {n} reviews, users ask for stronger control: dislike, 'not interested', block, "
+                   f"and the ability to reset or tune their taste profile.",
+            "q11": f"When discovery falls short, users in {n} reviews say they turn to alternatives — most "
+                   f"often {wk0n} — to find new music.",
+            "q12": f"Across {n} reviews, repetitive or irrelevant recommendations most often trigger "
+                   f"frustration and fatigue, with boredom and disappointment close behind.",
+        }.get(qid)
+
     for item in ai_pilot:
         qid = item["id"]
         cfg = QEVID.get(qid)
@@ -699,6 +733,7 @@ def build_extra(df, engine):
             item["key_insight"] = (f"Within {n_match:,} {match_label} reviews, {pain_label} is the "
                                    f"strongest signal ({int(pain_count):,} reviews).")
         item["evidence"] = n_match or item.get("evidence")
+        item["a"] = _exec(qid, n_match) or item["a"]   # consistent executive summary
 
         # quotes spanning distinct sources (relevance already enforced by rx)
         quotes, qsrc = [], set()

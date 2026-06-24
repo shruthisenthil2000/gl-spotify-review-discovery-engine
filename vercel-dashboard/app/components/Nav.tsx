@@ -2,12 +2,13 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-// 4-item primary nav (Discovery IQ). /priority remains a working route, reachable
-// by URL, but is not a primary nav item per the requested 4-item sidebar.
+// 5-item primary nav (Discovery IQ). PM Priority Radar is a first-class nav
+// item — prioritisation is core to this PM project.
 const LINKS = [
   ["/", "Overview"],
   ["/lens", "Analytics"],
   ["/themes", "Theme Intelligence"],
+  ["/priority", "PM Priority Radar"],
   ["/pilot", "Discovery Copilot"],
 ];
 

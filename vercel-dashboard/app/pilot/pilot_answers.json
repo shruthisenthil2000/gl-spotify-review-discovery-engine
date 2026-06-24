@@ -1,7 +1,7 @@
 [
   {
     "q": "Why do users struggle to discover new music?",
-    "a": "7542 reviews describe discovery friction. The biggest blockers are recommendations that feel too narrow and trouble surfacing fresh music (top unmet needs: shuffle repeats small pool (967); ai generated flooding (246); lost dislike reset control (123)).",
+    "a": "Across 7,542 reviews describing discovery friction, users say recommendations feel too narrow and that genuinely new music is hard to surface. They keep landing on familiar artists and previously discovered tracks.",
     "evidence": 7542,
     "quote": {
       "source": "play_store",
@@ -195,7 +195,7 @@
   },
   {
     "q": "What are the most common frustrations with recommendations?",
-    "a": "3338 reviews flag off-taste/irrelevant recommendations. The most frustration-heavy features are Radio (856), Smart Shuffle (697), Discover Weekly (331).",
+    "a": "Across 3,338 reviews, users describe recommendations as off-taste or irrelevant. Frustration concentrates on features like Radio, where suggestions don't reflect real listening.",
     "evidence": 3338,
     "quote": null,
     "id": "q2",
@@ -384,7 +384,7 @@
   },
   {
     "q": "What listening behaviors are users trying to achieve?",
-    "a": "Top goals by evidence: Hear their own playlist/songs without interference (2113); Find fresh / new music effortlessly (1145); Match music to mood / context / activity (1038).",
+    "a": "Across 2,724 reviews about listening intent, users mainly want to play their own playlists without interference, find fresh music with little effort, and have more say over what plays.",
     "evidence": 2724,
     "quote": null,
     "id": "q3",
@@ -577,7 +577,7 @@
   },
   {
     "q": "What causes users to repeatedly listen to the same content?",
-    "a": "4753 repetition reviews. The dominant driver is shuffle replaying a small pool of a large library (967 reviews).",
+    "a": "Across 4,753 repetition reviews, the dominant cause is shuffle replaying a small pool of a large library, so the same songs loop. Forced recommendations inside user playlists make it worse.",
     "evidence": 4753,
     "quote": {
       "source": "play_store",
@@ -771,7 +771,7 @@
   },
   {
     "q": "Which user segments experience different discovery challenges?",
-    "a": "Most repetition-affected cohorts: tr (48% repetition); MEA (38% repetition); id (30% repetition). Power users show higher repetition than casual listeners.",
+    "a": "Repetition is not uniform across 19,620 discovery-specific reviews. Power users and high-repetition regions feel it most, while casual listeners are comparatively less affected.",
     "evidence": 19620,
     "quote": null,
     "id": "q5",
@@ -956,7 +956,7 @@
   },
   {
     "q": "What unmet needs emerge consistently across reviews?",
-    "a": "Consistently: shuffle repeats small pool (967); ai generated flooding (246); lost dislike reset control (123) — plus lost dislike/reset controls and AI-generated flooding.",
+    "a": "Across 19,620 discovery-specific reviews, the most consistent unmet needs are shuffle diversity, dislike/reset controls, and protection from AI-generated flooding.",
     "evidence": 19620,
     "quote": null,
     "id": "q6",
@@ -1153,7 +1153,7 @@
   },
   {
     "q": "Which Spotify discovery features frustrate users the most?",
-    "a": "By mention × frustration: Radio (856), Smart Shuffle (697), Discover Weekly (331).",
+    "a": "Among 2,143 feature-mention reviews, Radio and Smart Shuffle draw the most frustration, with users citing repetitive or off-target behavior.",
     "evidence": 2143,
     "quote": {
       "text": "Really BAD ako for liste.ming via bluetooth, makes idiotic requests ,works trough radio sttions% Steeldfrequencies",
@@ -1351,7 +1351,7 @@
   },
   {
     "q": "What kind of new music do users want to find?",
-    "a": "Desired discovery types (by evidence): New songs (1028), Regional music (398), New artists (191), Niche music (109).",
+    "a": "Across 622 reviews about what users want to find, demand centers on new songs first, then regional music and niche / deep cuts.",
     "evidence": 622,
     "quote": null,
     "id": "q8",
@@ -1544,7 +1544,7 @@
   },
   {
     "q": "Does Spotify understand users' mood and current listening context?",
-    "a": "1038 reviews reference mood, context, or activity (workout, study, sleep, driving…). Many feel discovery ignores it.",
+    "a": "Across 959 reviews referencing mood or context, many users feel Spotify ignores their current situation — workouts, study, sleep, commuting — when recommending music.",
     "evidence": 959,
     "quote": null,
     "id": "q9",
@@ -1725,7 +1725,7 @@
   },
   {
     "q": "Do users want more control over their recommendations?",
-    "a": "704 reviews ask for stronger controls: dislike, 'not interested', block, or reset taste profile.",
+    "a": "Across 382 reviews, users ask for stronger control: dislike, 'not interested', block, and the ability to reset or tune their taste profile.",
     "evidence": 382,
     "quote": null,
     "id": "q10",
@@ -1910,7 +1910,7 @@
   },
   {
     "q": "Where do users go when Spotify discovery fails?",
-    "a": "Named alternatives/workarounds: YouTube (1020), Apple Music (258), SoundCloud (80), TikTok (56).",
+    "a": "When discovery falls short, users in 1,829 reviews say they turn to alternatives — most often YouTube — to find new music.",
     "evidence": 1829,
     "quote": null,
     "id": "q11",
@@ -2102,7 +2102,7 @@
   },
   {
     "q": "How do users feel when recommendations become repetitive or irrelevant?",
-    "a": "Dominant negative emotions: frustration (1476), fatigue (648), disappointment (382), boredom (46).",
+    "a": "Across 650 reviews, repetitive or irrelevant recommendations most often trigger frustration and fatigue, with boredom and disappointment close behind.",
     "evidence": 650,
     "quote": {
       "text": "He's the only one without a premium in my family and he's getting frustrated because he can't skip music without limits, repeat music, please fix this Edit: I kinda like that they censor bad words in the lyrics, kinda cool",

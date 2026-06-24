@@ -46,11 +46,6 @@ export default function Nav() {
         })}
       </nav>
 
-      <div className="info-card">
-        <div className="info-title">AI Voice-of-Customer</div>
-        <div className="info-body">Real reviews from Google Play, App Store, Reddit &amp; Community — analyzed with RAG.</div>
-      </div>
-
       <div className="profile">
         <div className="avatar">GP</div>
         <div className="profile-meta">

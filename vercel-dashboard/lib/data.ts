@@ -113,6 +113,17 @@ export interface Extra {
     heuristic: boolean; label: string; paid: number; free: number; unknown: number;
     paid_share: number; free_share: number;
   };
+  source_detail?: { source: string; label: string; count: number;
+    year_min: string | null; year_max: string | null; top_year: string | null;
+    by_year: Record<string, number> }[];
+  top_problem?: {
+    title: string; category: string; count: number; pct_total: number;
+    sentiment: Record<string, number>; frustration_pct: number; avg_friction: number;
+    top_region: string | null; severity: number | null;
+    quote?: { text: string; source: string; region: string; rating: string } | null;
+  };
+  recent_reviews?: { source: string; region: string; rating: string; date: string;
+    sentiment: string; category: string; frustration: string; text: string }[];
   desired_discovery_types: { type: string; evidence: number | string; count: number }[];
   listening_behaviors: { behavior: string; evidence: number }[];
   ai_pilot: {

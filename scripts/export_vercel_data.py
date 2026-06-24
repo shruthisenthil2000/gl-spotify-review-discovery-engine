@@ -755,8 +755,66 @@ def build_extra(df, engine):
         item["segments"] = SEGMENTS.get(qid, [])
         item["recommendations"] = RECS.get(qid, [])
 
+    # ---- Overview extras: per-source year detail, #1 problem, recent reviews ----
+    def _yr(ts):
+        m = re.search(r"(\d{4})", str(ts))
+        return m.group(1) if m else None
+    df["_year"] = df["timestamp"].map(_yr)
+    source_detail = []
+    for src, lbl in [("play_store", "Play Store"), ("app_store", "App Store"),
+                     ("reddit", "Reddit"), ("forums", "Spotify Community Forums")]:
+        sub = df[df["source"] == src]
+        byc = sub["_year"].dropna().value_counts().sort_index()
+        source_detail.append({
+            "source": src, "label": lbl, "count": int(len(sub)),
+            "year_min": (str(byc.index.min()) if len(byc) else None),
+            "year_max": (str(byc.index.max()) if len(byc) else None),
+            "top_year": (str(byc.idxmax()) if len(byc) else None),
+            "by_year": {str(k): int(v) for k, v in byc.items()}})
+
+    def _sent_counts(sub):
+        vc = sub["sentiment"].value_counts()
+        return {k: int(vc.get(k, 0)) for k in ["frustrated", "neutral", "positive"]}
+
+    prob = df[df["category"] == "discovery_issue"]   # largest problem category = #1 problem
+    ins0 = (engine.get("insights") or [{}])[0]
+    top_problem = {
+        "title": "Discovery friction — users can't surface new music",
+        "category": "discovery_issue",
+        "count": int(len(prob)),
+        "pct_total": round(len(prob) / total, 3),
+        "sentiment": _sent_counts(prob),
+        "frustration_pct": round(float((prob["sentiment"] == "frustrated").mean()), 3),
+        "avg_friction": round(float(prob["friction"].mean()), 1),
+        "top_region": (prob["region"].replace("", pd.NA).dropna().value_counts().idxmax()
+                       if len(prob) else None),
+        "severity": ins0.get("severity_score"),
+        "quote": (ins0.get("representative_quotes") or [None])[0],
+    }
+
+    FRUST = {"frustrated": "High", "neutral": "Medium", "positive": "Low"}
+    dd = df[df["timestamp"].astype(str).str.match(r"\d{4}-\d{2}-\d{2}")].sort_values(
+        "timestamp", ascending=False)
+    recent_reviews, seen_r = [], set()
+    for _, r in dd.iterrows():
+        key = " ".join(str(r["text"]).split())[:34].lower()
+        if key in seen_r or len(str(r["text"]).split()) < 6:
+            continue
+        seen_r.add(key)
+        recent_reviews.append({
+            "source": r["source"], "region": r.get("region", ""),
+            "rating": str(r.get("rating", "") or ""), "date": str(r["timestamp"])[:10],
+            "sentiment": r["sentiment"], "category": r["category"],
+            "frustration": FRUST.get(r["sentiment"], "Medium"),
+            "text": " ".join(str(r["text"]).split())[:240]})
+        if len(recent_reviews) >= 8:
+            break
+
     return {
         "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
+        "source_detail": source_detail,
+        "top_problem": top_problem,
+        "recent_reviews": recent_reviews,
         "friction": friction,
         "journey": journey,
         "emotion": emotion,

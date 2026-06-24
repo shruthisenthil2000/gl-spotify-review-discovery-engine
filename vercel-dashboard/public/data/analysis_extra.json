@@ -1,5 +1,183 @@
 {
   "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
+  "source_detail": [
+    {
+      "source": "play_store",
+      "label": "Play Store",
+      "count": 24049,
+      "year_min": "2019",
+      "year_max": "2026",
+      "top_year": "2026",
+      "by_year": {
+        "2019": 1,
+        "2020": 1,
+        "2021": 3,
+        "2022": 1,
+        "2023": 171,
+        "2024": 1088,
+        "2025": 8431,
+        "2026": 14353
+      }
+    },
+    {
+      "source": "app_store",
+      "label": "App Store",
+      "count": 2098,
+      "year_min": "2020",
+      "year_max": "2026",
+      "top_year": "2026",
+      "by_year": {
+        "2020": 1,
+        "2021": 18,
+        "2022": 35,
+        "2023": 86,
+        "2024": 152,
+        "2025": 274,
+        "2026": 1532
+      }
+    },
+    {
+      "source": "reddit",
+      "label": "Reddit",
+      "count": 508,
+      "year_min": "2016",
+      "year_max": "2026",
+      "top_year": "2025",
+      "by_year": {
+        "2016": 10,
+        "2018": 21,
+        "2019": 39,
+        "2020": 9,
+        "2021": 62,
+        "2022": 12,
+        "2023": 17,
+        "2024": 77,
+        "2025": 100,
+        "2026": 35
+      }
+    },
+    {
+      "source": "forums",
+      "label": "Spotify Community Forums",
+      "count": 168,
+      "year_min": "2016",
+      "year_max": "2026",
+      "top_year": "2020",
+      "by_year": {
+        "2016": 1,
+        "2019": 2,
+        "2020": 5,
+        "2021": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": 1,
+        "2026": 1
+      }
+    }
+  ],
+  "top_problem": {
+    "title": "Discovery friction — users can't surface new music",
+    "category": "discovery_issue",
+    "count": 7542,
+    "pct_total": 0.281,
+    "sentiment": {
+      "frustrated": 4286,
+      "neutral": 733,
+      "positive": 2523
+    },
+    "frustration_pct": 0.568,
+    "avg_friction": 65.7,
+    "top_region": "North America",
+    "severity": 84.9,
+    "quote": {
+      "source": "play_store",
+      "region": "North America",
+      "rating": "1",
+      "text": "auto shuffle doesn't make sense. its annoying and too many ads in between. m sure of finding better app than this. everytime i m driving, I can't select each song. n that's the only time I get to listen to music. so this app is big no to me"
+    }
+  },
+  "recent_reviews": [
+    {
+      "source": "app_store",
+      "region": "North America",
+      "rating": "1",
+      "date": "2026-06-21",
+      "sentiment": "frustrated",
+      "category": "repetition_issue",
+      "frustration": "High",
+      "text": "the \"shuffle\" feature doesn't really work and you get the same songs in the same order till the \"algorithm\"?!!! changes it based on a monthly basis???!"
+    },
+    {
+      "source": "app_store",
+      "region": "ANZ",
+      "rating": "5",
+      "date": "2026-06-21",
+      "sentiment": "positive",
+      "category": "general_music_experience",
+      "frustration": "Low",
+      "text": "I was wondering if yall could help add a scroll to bottom button because I personally have a really long playlist and the most relevant songs are near the bottom and it just be really convenient!! Of course this isn’t a necessity but it wou"
+    },
+    {
+      "source": "app_store",
+      "region": "SE Asia",
+      "rating": "5",
+      "date": "2026-06-21",
+      "sentiment": "positive",
+      "category": "general_music_experience",
+      "frustration": "Low",
+      "text": "The best music streaming experience out there. The personalized playlists are amazing and the library is virtually endless."
+    },
+    {
+      "source": "app_store",
+      "region": "Europe",
+      "rating": "1",
+      "date": "2026-06-21",
+      "sentiment": "frustrated",
+      "category": "general_music_experience",
+      "frustration": "High",
+      "text": "I am a student and was using the Student Premium plan. At some point, Spotify switched me to the regular Premium plan, which costs twice as much (€12 instead of the student price). I had no reasonable way to continue paying for it, so I sim"
+    },
+    {
+      "source": "app_store",
+      "region": "North America",
+      "rating": "5",
+      "date": "2026-06-21",
+      "sentiment": "positive",
+      "category": "discovery_positive",
+      "frustration": "Low",
+      "text": "It is a wonderful service , I enjoy it listening to my favorite songs on and the different podcasts that they have available. It’s variety of audio books to listen to on here as well . It’s very easy to use and I recommend it definitely wor"
+    },
+    {
+      "source": "app_store",
+      "region": "North America",
+      "rating": "5",
+      "date": "2026-06-21",
+      "sentiment": "positive",
+      "category": "discovery_issue",
+      "frustration": "Low",
+      "text": "So good and it’s easy to use. Song recommendations are accurate and there’s a free trial to test it out!"
+    },
+    {
+      "source": "app_store",
+      "region": "UK/Ireland",
+      "rating": "3",
+      "date": "2026-06-21",
+      "sentiment": "neutral",
+      "category": "repetition_issue",
+      "frustration": "Medium",
+      "text": "So I love the app generally but why can’t I scroll down to the bottom of the liked songs by artists to get to certain songs Why does it not play my full library when I put it on apparently I have 8000 songs at least yet my shuffle plays the"
+    },
+    {
+      "source": "app_store",
+      "region": "Europe",
+      "rating": "5",
+      "date": "2026-06-21",
+      "sentiment": "positive",
+      "category": "algorithm_mismatch",
+      "frustration": "Low",
+      "text": "Mi piacciono le playlist che mi crea e l’ordine in qui le mette secondo da come di solito le metto io!! È bellissimo Spotify e lo consiglio assolutamente!"
+    }
+  ],
   "friction": {
     "average": 52.0,
     "distribution": {

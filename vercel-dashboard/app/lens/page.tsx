@@ -33,6 +33,9 @@ export default function Lens() {
   const desired = x?.desired_discovery_types ?? [];
   const features = x?.feature_frustration_map ?? [];
   const maxNeed = Math.max(...needs.map((n) => n?.evidence_count ?? 0), 1);
+  const needsTotal = needs.reduce((a, n) => a + (n?.evidence_count ?? 0), 0) || 1;
+  const desiredTop = desired.filter((d) => typeof d?.evidence === "number")
+    .sort((a, b) => (b.evidence as number) - (a.evidence as number))[0];
 
   // --- conclusion data (grounded in the dataset) ---
   const segs = (x.segment_cards ?? []).slice().sort((a, b) => (b.problem_rate || 0) - (a.problem_rate || 0));
@@ -68,7 +71,7 @@ export default function Lens() {
                 <div className="ti-bar" key={name}>
                   <span className="ti-bar-name">{name}</span>
                   <div className="ti-bar-track"><div className="ti-bar-fill" style={{ width: `${v}%`, background: c }} /></div>
-                  <span className="ti-bar-val" style={{ color: c }}>{v.toFixed(0)}<span className="ti-bar-unit">/100</span></span>
+                  <span className="ti-bar-val" style={{ color: c }}>{v.toFixed(0)}<span className="bar-slash">/100</span></span>
                 </div>
               );
             })}
@@ -127,18 +130,18 @@ export default function Lens() {
       <Tag>Theme Intelligence</Tag>
       <p className="sec-desc">Recurring signals mined from the scraped reviews — what users repeatedly
         ask for, and the kinds of discovery they say they <b>actually want</b>.</p>
-      <div className="grid cols-2">
+      <div className="grid cols-2 even">
         <Card title="🎯 Biggest unmet needs">
           <p className="card-desc">What users repeatedly ask for but don't get (by evidence count).</p>
           {needs.length === 0 ? <span className="na">{NA}</span> : (
-            <div className="ti-bars">
+            <div className="ti-bars wide-val">
               {needs.slice(0, 6).map((n, i) => {
                 const c = PAL[i % PAL.length], v = n?.evidence_count ?? 0;
                 return (
                   <div className="ti-bar" key={i}>
                     <span className="ti-bar-name">{cap(String(n?.need ?? "").replace(/_/g, " "))}</span>
                     <div className="ti-bar-track"><div className="ti-bar-fill" style={{ width: `${(v / maxNeed) * 100}%`, background: c }} /></div>
-                    <span className="ti-bar-val" style={{ color: c }}>{v.toLocaleString()}</span>
+                    <span className="ti-bar-val" style={{ color: c }}>{v.toLocaleString()} <span className="ti-bar-unit">({((v / needsTotal) * 100).toFixed(0)}%)</span></span>
                   </div>
                 );
               })}
@@ -200,6 +203,10 @@ export default function Lens() {
           {segs.length >= 3 && (
             <li><b>The segments least able to find new songs:</b> <b>{segs[0].segment}</b> ({(segs[0].problem_rate * 100).toFixed(0)}% problem rate, top pain: {segs[0].top_pain_point}), then <b>{segs[1].segment}</b> ({(segs[1].problem_rate * 100).toFixed(0)}%) and <b>{segs[2].segment}</b> ({(segs[2].problem_rate * 100).toFixed(0)}%).</li>
           )}
+          <li className="concl-head">Concluding insight by topic</li>
+          <li><b style={{ color: "#1db954" }}>Discovery Friction Score —</b> average friction is <b>{f.average}/100</b>, and <b>{highFriction.toLocaleString()}</b> reviews (≥60) are high-friction, so discovery feels hard for roughly half the dataset.</li>
+          <li><b style={{ color: "#b18cf2" }}>Emotion Detection (heuristic) —</b> in problem reviews, frustration and fatigue clearly outweigh positive signals — users sound worn down, not delighted, when recommendations repeat.</li>
+          <li><b style={{ color: "#4a9ee6" }}>Theme Intelligence —</b> {topNeed && <>the top unmet need is <b>{cap(String(topNeed.need).replace(/_/g, " "))}</b> ({topNeed.evidence_count.toLocaleString()} mentions)</>}{desiredTop && <>; the discovery users most want is <b>{cap(desiredTop.type)}</b> ({(desiredTop.evidence as number).toLocaleString()} mentions)</>}.</li>
           <li><b>Bottom line:</b> discovery breaks down most for regional/multilingual and high-engagement listeners, who fall back on repeat playlists because recommendations feel narrow, repetitive, or mismatched — a recommendation-and-control problem, not a content-availability one.</li>
         </ul>
       </div>

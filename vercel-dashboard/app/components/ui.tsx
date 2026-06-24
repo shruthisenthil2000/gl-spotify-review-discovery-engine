@@ -72,22 +72,34 @@ export function Scatter({ points, height = 320 }:
   const maxY = 100;
   const sx = (v: number) => pad + (Math.log1p(v) / Math.log1p(maxX)) * (w - pad * 2);
   const sy = (v: number) => h - pad - (v / maxY) * (h - pad * 2);
-  const maxR = Math.max(...points.map((p) => p.r), 1);
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} style={{ width: "100%" }}>
-      <line x1={pad} y1={h - pad} x2={w - pad} y2={h - pad} stroke="#333" />
-      <line x1={pad} y1={pad} x2={pad} y2={h - pad} stroke="#333" />
-      <text x={w / 2} y={h - 8} fill="#777" fontSize="11" textAnchor="middle">Frequency (evidence, log) →</text>
-      <text x={14} y={h / 2} fill="#777" fontSize="11" textAnchor="middle" transform={`rotate(-90 14 ${h / 2})`}>Impact (severity) →</text>
-      {points.map((p, i) => (
-        <g key={i}>
-          <circle cx={sx(p.x)} cy={sy(p.y)} r={6 + (p.r / maxR) * 16} fill={p.color} fillOpacity="0.6" stroke={p.color} />
-          <text x={sx(p.x)} y={sy(p.y) - 12 - (p.r / maxR) * 16} fill="#ccc" fontSize="9" textAnchor="middle">
-            {p.label.length > 26 ? p.label.slice(0, 26) + "…" : p.label}
-          </text>
-        </g>
-      ))}
-    </svg>
+    <div>
+      <svg viewBox={`0 0 ${w} ${h}`} style={{ width: "100%" }}>
+        {[0, 25, 50, 75, 100].map((g) => (
+          <g key={g}>
+            <line x1={pad} y1={sy(g)} x2={w - pad} y2={sy(g)} stroke="#222" />
+            <text x={pad - 8} y={sy(g) + 3} fill="#8a8a8a" fontSize="10" textAnchor="end">{g}</text>
+          </g>
+        ))}
+        <line x1={pad} y1={h - pad} x2={w - pad} y2={h - pad} stroke="#444" />
+        <line x1={pad} y1={pad} x2={pad} y2={h - pad} stroke="#444" />
+        <text x={w / 2} y={h - 10} fill="#bdbdbd" fontSize="12.5" fontWeight="600" textAnchor="middle">Frequency — how often mentioned →</text>
+        <text x={16} y={h / 2} fill="#bdbdbd" fontSize="12.5" fontWeight="600" textAnchor="middle" transform={`rotate(-90 16 ${h / 2})`}>Impact — severity →</text>
+        {points.map((p, i) => (
+          <g key={i}>
+            <circle cx={sx(p.x)} cy={sy(p.y)} r={11} fill={p.color} fillOpacity="0.92" stroke="#0a0a0a" strokeWidth="1.5" />
+            <text x={sx(p.x)} y={sy(p.y) + 4} fill="#fff" fontSize="11" fontWeight="800" textAnchor="middle">{i + 1}</text>
+          </g>
+        ))}
+      </svg>
+      <div className="scatter-legend">
+        {points.map((p, i) => (
+          <span className="sl-item" key={i}>
+            <span className="sl-dot" style={{ background: p.color }}>{i + 1}</span>{p.label}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 

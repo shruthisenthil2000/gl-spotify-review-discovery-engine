@@ -67,7 +67,7 @@ h2 { font-size: 18px; margin: 34px 0 14px; color: var(--text); }
 
 .grid { display: grid; gap: 14px; }
 .cards { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
-.cols-2 { grid-template-columns: 1fr 1fr; }
+.cols-2 { grid-template-columns: 1fr 1fr; align-items: start; }
 @media (max-width: 880px) { .cols-2 { grid-template-columns: 1fr; } .sidebar { width: 180px; } }
 
 .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
@@ -433,7 +433,7 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
 @media (max-width: 620px) { .sb-src { grid-template-columns: 12px 1fr; } .sb-src-count,.sb-src-years { grid-column: 2; } }
 
 /* #1 problem — prominent */
-.num1 { display: flex; gap: 0; margin-top: 8px; border-radius: 16px; overflow: hidden;
+.num1 { display: flex; gap: 0; margin: 36px 0 8px; border-radius: 16px; overflow: hidden;
   border: 1px solid rgba(230,74,74,.4); background: linear-gradient(135deg, #221314, #160d0e); }
 .num1-badge { background: linear-gradient(180deg, #e64a4a, #b83838); color: #fff; font-weight: 900;
   font-size: 13px; padding: 18px 14px; writing-mode: vertical-rl; transform: rotate(180deg);
@@ -648,10 +648,14 @@ input[type="text"], select { background: var(--bg3); border: 1px solid var(--bor
 .voices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 @media (max-width: 900px) { .voices { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .voices { grid-template-columns: 1fr; } }
-.voice { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
-.voice-q { color: #e8e8e8; font-size: 14px; line-height: 1.6; }
-.voice-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; }
-.voice-who { color: var(--muted); font-size: 11.5px; }
+.voice { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  display: flex; flex-direction: column; }
+.voice-q { color: #e8e8e8; font-size: 14px; line-height: 1.6;
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.voice-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  margin-top: auto; padding-top: 16px; }
+.voice-who { color: var(--muted); font-size: 11.5px; flex: 1; min-width: 0; line-height: 1.45; }
+.voice-rate { flex-shrink: 0; }
 .voice-stars { color: #e6b34a; font-size: 14px; letter-spacing: 1px; white-space: nowrap; }
 
 /* equal-spacing rhythm for top blocks */

@@ -164,7 +164,7 @@ export function Donut({ data, size = 180, center }:
   const r = size / 2, stroke = size * 0.16, rad = r - stroke / 2, circ = 2 * Math.PI * rad;
   let offset = 0;
   return (
-    <div style={{ display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", gap: 22, alignItems: "center", flexWrap: "wrap" }}>
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ flexShrink: 0 }}>
         <g transform={`rotate(-90 ${r} ${r})`}>
           {data.map(([label, val, color]) => {
@@ -181,13 +181,13 @@ export function Donut({ data, size = 180, center }:
         {center && <text x={r} y={r} textAnchor="middle" dominantBaseline="central"
           fill="#fff" fontSize={size * 0.16} fontWeight="800">{center}</text>}
       </svg>
-      <div>
+      <div style={{ flex: 1, minWidth: 190 }}>
         {data.map(([label, val, color]) => (
-          <div key={label} style={{ display: "flex", alignItems: "center", gap: 10, margin: "7px 0", fontSize: 13 }}>
+          <div key={label} style={{ display: "flex", alignItems: "center", gap: 10, margin: "8px 0", fontSize: 13 }}>
             <span style={{ width: 10, height: 10, borderRadius: 2, background: color, flexShrink: 0 }} />
-            <span style={{ color: "var(--muted)", flex: 1, whiteSpace: "nowrap", paddingRight: 8 }}>{label}</span>
-            <b style={{ minWidth: 62, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{val.toLocaleString()}</b>
-            <span className="muted" style={{ fontSize: 11, minWidth: 40, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>({((val / total) * 100).toFixed(0)}%)</span>
+            <span style={{ color: "var(--muted)", flex: 1, minWidth: 0, paddingRight: 8, lineHeight: 1.35 }}>{label}</span>
+            <b style={{ minWidth: 62, textAlign: "right", fontVariantNumeric: "tabular-nums", flexShrink: 0 }}>{val.toLocaleString()}</b>
+            <span className="muted" style={{ fontSize: 11, minWidth: 40, textAlign: "right", fontVariantNumeric: "tabular-nums", flexShrink: 0 }}>({((val / total) * 100).toFixed(0)}%)</span>
           </div>
         ))}
       </div>

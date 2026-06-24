@@ -793,7 +793,13 @@ html, body { overflow-x: clip; }
 
 /* make Top high-friction themes compact */
 .fric-themes.compact { gap: 11px; }
-.fric-themes.compact .ft-row { grid-template-columns: 150px minmax(0, 300px) 36px 104px; gap: 12px; justify-content: start; }
+.fric-themes.compact .ft-row { grid-template-columns: 160px minmax(0, 1fr) 46px 116px; gap: 14px; }
+
+/* paired cards that must end on the same line (equal height, filled) */
+.cols-2.even { align-items: stretch; }
+.cols-2.even > .card { height: 100%; display: flex; flex-direction: column; }
+.cols-2.even > .card > .ti-bars { flex: 1 1 auto; justify-content: space-between; }
+.cols-2.even > .card > .histo { flex: 1 1 auto; }
 .fric-themes.compact .ft-track { height: 13px; }
 .fric-themes.compact .ft-name { font-size: 13px; }
 .fric-themes.compact .ft-val { font-size: 13.5px; }

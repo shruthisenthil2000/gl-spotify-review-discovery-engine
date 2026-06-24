@@ -53,7 +53,7 @@ export default function Lens() {
         <Metric label="Average friction (0–100)" value={f.average} />
         <Metric label="High-friction reviews (≥60)" value={highFriction.toLocaleString()} />
       </div>
-      <div className="grid cols-2" style={{ margin: "14px 0 18px" }}>
+      <div className="grid cols-2 even" style={{ margin: "14px 0 18px" }}>
         <Card title="Friction score distribution">
           <p className="card-desc">Each bar is a friction band on the 0–100 scale (0–20 = almost no
             friction, 80–100 = severe). Taller = more reviews at that level.</p>
@@ -95,7 +95,7 @@ export default function Lens() {
       <Tag>Emotion Detection {em.heuristic && <span className="badge grey">heuristic</span>}</Tag>
       <p className="sec-desc">Reviews are scanned for emotional language to show <b>how users feel</b> about
         discovery — frustration and fatigue when it fails, excitement when it works.</p>
-      <div className="grid cols-2">
+      <div className="grid cols-2 even">
         <Card title="Emotion distribution">
           <p className="card-desc">Reviews expressing each emotion, with share of all detected emotions.</p>
           <div className="ti-bars wide-val">

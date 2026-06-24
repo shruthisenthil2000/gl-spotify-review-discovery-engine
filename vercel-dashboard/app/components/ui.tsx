@@ -135,16 +135,16 @@ export function CopyButton({ text }: { text: string }) {
   );
 }
 
-export function Histogram({ data, fmtLabel }:
-  { data: [string, number][]; fmtLabel?: (k: string) => string }) {
+export function Histogram({ data, fmtLabel, colors }:
+  { data: [string, number][]; fmtLabel?: (k: string) => string; colors?: string[] }) {
   if (!data || data.length === 0) return <div className="na">{NA}</div>;
   const max = Math.max(...data.map((d) => d[1]), 1);
   return (
     <div className="histo">
-      {data.map(([k, v]) => (
+      {data.map(([k, v], i) => (
         <div className="col" key={k}>
           <div className="val">{v.toLocaleString()}</div>
-          <div className="bar" style={{ height: `${(v / max) * 100}%` }} />
+          <div className="bar" style={{ height: `${(v / max) * 100}%`, ...(colors ? { background: colors[i % colors.length] } : {}) }} />
           <div className="lab">{fmtLabel ? fmtLabel(k) : k}</div>
         </div>
       ))}

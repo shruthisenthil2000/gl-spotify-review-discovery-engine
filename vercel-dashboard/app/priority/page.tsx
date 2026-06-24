@@ -22,10 +22,15 @@ export default function Priority() {
   if (!e) return <p className="muted">Loading…</p>;
   const radar = e.priority_radar || [];
   const insights = e.insights || [];
+  // findings derived from the scraped reviews (for the summary)
+  const top3 = radar.slice(0, 3);
+  const top3sum = top3.reduce((a, r) => a + r.frequency, 0);
+  const segsByProblem = (x?.segment_cards ?? []).slice().sort((a, b) => (b.problem_rate || 0) - (a.problem_rate || 0));
+  const oppsByEv = (x?.opportunities ?? []).filter((o) => o.evidence != null)
+    .slice().sort((a, b) => (b.evidence as number) - (a.evidence as number));
 
   return (
     <>
-      <h1>PM Priority Radar</h1>
       <p className="page-sub wide wide-line">Product strategy view — opportunities ranked by impact × frequency; top-right means high impact and high frequency, so act there first.</p>
 
       <Tag>Impact × Frequency matrix</Tag>
@@ -156,16 +161,16 @@ export default function Priority() {
         );
       })}
 
-      <Tag>Section summary</Tag>
+      <Tag>Section summary · what the reviews tell us</Tag>
       <div className="concl-card">
         <ul className="concl">
-          <li><b style={{ color: PAL[0] }}>Impact × Frequency matrix —</b> plots every opportunity by how often it's mentioned vs how severe it is; the top-right cluster is where to act first.</li>
-          <li><b style={{ color: PAL[1] }}>Ranked opportunities —</b> a single priority order; {radar[0] && <>“{radar[0].opportunity}” tops the list at priority {radar[0].priority_score}.</>}</li>
-          <li><b style={{ color: PAL[2] }}>Root cause → opportunity —</b> ties each pain to its driver (red) and the product fix (green), sized by review evidence.</li>
-          <li><b style={{ color: PAL[3] }}>Most affected segments —</b> regional/multilingual and power users carry the highest problem rates, so localisation and control features matter most.</li>
-          <li><b style={{ color: PAL[4] }}>What should Spotify build —</b> the highest-leverage shippable features, each tied to a specific user pain.</li>
-          <li><b style={{ color: PAL[5] }}>Expected impact —</b> every build is backed by a measurable slice of the 26,823 scraped reviews and a clear user it helps.</li>
-          <li><b style={{ color: PAL[6] }}>PM-ready insights —</b> the issues ranked by severity, each with real review quotes as evidence.</li>
+          {radar[0] && <li><b style={{ color: PAL[0] }}>Discovery is the #1 problem —</b> “{radar[0].opportunity}” is both the most-raised ({radar[0].frequency.toLocaleString()} reviews) and most severe (impact {radar[0].impact}) issue, well ahead of everything else.</li>}
+          {top3.length === 3 && <li><b style={{ color: PAL[1] }}>Three themes carry the load —</b> discovery friction, repetition, and recommendation mismatch together account for <b>{top3sum.toLocaleString()}</b> reviews of high-priority evidence.</li>}
+          <li><b style={{ color: PAL[2] }}>One common root cause —</b> across themes, complaints trace back to the algorithm leaning on familiar listening history and giving users too little control to steer it.</li>
+          {segsByProblem.length >= 2 && <li><b style={{ color: PAL[3] }}>Non-English and heavy users hurt most —</b> {segsByProblem[0].segment} ({(segsByProblem[0].problem_rate * 100).toFixed(0)}% problem rate) and {segsByProblem[1].segment} ({(segsByProblem[1].problem_rate * 100).toFixed(0)}%) face the worst discovery friction.</li>}
+          {oppsByEv[0] && <li><b style={{ color: PAL[4] }}>Clear, sizeable demand for fixes —</b> the most-backed build, “{oppsByEv[0].name}”, maps to {(oppsByEv[0].evidence as number).toLocaleString()} reviews ({(((oppsByEv[0].evidence as number) / TOTAL) * 100).toFixed(0)}% of the dataset).</li>}
+          <li><b style={{ color: PAL[5] }}>Negative sentiment is concentrated —</b> frustration clusters in repetition and discovery-failure reviews, repeated consistently in real user quotes across regions.</li>
+          <li><b style={{ color: PAL[6] }}>Bottom line —</b> Spotify's discovery problem is one of control and freshness, not catalogue — users want to steer recommendations away from the familiar and toward genuinely new music.</li>
         </ul>
       </div>
     </>

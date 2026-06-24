@@ -44,7 +44,6 @@ export default function Lens() {
 
   return (
     <>
-      <h1>Discovery Lens</h1>
       <p className="page-sub wide">A clear view of why users struggle to discover new music, what keeps
         them stuck on repeat, and how they feel when recommendations go stale.</p>
 
@@ -88,7 +87,7 @@ export default function Lens() {
                 <span className="ft-name">{cap(t.theme)}</span>
                 <div className="ft-track"><div className="ft-fill" style={{ width: `${Math.min(100, t.avg_friction)}%`, background: c }} /></div>
                 <span className="ft-val" style={{ color: c }}>{t.avg_friction}</span>
-                <span className="ft-rev">{t.count.toLocaleString()} reviews</span>
+                <span className="ft-rev">{t.count.toLocaleString()} reviews ({((t.count / 26823) * 100).toFixed(0)}%)</span>
               </div>
             );
           })}

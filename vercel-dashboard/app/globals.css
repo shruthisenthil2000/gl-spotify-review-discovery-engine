@@ -793,7 +793,7 @@ html, body { overflow-x: clip; }
 
 /* make Top high-friction themes compact */
 .fric-themes.compact { gap: 11px; }
-.fric-themes.compact .ft-row { grid-template-columns: 160px minmax(0, 1fr) 46px 116px; gap: 14px; }
+.fric-themes.compact .ft-row { grid-template-columns: 160px minmax(0, 1fr) 46px 168px; gap: 14px; }
 
 /* paired cards that must end on the same line (equal height, filled) */
 .cols-2.even { align-items: stretch; }

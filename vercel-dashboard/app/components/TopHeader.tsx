@@ -15,7 +15,7 @@ export default function TopHeader() {
       <div>
         <div className="apphdr-title">🎧 <span className="apphdr-name">{PROJECT.title}</span> <span className="ai-badge">⚡ AI-POWERED</span></div>
         <div className="apphdr-sub">{PROJECT.subtitle}</div>
-        <div className="apphdr-sub2">26,823 reviews from Play Store, App Store, Reddit &amp; Community — analyzed for discovery friction, recommendation quality, and repeat listening.</div>
+        <div className="apphdr-sub2">26,823 reviews from Play Store, App Store, Reddit &amp; Spotify Community Forum — analyzed for discovery friction, recommendation quality, and repeat listening.</div>
       </div>
       <div className="apphdr-actions">
         <button className="ghost-btn" onClick={sync} disabled={syncing}>

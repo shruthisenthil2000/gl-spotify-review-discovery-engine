@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { getSummary, getExtra, PROJECT, num, pct, NA } from "@/lib/data";
+import { getSummary, getExtra, num, pct, NA } from "@/lib/data";
 import { Card, Donut, Histogram, Tag, useJSON } from "./components/ui";
 
 const CAT_LABEL: Record<string, string> = {
@@ -31,8 +31,6 @@ const EMO_DESC: Record<string, string> = {
   disappointment: "Expectations of strong discovery aren’t met, especially among long-time users.",
   distrust: "Suspect the algorithm pushes AI-generated or agenda-driven content over real artists.",
 };
-const FRUST = { High: { c: "red", e: "🔥" }, Medium: { c: "amber", e: "⚡" }, Low: { c: "green", e: "🙂" } } as Record<string, { c: string; e: string }>;
-const SENT_EMOJI: Record<string, string> = { frustrated: "😠", neutral: "😐", positive: "😊" };
 const PLAN: [string, string, string][] = [
   ["free", "Free", "🆓"], ["premium_individual", "Premium Individual", "💎"],
   ["premium_student", "Premium Student", "🎓"], ["premium_duo", "Premium Duo", "👥"],
@@ -40,7 +38,7 @@ const PLAN: [string, string, string][] = [
 ];
 const PLATFORMS: [string, string][] = [
   ["", "All"], ["play_store", "Play Store"], ["app_store", "App Store"],
-  ["reddit", "Reddit"], ["forums", "Community Forum"],
+  ["reddit", "Reddit"], ["forums", "Community"],
 ];
 const RANGES: [string, string][] = [
   ["all", "All time"], ["2024", "Since 2024"], ["2025", "Since 2025"], ["2026", "2026 only"],
@@ -49,19 +47,11 @@ const RANGES: [string, string][] = [
 export default function Overview() {
   const s = useJSON(getSummary);
   const x = useJSON(getExtra);
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState<string | null>(null);
   const [platform, setPlatform] = useState("");
   const [range, setRange] = useState("all");
-  const [syncing, setSyncing] = useState(false);
-  const [syncedAt, setSyncedAt] = useState<string | null>(null);
   if (!s) return <p className="muted">Loading…</p>;
   const t = s.totals || {};
-
-  const sync = async () => {
-    setSyncing(true);
-    try { await Promise.all([getSummary(), getExtra()]); setSyncedAt(new Date().toLocaleTimeString()); }
-    finally { setSyncing(false); }
-  };
 
   const cats: [string, number][] = Object.entries(s.by_category || {})
     .sort((a, b) => b[1] - a[1]).map(([k, v]) => [CAT_LABEL[k] || k, v]);
@@ -75,11 +65,15 @@ export default function Overview() {
   const sent = s.by_sentiment || {};
   const sentTotal = Object.values(sent).reduce((a, b) => a + b, 0) || 1;
   const recentAll = x?.recent_reviews || [];
-  const recent = platform ? recentAll.filter((r) => r.source === platform) : recentAll;
+  const recent = recentAll.filter((r) =>
+    (!platform || r.source === platform) &&
+    (range === "all" || (range === "2026" ? r.date.startsWith("2026") : (r.date.slice(0, 4) >= range))));
   const yearDist = x?.year_distribution || {};
   const rateDist = x?.rating_distribution || {};
   const plans = x?.plan_breakdown || {};
-  const pp = (x?.per_platform || {})[platform || "all"] || (x?.per_platform || {}).all;
+  const ppr = x?.per_platform_range;
+  const pp = ppr ? (ppr[platform || "all"] || ppr.all)?.[range] : undefined;
+  const trend = (x?.per_platform || {})[platform || "all"]?.trend_reviews;
 
   const sentDonut: [string, number, string][] = [
     ["Frustrated", sent.frustrated || 0, "#e64a4a"], ["Neutral", sent.neutral || 0, "#e6b34a"],
@@ -97,20 +91,7 @@ export default function Overview() {
 
   return (
     <>
-      {/* header row: title + AI badge + sync */}
-      <div className="ovh">
-        <div>
-          <div className="ovh-title">🎧 {PROJECT.title} <span className="ai-badge">⚡ AI-POWERED</span></div>
-          <div className="ovh-sub">{PROJECT.subtitle}</div>
-          <div className="ovh-sub2">Review corpus overview · KPIs · sentiment · PM radar — across 26,823 Spotify reviews.</div>
-        </div>
-        <div className="ovh-actions">
-          <button className="sync-btn" onClick={sync} disabled={syncing}>🔄 {syncing ? "Syncing…" : "Sync Reviews"}</button>
-          {syncedAt && <span className="sync-note">Synced ✓ {syncedAt}</span>}
-        </div>
-      </div>
-
-      {/* filter bar: platform + time range (both functional) */}
+      {/* filter bar — platform + time range, same line, subtle chips */}
       <div className="filter-bar">
         <div className="fb-group">
           <span className="pf-lbl">PLATFORM</span>
@@ -126,38 +107,38 @@ export default function Overview() {
         </div>
       </div>
 
-      {/* KPI cards — change with platform */}
+      {/* KPI cards — all clickable, pulsing, change with platform + range */}
       <div className="kpi-row">
-        <button className="kpi click" onClick={() => setModal(true)}>
+        <button className="kpi pulse" onClick={() => setModal("reviews")}>
           <div className="kpi-top"><span className="kpi-ic">📊</span>
-            {pp?.trend_reviews != null && <span className={`kpi-trend ${pp.trend_reviews >= 0 ? "up" : "down"}`}>{pp.trend_reviews >= 0 ? "↗" : "↘"} {pct(pp.trend_reviews)}</span>}</div>
+            {trend != null && <span className={`kpi-trend ${trend >= 0 ? "up" : "down"}`}>{trend >= 0 ? "↗" : "↘"} {pct(trend)}</span>}</div>
           <div className="kpi-num">{num(pp?.reviews)}</div><div className="kpi-lbl">Reviews Analysed</div>
           <div className="kpi-link">Click for details ↗</div>
         </button>
-        <div className="kpi">
+        <button className="kpi pulse" onClick={() => setModal("rating")}>
           <div className="kpi-top"><span className="kpi-ic">⭐</span></div>
           <div className="kpi-num">{ratingShown ? `${pp!.avg_rating}` : "—"}</div><div className="kpi-lbl">Average Rating</div>
-          <div className="kpi-sub">{ratingShown ? "out of 5★" : "no star ratings"}</div>
-        </div>
-        <div className="kpi">
+          <div className="kpi-link">Click for details ↗</div>
+        </button>
+        <button className="kpi pulse" onClick={() => setModal("sentiment")}>
           <div className="kpi-top"><span className="kpi-ic">💚</span></div>
           <div className="kpi-num">{pp ? pct(pp.positive_pct) : NA}</div><div className="kpi-lbl">Sentiment Score</div>
-          <div className="kpi-sub">positive share</div>
-        </div>
-        <div className="kpi">
+          <div className="kpi-link">Click for details ↗</div>
+        </button>
+        <button className="kpi pulse" onClick={() => setModal("themes")}>
           <div className="kpi-top"><span className="kpi-ic">🏷️</span></div>
           <div className="kpi-num">{pp?.theme_count ?? NA}</div><div className="kpi-lbl">Theme Count</div>
-          <div className="kpi-sub">discovery categories</div>
-        </div>
+          <div className="kpi-link">Click for details ↗</div>
+        </button>
       </div>
 
-      {/* sources strip — 4 equal cards */}
+      {/* sources strip */}
       <Tag>Sources analyzed · with year coverage</Tag>
       {sources.length === 0 ? <p className="na">{NA}</p> : (
         <div className="src-strip">
           {sources.map((d) => (
             <div className="src-card" key={d.source} style={{ borderTop: `3px solid ${SRC_COLOR[d.source]}` }}>
-              <div className="src-card-top"><span>{SRC_EMOJI[d.source]} {d.label}</span></div>
+              <div className="src-card-top">{SRC_EMOJI[d.source]} {d.label}</div>
               <div className="src-card-num">{d.count.toLocaleString()}</div>
               <div className="src-card-time">📅 {d.year_min}–{d.year_max} · ⭐ peak {d.top_year}</div>
             </div>
@@ -165,7 +146,6 @@ export default function Overview() {
         </div>
       )}
 
-      {/* plan mentions */}
       <Tag>Plan mentions in reviews</Tag>
       <Card>
         <div className="plan-grid">
@@ -177,11 +157,9 @@ export default function Overview() {
         <div className="note">Plan tier is inferred only when users mention Free, Premium, Student, Duo, or Family in review text. Most reviews do not state plan type.</div>
       </Card>
 
-      {/* reviews by year timeline (time range filters this) */}
       <Tag>Reviews by Year · Timeline {range !== "all" && `· ${RANGES.find((r) => r[0] === range)?.[1]}`}</Tag>
       <Card><Histogram data={yearBars} /></Card>
 
-      {/* category + sources pie */}
       <Tag>Category Breakdown & Source Mix</Tag>
       <div className="grid cols-2">
         <Card title="Category breakdown">
@@ -275,47 +253,60 @@ export default function Overview() {
         </div>
       </div>
 
+      {/* recent reviews — User Voices format */}
       <Tag>Recent Reviews {platform && `· ${SRC_LABEL[platform] || platform}`}</Tag>
-      {recent.length === 0 ? <p className="na">No recent reviews for this platform.</p> : (
-        <div className="grid">
+      {recent.length === 0 ? <p className="na">No recent reviews for this selection.</p> : (
+        <div className="voices">
           {recent.map((r, i) => (
-            <div className="rev-box" key={i}>
-              <div className="rev-top">
-                <span className="rev-src">{SRC_EMOJI[r.source] || "📱"} {SRC_LABEL[r.source] || r.source}</span>
-                {r.rating && <span className="rev-stars" title={`${r.rating}/5`}>{stars(r.rating)}</span>}
-              </div>
-              <div className="rev-text">{r.text}</div>
-              <div className="rev-foot">
-                <span className={`badge ${FRUST[r.frustration]?.c || "grey"}`}>{FRUST[r.frustration]?.e} {r.frustration}</span>
-                <span className="badge grey">{SENT_EMOJI[r.sentiment] || ""} {cap(r.sentiment)}</span>
-                <span className="badge grey">🏷️ {r.category.replace(/_/g, " ")}</span>
-                <span className="muted" style={{ fontSize: 12 }}>📍 {r.region || NA}{r.date ? ` · 📅 ${r.date}` : ""}</span>
+            <div className="voice" key={i}>
+              <div className="voice-q">“{r.text}”</div>
+              <div className="voice-foot">
+                <span className="voice-who">{SRC_EMOJI[r.source] || "📱"} {SRC_LABEL[r.source] || r.source}{r.region ? ` · ${r.region}` : ""}{r.date ? ` · ${r.date}` : ""}</span>
+                {r.rating && <span className="voice-stars">{stars(r.rating)}</span>}
               </div>
             </div>
           ))}
         </div>
       )}
 
+      {/* KPI modals */}
       {modal && (
-        <div className="modal-overlay" onClick={() => setModal(false)}>
+        <div className="modal-overlay" onClick={() => setModal(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-head">
-              <h2 style={{ margin: 0, fontSize: 20 }}>Reviews Analysed</h2>
-              <button className="copy-btn" onClick={() => setModal(false)}>✕</button>
+              <h2 style={{ margin: 0, fontSize: 20 }}>
+                {modal === "reviews" ? "Reviews Analysed" : modal === "rating" ? "Average Rating"
+                  : modal === "sentiment" ? "Sentiment Score" : "Theme Count"}
+              </h2>
+              <button className="copy-btn" onClick={() => setModal(null)}>✕</button>
             </div>
             <p className="muted" style={{ fontSize: 13, marginTop: 6 }}>
-              {platform ? `${SRC_LABEL[platform] || platform} — ` : "All sources — "}reviews ingested, deduped, and analyzed (2016–2026).</p>
+              {platform ? `${SRC_LABEL[platform] || platform}` : "All sources"} · {RANGES.find((r) => r[0] === range)?.[1]}
+            </p>
             <div className="modal-rows">
-              <div className="modal-row"><span>Reviews analysed</span><b>{num(pp?.reviews)}</b></div>
-              <div className="modal-row"><span>Average rating</span><b>{ratingShown ? `${pp!.avg_rating} ★` : "—"}</b></div>
-              <div className="modal-row"><span>Positive sentiment</span><b>{pp ? pct(pp.positive_pct) : NA}</b></div>
-              <div className="modal-row"><span>Frustrated sentiment</span><b>{pp ? pct(pp.frustrated_pct) : NA}</b></div>
-              <div className="modal-row"><span>Theme / category count</span><b>{pp?.theme_count ?? NA}</b></div>
-              <div className="modal-row"><span>Discovery-specific (all)</span><b>{num(t.discovery_specific)}</b></div>
-              <div className="modal-row"><span>Discovery-adjacent (all)</span><b>{num(t.adjacent_signal)}</b></div>
-              <div className="modal-row"><span>1★ share (all)</span><b>{oneStarShare}</b></div>
+              {modal === "reviews" && <>
+                <div className="modal-row"><span>Reviews analysed</span><b>{num(pp?.reviews)}</b></div>
+                <div className="modal-row"><span>Discovery-specific (all)</span><b>{num(t.discovery_specific)}</b></div>
+                <div className="modal-row"><span>Discovery-adjacent (all)</span><b>{num(t.adjacent_signal)}</b></div>
+                <div className="modal-row"><span>Problem rate (all)</span><b>{pct(t.problem_rate)}</b></div>
+              </>}
+              {modal === "rating" && <>
+                <div className="modal-row"><span>Average rating</span><b>{ratingShown ? `${pp!.avg_rating} ★` : "—"}</b></div>
+                {[5, 4, 3, 2, 1].map((r) => (
+                  <div className="modal-row" key={r}><span>{r}★ reviews (all)</span><b>{(rateDist[String(r)] || 0).toLocaleString()}</b></div>
+                ))}
+              </>}
+              {modal === "sentiment" && <>
+                <div className="modal-row"><span>Positive</span><b>{pp ? pct(pp.positive_pct) : NA}</b></div>
+                <div className="modal-row"><span>Frustrated</span><b>{pp ? pct(pp.frustrated_pct) : NA}</b></div>
+                <div className="modal-row"><span>Neutral</span><b>{pp ? pct(Math.max(0, 1 - pp.positive_pct - pp.frustrated_pct)) : NA}</b></div>
+              </>}
+              {modal === "themes" && <>
+                <div className="modal-row"><span>Theme / category count</span><b>{pp?.theme_count ?? NA}</b></div>
+                {cats.map(([n, v]) => <div className="modal-row" key={n}><span>{n}</span><b>{v.toLocaleString()}</b></div>)}
+              </>}
             </div>
-            <button className="modal-close" onClick={() => setModal(false)}>Close</button>
+            <button className="modal-close" onClick={() => setModal(null)}>Close</button>
           </div>
         </div>
       )}

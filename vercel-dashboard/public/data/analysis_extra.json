@@ -42,6 +42,158 @@
       "trend_reviews": 0.0
     }
   },
+  "per_platform_range": {
+    "all": {
+      "all": {
+        "reviews": 26823,
+        "avg_rating": 3.0,
+        "positive_pct": 0.485,
+        "frustrated_pct": 0.423,
+        "theme_count": 5
+      },
+      "2024": {
+        "reviews": 26045,
+        "avg_rating": 3.0,
+        "positive_pct": 0.484,
+        "frustrated_pct": 0.424,
+        "theme_count": 5
+      },
+      "2025": {
+        "reviews": 24727,
+        "avg_rating": 3.0,
+        "positive_pct": 0.487,
+        "frustrated_pct": 0.421,
+        "theme_count": 5
+      },
+      "2026": {
+        "reviews": 15921,
+        "avg_rating": 3.1,
+        "positive_pct": 0.499,
+        "frustrated_pct": 0.408,
+        "theme_count": 5
+      }
+    },
+    "play_store": {
+      "all": {
+        "reviews": 24049,
+        "avg_rating": 3.0,
+        "positive_pct": 0.475,
+        "frustrated_pct": 0.433,
+        "theme_count": 5
+      },
+      "2024": {
+        "reviews": 23872,
+        "avg_rating": 3.0,
+        "positive_pct": 0.474,
+        "frustrated_pct": 0.434,
+        "theme_count": 5
+      },
+      "2025": {
+        "reviews": 22784,
+        "avg_rating": 3.0,
+        "positive_pct": 0.478,
+        "frustrated_pct": 0.432,
+        "theme_count": 5
+      },
+      "2026": {
+        "reviews": 14353,
+        "avg_rating": 3.0,
+        "positive_pct": 0.488,
+        "frustrated_pct": 0.421,
+        "theme_count": 5
+      }
+    },
+    "app_store": {
+      "all": {
+        "reviews": 2098,
+        "avg_rating": 3.5,
+        "positive_pct": 0.596,
+        "frustrated_pct": 0.297,
+        "theme_count": 5
+      },
+      "2024": {
+        "reviews": 1958,
+        "avg_rating": 3.5,
+        "positive_pct": 0.593,
+        "frustrated_pct": 0.298,
+        "theme_count": 5
+      },
+      "2025": {
+        "reviews": 1806,
+        "avg_rating": 3.5,
+        "positive_pct": 0.601,
+        "frustrated_pct": 0.291,
+        "theme_count": 5
+      },
+      "2026": {
+        "reviews": 1532,
+        "avg_rating": 3.5,
+        "positive_pct": 0.604,
+        "frustrated_pct": 0.287,
+        "theme_count": 5
+      }
+    },
+    "reddit": {
+      "all": {
+        "reviews": 508,
+        "avg_rating": 2.2,
+        "positive_pct": 0.648,
+        "frustrated_pct": 0.299,
+        "theme_count": 5
+      },
+      "2024": {
+        "reviews": 212,
+        "avg_rating": 2.1,
+        "positive_pct": 0.505,
+        "frustrated_pct": 0.415,
+        "theme_count": 5
+      },
+      "2025": {
+        "reviews": 135,
+        "avg_rating": 2.3,
+        "positive_pct": 0.526,
+        "frustrated_pct": 0.385,
+        "theme_count": 5
+      },
+      "2026": {
+        "reviews": 35,
+        "avg_rating": 2.0,
+        "positive_pct": 0.457,
+        "frustrated_pct": 0.4,
+        "theme_count": 4
+      }
+    },
+    "forums": {
+      "all": {
+        "reviews": 168,
+        "avg_rating": null,
+        "positive_pct": 0.012,
+        "frustrated_pct": 0.935,
+        "theme_count": 5
+      },
+      "2024": {
+        "reviews": 3,
+        "avg_rating": null,
+        "positive_pct": 0.0,
+        "frustrated_pct": 1.0,
+        "theme_count": 1
+      },
+      "2025": {
+        "reviews": 2,
+        "avg_rating": null,
+        "positive_pct": 0.0,
+        "frustrated_pct": 1.0,
+        "theme_count": 1
+      },
+      "2026": {
+        "reviews": 1,
+        "avg_rating": null,
+        "positive_pct": 0.0,
+        "frustrated_pct": 1.0,
+        "theme_count": 1
+      }
+    }
+  },
   "source_detail": [
     {
       "source": "play_store",

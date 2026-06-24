@@ -132,6 +132,8 @@ export interface Extra {
   plan_breakdown?: Record<string, number>;
   per_platform?: Record<string, { reviews: number; avg_rating: number | null;
     positive_pct: number; frustrated_pct: number; theme_count: number; trend_reviews: number | null }>;
+  per_platform_range?: Record<string, Record<string, { reviews: number; avg_rating: number | null;
+    positive_pct: number; frustrated_pct: number; theme_count: number }>>;
   desired_discovery_types: { type: string; evidence: number | string; count: number }[];
   listening_behaviors: { behavior: string; evidence: number }[];
   ai_pilot: {

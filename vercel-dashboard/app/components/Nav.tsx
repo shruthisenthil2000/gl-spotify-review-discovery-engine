@@ -5,11 +5,11 @@ import Link from "next/link";
 // 5-item primary nav (Discovery IQ). PM Priority Radar is a first-class nav
 // item — prioritisation is core to this PM project.
 const LINKS = [
-  ["/", "Overview"],
-  ["/lens", "Analytics"],
-  ["/themes", "Theme Intelligence"],
-  ["/priority", "PM Priority Radar"],
-  ["/pilot", "Discovery Copilot"],
+  ["/", "🗂️", "Overview"],
+  ["/lens", "📊", "Analytics"],
+  ["/themes", "🏷️", "Theme Intelligence"],
+  ["/priority", "🎯", "PM Priority Radar"],
+  ["/pilot", "🤖", "Discovery Copilot"],
 ];
 
 function SpotifyMark() {
@@ -38,10 +38,12 @@ export default function Nav() {
 
       <div className="nav-section-label">Workspace</div>
       <nav className="nav">
-        {LINKS.map(([href, label]) => {
+        {LINKS.map(([href, emoji, label]) => {
           const active = href === "/" ? path === "/" : path.startsWith(href);
           return (
-            <Link key={href} href={href} className={active ? "active" : ""}>{label}</Link>
+            <Link key={href} href={href} className={active ? "active" : ""}>
+              <span className="nav-emoji">{emoji}</span>{label}
+            </Link>
           );
         })}
       </nav>

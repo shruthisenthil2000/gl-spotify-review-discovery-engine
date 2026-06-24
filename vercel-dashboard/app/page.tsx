@@ -1,6 +1,6 @@
 "use client";
 import { getSummary, getExtra, PROJECT, num, pct, NA } from "@/lib/data";
-import { Card, BarList, Donut, Tag, useJSON } from "./components/ui";
+import { Card, Donut, Tag, useJSON } from "./components/ui";
 
 const CAT_LABEL: Record<string, string> = {
   discovery_issue: "Discovery issue", repetition_issue: "Repetition issue",
@@ -12,6 +12,11 @@ const SRC_LABEL: Record<string, string> = {
 };
 const SRC_COLOR: Record<string, string> = {
   play_store: "#1db954", app_store: "#4a90e6", reddit: "#e6b34a", forums: "#b18cf2",
+};
+const CAT_COLOR: Record<string, string> = {
+  "Discovery issue": "#e6b34a", "Repetition issue": "#e64a4a",
+  "Algorithm mismatch": "#b18cf2", "Discovery positive": "#1db954",
+  "General / adjacent signal": "#5a5a5a",
 };
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const EMO_DESC: Record<string, string> = {
@@ -86,7 +91,22 @@ export default function Overview() {
       </div>
 
       <Tag>Category breakdown</Tag>
-      <Card><BarList data={cats} /></Card>
+      <Card>
+        <div className="catbars">
+          {cats.map(([name, val]) => {
+            const max = Math.max(...cats.map((c) => c[1]), 1);
+            return (
+              <div className="catbar" key={name}>
+                <span className="catbar-name">{name}</span>
+                <div className="catbar-track">
+                  <div className="catbar-fill" style={{ width: `${(val / max) * 100}%`, background: CAT_COLOR[name] || "#1db954" }} />
+                </div>
+                <span className="catbar-val">{val.toLocaleString()}</span>
+              </div>
+            );
+          })}
+        </div>
+      </Card>
 
       {/* #1 PROBLEM — prominent */}
       {tp && (

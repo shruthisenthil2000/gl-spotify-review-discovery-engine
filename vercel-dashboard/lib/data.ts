@@ -70,7 +70,9 @@ export interface ReviewsFile {
 }
 
 async function fetchJSON<T>(path: string): Promise<T> {
-  const res = await fetch(path, { cache: "force-cache" });
+  // no-store so newly exported fields (source_detail, recent_reviews, …) are
+  // never served from a stale browser cache of an older JSON build.
+  const res = await fetch(path, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load ${path}`);
   return res.json();
 }

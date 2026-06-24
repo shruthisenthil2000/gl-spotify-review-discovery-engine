@@ -200,6 +200,32 @@
       "paid": 36
     }
   },
+  "year_distribution": {
+    "2016": 11,
+    "2018": 21,
+    "2019": 42,
+    "2020": 16,
+    "2021": 84,
+    "2022": 48,
+    "2023": 275,
+    "2024": 1318,
+    "2025": 8806,
+    "2026": 15921
+  },
+  "rating_distribution": {
+    "1": 8806,
+    "2": 2987,
+    "3": 2670,
+    "4": 2945,
+    "5": 8991
+  },
+  "plan_breakdown": {
+    "free": 1638,
+    "premium_individual": 941,
+    "premium_student": 30,
+    "premium_duo": 16,
+    "premium_family": 105
+  },
   "friction": {
     "average": 52.0,
     "distribution": {

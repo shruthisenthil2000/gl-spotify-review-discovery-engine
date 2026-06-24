@@ -826,12 +826,37 @@ def build_extra(df, engine):
         if len(recent_reviews) >= 8:
             break
 
+    # overall reviews by year (all sources) — timeline
+    yd = df["_year"].dropna().value_counts().sort_index()
+    year_distribution = {str(k): int(v) for k, v in yd.items()}
+
+    # ratings distribution (impact) 1..5
+    rr = pd.to_numeric(df["rating"], errors="coerce").dropna().round().astype(int)
+    rr = rr[(rr >= 1) & (rr <= 5)]
+    rating_distribution = {str(i): int((rr == i).sum()) for i in range(1, 6)}
+
+    # plan breakdown (heuristic from review text)
+    _fam = df["text"].str.contains(re.compile(r"family (plan|premium|account|subscription)|premium family", re.I))
+    _duo = df["text"].str.contains(re.compile(r"\bduo (plan|premium|account)\b|premium duo", re.I))
+    _stu = df["text"].str.contains(re.compile(r"student (plan|premium|discount|subscription)|premium student", re.I))
+    _prem_ind = _ipaid & ~_fam & ~_duo & ~_stu
+    plan_breakdown = {
+        "free": int(_ifree.sum()),
+        "premium_individual": int(_prem_ind.sum()),
+        "premium_student": int(_stu.sum()),
+        "premium_duo": int(_duo.sum()),
+        "premium_family": int(_fam.sum()),
+    }
+
     return {
         "generated_from": "discovery_insights_dataset.csv (frozen v1) + engine_output.json",
         "source_detail": source_detail,
         "top_problem": top_problem,
         "recent_reviews": recent_reviews,
         "emotion_tier": emotion_tier,
+        "year_distribution": year_distribution,
+        "rating_distribution": rating_distribution,
+        "plan_breakdown": plan_breakdown,
         "friction": friction,
         "journey": journey,
         "emotion": emotion,

@@ -178,6 +178,28 @@
       "text": "Mi piacciono le playlist che mi crea e l’ordine in qui le mette secondo da come di solito le metto io!! È bellissimo Spotify e lo consiglio assolutamente!"
     }
   ],
+  "emotion_tier": {
+    "boredom": {
+      "free": 1,
+      "paid": 0
+    },
+    "frustration": {
+      "free": 264,
+      "paid": 117
+    },
+    "distrust": {
+      "free": 22,
+      "paid": 41
+    },
+    "fatigue": {
+      "free": 47,
+      "paid": 52
+    },
+    "disappointment": {
+      "free": 65,
+      "paid": 36
+    }
+  },
   "friction": {
     "average": 52.0,
     "distribution": {

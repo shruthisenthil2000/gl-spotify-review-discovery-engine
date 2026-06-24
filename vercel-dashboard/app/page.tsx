@@ -1,6 +1,6 @@
 "use client";
 import { getSummary, getExtra, PROJECT, num, pct, NA } from "@/lib/data";
-import { Metric, Card, BarList, Tag, useJSON } from "./components/ui";
+import { Card, BarList, Donut, Tag, useJSON } from "./components/ui";
 
 const CAT_LABEL: Record<string, string> = {
   discovery_issue: "Discovery issue", repetition_issue: "Repetition issue",
@@ -10,15 +10,16 @@ const CAT_LABEL: Record<string, string> = {
 const SRC_LABEL: Record<string, string> = {
   play_store: "Play Store", app_store: "App Store", reddit: "Reddit", forums: "Spotify Community",
 };
+const SRC_COLOR: Record<string, string> = {
+  play_store: "#1db954", app_store: "#4a90e6", reddit: "#e6b34a", forums: "#b18cf2",
+};
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
-// Plain-language description for each detected emotion.
 const EMO_DESC: Record<string, string> = {
-  frustration: "Users are exasperated when recommendations ignore their taste and the same songs keep returning.",
-  fatigue: "Listeners feel worn down by hearing the same rotation over and over, with little variety.",
+  frustration: "Exasperated when recommendations ignore their taste and the same songs keep returning.",
+  fatigue: "Worn down by hearing the same rotation over and over, with little variety.",
   boredom: "The experience feels stale and predictable — nothing new to explore.",
   disappointment: "Expectations of strong discovery aren’t met, especially among long-time users.",
-  distrust: "Users suspect the algorithm pushes AI-generated or agenda-driven content over real artists.",
+  distrust: "Suspect the algorithm pushes AI-generated or agenda-driven content over real artists.",
   excitement: "When discovery works, users are delighted by fresh, personal recommendations.",
 };
 const FRUST_CLASS: Record<string, string> = { High: "red", Medium: "amber", Low: "green" };
@@ -36,12 +37,18 @@ export default function Overview() {
   const top5 = x?.top5_insights || [];
   const emo = x ? Object.entries(x.emotion.distribution).sort((a, b) => b[1] - a[1]) : [];
   const negEmo = emo.filter(([k]) => k !== "excitement");
+  const tier = x?.emotion_tier || {};
   const sent = s.by_sentiment || {};
   const sentTotal = Object.values(sent).reduce((a, b) => a + b, 0) || 1;
-  const fp = x?.free_paid;
   const recent = x?.recent_reviews || [];
   const topYears = (by: Record<string, number>) =>
     Object.entries(by).sort((a, b) => b[1] - a[1]).slice(0, 3);
+
+  const sentDonut: [string, number, string][] = [
+    ["Frustrated", sent.frustrated || 0, "#e64a4a"],
+    ["Neutral", sent.neutral || 0, "#e6b34a"],
+    ["Positive", sent.positive || 0, "#1db954"],
+  ].filter((d) => (d[1] as number) > 0) as [string, number, string][];
 
   return (
     <>
@@ -51,57 +58,56 @@ export default function Overview() {
         <p className="lead">{PROJECT.context}</p>
       </div>
 
-      <div className="grid cards" style={{ marginTop: 18 }}>
-        <div className="card metric kpi-accent"><div className="label">Total reviews analyzed</div><div className="value">{num(t.total_reviews)}</div></div>
-        <div className="card metric kpi-accent blue"><div className="label">Discovery-specific</div><div className="value">{num(t.discovery_specific)}</div></div>
-        <div className="card metric kpi-accent purple"><div className="label">Discovery-adjacent</div><div className="value">{num(t.adjacent_signal)}</div></div>
-        <div className="card metric kpi-accent red"><div className="label">Problem rate</div><div className="value">{pct(t.problem_rate)}</div></div>
-      </div>
-
-      {/* per-source counts + year coverage (side mention of the 26,823) */}
-      <Card title="Reviews by source & year coverage">
-        {sources.length === 0 ? <span className="na">{NA}</span> : (
-          <div className="src-table">
-            {sources.map((d) => (
-              <div className="src-row" key={d.source}>
-                <div className="src-name">{d.label}</div>
-                <div className="src-count">{d.count.toLocaleString()} <span className="muted">reviews</span></div>
-                <div className="src-years">
-                  {d.year_min && d.year_max ? `${d.year_min}–${d.year_max}` : NA}
-                  {d.top_year ? ` · most in ${d.top_year}` : ""}
-                  <span className="src-byyear">{topYears(d.by_year).map(([y, c]) => `${y}: ${c.toLocaleString()}`).join("  ·  ")}</span>
-                </div>
-              </div>
-            ))}
+      {/* SUMMARY BAND: total → sources (with years) → discovery split */}
+      <div className="summary-band">
+        <div className="sb-total">
+          <div className="sb-total-num">{num(t.total_reviews)}</div>
+          <div className="sb-total-lbl">curated reviews analyzed</div>
+          <div className="sb-split">
+            <div className="sb-pill blue"><b>{num(t.discovery_specific)}</b><span>Discovery-specific</span></div>
+            <div className="sb-pill purple"><b>{num(t.adjacent_signal)}</b><span>Discovery-adjacent</span></div>
+            <div className="sb-pill red"><b>{pct(t.problem_rate)}</b><span>Problem rate</span></div>
           </div>
-        )}
-      </Card>
+        </div>
+        <div className="sb-sources">
+          <div className="sb-head">Sources analyzed · with year coverage</div>
+          {sources.length === 0 ? <span className="na">{NA}</span> : sources.map((d) => (
+            <div className="sb-src" key={d.source}>
+              <span className="sb-dot" style={{ background: SRC_COLOR[d.source] || "#888" }} />
+              <span className="sb-src-name">{d.label}</span>
+              <span className="sb-src-count">{d.count.toLocaleString()}</span>
+              <span className="sb-src-years">{d.year_min && d.year_max ? `${d.year_min}–${d.year_max}` : NA}
+                {d.top_year ? ` · peak ${d.top_year}` : ""}
+                <span className="sb-byyear">{topYears(d.by_year).map(([y, c]) => `${y}: ${c.toLocaleString()}`).join("  ·  ")}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <Tag>Category breakdown</Tag>
       <Card><BarList data={cats} /></Card>
 
-      {/* #1 problem — detailed */}
-      <Tag>#1 Problem · Discovery Friction</Tag>
-      {!tp ? <p className="na">{NA}</p> : (
-        <Card>
-          <div style={{ display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
-            <div style={{ maxWidth: 520 }}>
-              <b style={{ fontSize: 16 }}>{tp.title}</b>
-              <p className="muted" style={{ fontSize: 13, lineHeight: 1.6, marginTop: 6 }}>
-                The single biggest problem in the dataset: <b style={{ color: "#fff" }}>{tp.count.toLocaleString()} reviews</b> ({pct(tp.pct_total)} of all 26,823) describe trouble surfacing genuinely new music.
-                Sentiment skews negative — <b style={{ color: "var(--red)" }}>{pct(tp.frustration_pct)} frustrated</b>, with an average discovery-friction score of <b>{tp.avg_friction}/100</b>. Most concentrated in <b>{tp.top_region || NA}</b>.
-              </p>
+      {/* #1 PROBLEM — prominent */}
+      {tp && (
+        <div className="num1">
+          <div className="num1-badge">#1 Problem</div>
+          <div className="num1-body">
+            <h2 style={{ margin: "0 0 6px" }}>{tp.title}</h2>
+            <p style={{ margin: 0, color: "#e2e2e2", fontSize: 14, lineHeight: 1.6 }}>
+              The single biggest problem in the dataset — <b>{tp.count.toLocaleString()} reviews</b> ({pct(tp.pct_total)} of all 26,823) describe trouble surfacing genuinely new music.
+              Sentiment skews negative at <b style={{ color: "#ffb3b3" }}>{pct(tp.frustration_pct)} frustrated</b>, with an average discovery-friction score of <b>{tp.avg_friction}/100</b>, most concentrated in <b>{tp.top_region || NA}</b>.
+            </p>
+            <div className="num1-stats">
+              <div className="n1s red"><b>{tp.sentiment.frustrated?.toLocaleString()}</b><span>Frustrated</span></div>
+              <div className="n1s"><b>{tp.sentiment.neutral?.toLocaleString()}</b><span>Neutral</span></div>
+              <div className="n1s green"><b>{tp.sentiment.positive?.toLocaleString()}</b><span>Positive</span></div>
+              <div className="n1s amber"><b>{tp.severity ?? NA}</b><span>Severity</span></div>
             </div>
-            <div className="kv" style={{ alignContent: "start" }}>
-              <span className="k">Frustrated</span><b style={{ color: "var(--red)" }}>{tp.sentiment.frustrated?.toLocaleString()}</b>
-              <span className="k">Neutral</span><b>{tp.sentiment.neutral?.toLocaleString()}</b>
-              <span className="k">Positive</span><b style={{ color: "var(--green)" }}>{tp.sentiment.positive?.toLocaleString()}</b>
-              <span className="k">Severity</span><b className="muted">{tp.severity ?? NA}/100</b>
-            </div>
+            {tp.quote && <div className="quote" style={{ marginTop: 12 }}>{tp.quote.text}
+              <span className="meta">— {SRC_LABEL[tp.quote.source] || tp.quote.source} · {tp.quote.region}</span></div>}
           </div>
-          {tp.quote && <div className="quote" style={{ marginTop: 12 }}>{tp.quote.text}
-            <span className="meta">— {SRC_LABEL[tp.quote.source] || tp.quote.source} · {tp.quote.region}</span></div>}
-        </Card>
+        </div>
       )}
 
       <Tag>Top 5 Discovery Pain Points</Tag>
@@ -118,43 +124,44 @@ export default function Overview() {
       )}
 
       <div className="grid cols-2">
-        {/* Why users are frustrated — described emotions */}
+        {/* Why users are frustrated — emotion + tier */}
         <div>
           <Tag>Why Users Are Frustrated</Tag>
           <Card>
             {negEmo.length === 0 ? <span className="na">{NA}</span> : negEmo.map(([k, v]) => (
-              <div key={k} style={{ marginBottom: 12 }}>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                  <b style={{ color: "var(--red)" }}>{cap(k)}</b><b>{v.toLocaleString()}</b></div>
+              <div key={k} className="emo-row">
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                  <b style={{ color: "var(--red)" }}>{cap(k)}</b>
+                  <span><b>{v.toLocaleString()}</b> <span className="muted" style={{ fontSize: 11 }}>reviews</span></span>
+                </div>
                 <div className="muted" style={{ fontSize: 12.5, lineHeight: 1.5 }}>{EMO_DESC[k] || ""}</div>
+                {tier[k] && (
+                  <div className="emo-tier">
+                    <span className="badge blue-b">Free: {tier[k].free.toLocaleString()}</span>
+                    <span className="badge green">Premium: {tier[k].paid.toLocaleString()}</span>
+                  </div>
+                )}
               </div>
             ))}
-            <div className="note">Emotions detected by keyword heuristic across reviews; one review may express more than one.</div>
+            <div className="note">Emotions detected by keyword heuristic; tier inferred from review text (premium/free cues).</div>
           </Card>
         </div>
 
-        {/* Sentiment breakdown — explained */}
+        {/* Sentiment breakdown — colourful pie */}
         <div>
           <Tag>Sentiment Breakdown</Tag>
           <Card>
-            <BarList data={["frustrated", "neutral", "positive"].filter((k) => sent[k] !== undefined)
-              .map((k) => [cap(k), sent[k]] as [string, number])} />
+            <Donut data={sentDonut} center={`${Math.round(((sent.frustrated || 0) / sentTotal) * 100)}%`} />
             <div className="note" style={{ marginTop: 12 }}>
               Of {sentTotal.toLocaleString()} analyzed reviews, {pct((sent.frustrated || 0) / sentTotal)} read as frustrated,
-              {" "}{pct((sent.neutral || 0) / sentTotal)} neutral, and {pct((sent.positive || 0) / sentTotal)} positive —
-              discovery problems skew negative, while a strong minority still praise the experience.
+              {" "}{pct((sent.neutral || 0) / sentTotal)} neutral, and {pct((sent.positive || 0) / sentTotal)} positive.
+              Discovery problems skew negative, while a strong minority still praise the experience.
             </div>
-            {fp && (
-              <div className="note" style={{ marginTop: 10 }}>
-                <b>By plan (heuristic from review text):</b> {fp.free.toLocaleString()} reviews from free users,
-                {" "}{fp.paid.toLocaleString()} from premium/paid users, and {fp.unknown.toLocaleString()} did not state a plan.
-              </div>
-            )}
           </Card>
         </div>
       </div>
 
-      {/* Recent reviews — real, with full metadata */}
+      {/* Recent reviews — real, full metadata */}
       <Tag>Recent Reviews</Tag>
       {recent.length === 0 ? <p className="na">{NA}</p> : (
         <div className="grid">

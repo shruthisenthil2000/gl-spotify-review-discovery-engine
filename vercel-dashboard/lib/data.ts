@@ -124,6 +124,7 @@ export interface Extra {
   };
   recent_reviews?: { source: string; region: string; rating: string; date: string;
     sentiment: string; category: string; frustration: string; text: string }[];
+  emotion_tier?: Record<string, { free: number; paid: number }>;
   desired_discovery_types: { type: string; evidence: number | string; count: number }[];
   listening_behaviors: { behavior: string; evidence: number }[];
   ai_pilot: {

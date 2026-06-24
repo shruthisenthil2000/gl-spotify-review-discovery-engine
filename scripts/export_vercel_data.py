@@ -792,6 +792,22 @@ def build_extra(df, engine):
         "quote": (ins0.get("representative_quotes") or [None])[0],
     }
 
+    # free vs premium split per (negative) emotion — for the frustration column
+    _paid_rx = re.compile(r"\bi.?m? (a )?premium\b|i pay for|paying for|my (premium|subscription)|"
+                          r"i.?m? subscrib|family plan|duo plan|premium user|i have premium|"
+                          r"been (a )?premium|currently premium", re.I)
+    _free_rx = re.compile(r"free (user|version|tier|account|plan)|without (paying|premium)|"
+                          r"don.?t pay|can.?t afford|too expensive|the ads are|too many ads|"
+                          r"need premium to|to get premium|free users|on the free", re.I)
+    _ipaid = df["text"].str.contains(_paid_rx)
+    _ifree = df["text"].str.contains(_free_rx) & ~_ipaid
+    emotion_tier = {}
+    for _emo, _pat in EMOTIONS.items():
+        if _emo == "excitement":
+            continue
+        _m = df["text"].str.contains(re.compile(_pat, re.I))
+        emotion_tier[_emo] = {"free": int((_m & _ifree).sum()), "paid": int((_m & _ipaid).sum())}
+
     FRUST = {"frustrated": "High", "neutral": "Medium", "positive": "Low"}
     dd = df[df["timestamp"].astype(str).str.match(r"\d{4}-\d{2}-\d{2}")].sort_values(
         "timestamp", ascending=False)
@@ -815,6 +831,7 @@ def build_extra(df, engine):
         "source_detail": source_detail,
         "top_problem": top_problem,
         "recent_reviews": recent_reviews,
+        "emotion_tier": emotion_tier,
         "friction": friction,
         "journey": journey,
         "emotion": emotion,

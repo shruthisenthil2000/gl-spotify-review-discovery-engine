@@ -930,3 +930,22 @@ html, body { overflow-x: clip; }
 .live-rate { color: #e6b34a; font-size: 11.5px; font-weight: 700; white-space: nowrap; }
 .live-cat { font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
   text-transform: capitalize; white-space: nowrap; }
+
+/* gap before RESEARCH QUESTIONS + push the chatbot input lower */
+.dataset-note { margin-bottom: 18px; }
+.copilot-bar { margin-top: 26px; }
+
+/* Fetch Live Reviews — big button adjacent to the tabs (Overview only) */
+.top-tabs-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.fetch-live-big { display: inline-flex; align-items: center; gap: 9px;
+  background: linear-gradient(135deg, #1db954, #169c47); color: #04130a; font-weight: 800;
+  font-size: 16px; padding: 11px 22px; border-radius: 12px; border: none; cursor: pointer;
+  box-shadow: 0 6px 20px rgba(29,185,84,.3); animation: copilot-sendpulse 1.9s ease-out infinite; white-space: nowrap; }
+.fetch-live-big:hover { background: linear-gradient(135deg, #1ed760, #1db954); }
+
+/* Live Reviews section: land at the top below the sticky header + close button */
+.live-section { scroll-margin-top: 150px; }
+.live-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 38px 0 16px; }
+.live-close { background: rgba(255,255,255,.05); border: 1px solid var(--border); color: var(--muted);
+  font-size: 12.5px; font-weight: 700; padding: 7px 14px; border-radius: 999px; cursor: pointer; }
+.live-close:hover { border-color: var(--red); color: var(--red); }

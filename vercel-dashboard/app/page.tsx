@@ -170,8 +170,11 @@ export default function Overview() {
 
       {/* live reviews — fetched on demand from the analysis dataset */}
       {live && (
-        <div ref={liveRef}>
-          <Tag>Live Reviews · pulled from the analysis dataset</Tag>
+        <div ref={liveRef} className="live-section">
+          <div className="live-head">
+            <span className="section-tag" style={{ margin: 0 }}>Live Reviews · pulled from the analysis dataset</span>
+            <button className="live-close" onClick={() => setLive(null)}>✕ Close</button>
+          </div>
           <div className="live-wrap">
             <div className="live-tabs">
               <button className={`live-tab ${liveTab === "discovery" ? "active" : ""}`} onClick={() => setLiveTab("discovery")}>
@@ -179,7 +182,7 @@ export default function Overview() {
               <button className={`live-tab ${liveTab === "all" ? "active" : ""}`} onClick={() => setLiveTab("all")}>
                 All reviews <b>{num(liveRows.length)}</b></button>
             </div>
-            <div className="live-list">
+            <div className="live-list" key={liveTab}>
               {liveShown.slice(0, 40).map((r, i) => {
                 const rn = parseInt(r.rating);
                 const c = SRC_COLOR[r.source] || "#888";

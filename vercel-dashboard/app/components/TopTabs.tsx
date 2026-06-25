@@ -13,15 +13,25 @@ const TABS: [string, string, string][] = [
 export default function TopTabs() {
   const path = usePathname();
   return (
-    <nav className="top-tabs">
-      {TABS.map(([href, emoji, label]) => {
-        const active = href === "/" ? path === "/" : path.startsWith(href);
-        return (
-          <Link key={href} href={href} className={`top-tab ${active ? "active" : ""}`}>
-            <span className="tt-emoji">{emoji}</span>{label}
-          </Link>
-        );
-      })}
-    </nav>
+    <div className="top-tabs-row">
+      <nav className="top-tabs">
+        {TABS.map(([href, emoji, label]) => {
+          const active = href === "/" ? path === "/" : path.startsWith(href);
+          return (
+            <Link key={href} href={href} className={`top-tab ${active ? "active" : ""}`}>
+              <span className="tt-emoji">{emoji}</span>{label}
+            </Link>
+          );
+        })}
+      </nav>
+      {path === "/" && (
+        <button className="fetch-live-big" onClick={() => window.dispatchEvent(new CustomEvent("fetch-live-reviews"))}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          Fetch Live Reviews
+        </button>
+      )}
+    </div>
   );
 }

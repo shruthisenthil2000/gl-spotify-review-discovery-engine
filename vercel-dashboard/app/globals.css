@@ -970,3 +970,8 @@ html, body { overflow-x: clip; }
   100% { box-shadow: 0 0 0 0 rgba(230,74,74,0); }
 }
 .live-close { animation: live-closepulse 2s ease-out infinite; }
+
+/* final placement tweaks */
+.copilot-bar { margin-top: 44px; }          /* push the chatbot input lower */
+.fetch-live-big { margin-top: -8px; }        /* lift the Fetch button up to sit with the tabs */
+.live-section { scroll-margin-top: 230px; }  /* land on the "Live Reviews" heading, clear of the sticky header */

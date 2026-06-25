@@ -154,54 +154,61 @@ function AnswerCard({ item, onEvidence, onAsk }:
   const followups = [1, 2, 3].map((o) => ITEMS[(idx + o) % ITEMS.length]).filter((f) => f.id !== item.id);
   return (
     <div className="ac">
-      {/* A · Executive summary */}
+      {/* A · Executive summary — full width */}
       <div className="ac-summary"><span className="ac-tag">Executive summary</span>{item.a || "Not available"}</div>
 
-      {/* B · Theme breakdown */}
-      {!!item.themes?.length && (
-        <div className="ac-block"><div className="ac-label">Theme breakdown</div>
-          <div className="chips">{item.themes.map((t) => <span className="chip-tag" key={t}>{t}</span>)}</div></div>
-      )}
-      {/* C · Affected user segments */}
-      {!!item.segments?.length && (
-        <div className="ac-block"><div className="ac-label">Affected user segments</div>
-          <div className="chips">{item.segments.map((t) => <span className="chip-seg" key={t}>{t}</span>)}</div></div>
-      )}
+      {/* two-column body so answers read left/right instead of one long scroll */}
+      <div className="ac-cols">
+        <div className="ac-col">
+          {/* B · Theme breakdown */}
+          {!!item.themes?.length && (
+            <div className="ac-block tone-green"><div className="ac-label">Theme breakdown</div>
+              <div className="chips">{item.themes.map((t) => <span className="chip-tag" key={t}>{t}</span>)}</div></div>
+          )}
+          {/* C · Affected user segments */}
+          {!!item.segments?.length && (
+            <div className="ac-block tone-blue"><div className="ac-label">Affected user segments</div>
+              <div className="chips">{item.segments.map((t) => <span className="chip-seg" key={t}>{t}</span>)}</div></div>
+          )}
+          {/* F · Key insight */}
+          {item.key_insight && (
+            <div className="ac-block tone-amber"><div className="ac-label">Key insight</div>
+              <div className="ac-blocktext">{item.key_insight}</div></div>
+          )}
+          {/* G · Product recommendations */}
+          {!!item.recommendations?.length && (
+            <div className="ac-block tone-teal"><div className="ac-label">Product recommendations</div>
+              <ol className="recs">{item.recommendations.map((r, i) => <li key={i}>{r}</li>)}</ol></div>
+          )}
+        </div>
 
-      {/* D · Evidence (funnel + grounding + quotes) */}
-      <div className="ac-block">
-        <div className="ac-label">Evidence</div>
-        <Funnel stages={item.funnel ?? []} />
-        {ground && <div className="ac-ground">{ground}</div>}
-        {quotes.length === 0 ? <div className="na">Evidence details not available</div> :
-          quotes.map((r, i) => <QuoteCard r={r} key={i} />)}
-        <button className="link-btn strong" onClick={() => onEvidence(item.id)}>
-          {item.evidence != null ? `See all ${fmt(item.evidence)} reviews →` : "Inspect matching reviews →"}
-        </button>
+        <div className="ac-col">
+          {/* D · Evidence (funnel + grounding + quotes) */}
+          <div className="ac-block tone-purple">
+            <div className="ac-label">Evidence</div>
+            <Funnel stages={item.funnel ?? []} />
+            {ground && <div className="ac-ground">{ground}</div>}
+            {quotes.length === 0 ? <div className="na">Evidence details not available</div> :
+              quotes.map((r, i) => <QuoteCard r={r} key={i} />)}
+            <button className="link-btn strong" onClick={() => onEvidence(item.id)}>
+              {item.evidence != null ? `See all ${fmt(item.evidence)} reviews →` : "Inspect matching reviews →"}
+            </button>
+          </div>
+          {/* E · sub-need breakdown (honest math) */}
+          {!!item.sub_needs?.length && (
+            <div className="ac-block tone-orange"><div className="ac-label">Top recurring sub-needs within the matching set</div>
+              <div className="subneeds">
+                {item.sub_needs.map((s) => (
+                  <div className="subneed" key={s.label}><span>{s.label}</span><b>{fmt(s.count)}</b></div>
+                ))}
+              </div></div>
+          )}
+        </div>
       </div>
 
-      {/* E · sub-need breakdown (honest math) */}
-      {!!item.sub_needs?.length && (
-        <div className="ac-block"><div className="ac-label">Top recurring sub-needs within the matching set</div>
-          <div className="subneeds">
-            {item.sub_needs.map((s) => (
-              <div className="subneed" key={s.label}><span>{s.label}</span><b>{fmt(s.count)}</b></div>
-            ))}
-          </div></div>
-      )}
-
-      {/* F · Key insight */}
-      {item.key_insight && <div className="ac-key"><span className="ac-keytag">Key insight</span>{item.key_insight}</div>}
-
-      {/* G · Product recommendations */}
-      {!!item.recommendations?.length && (
-        <div className="ac-block"><div className="ac-label">Product recommendations</div>
-          <ol className="recs">{item.recommendations.map((r, i) => <li key={i}>{r}</li>)}</ol></div>
-      )}
-
-      {/* follow-ups */}
+      {/* follow-ups — full width */}
       {followups.length > 0 && (
-        <div className="ac-block"><div className="ac-label">Follow-up questions</div>
+        <div className="ac-block tone-flat"><div className="ac-label">Follow-up questions</div>
           <div className="followups">{followups.map((f) =>
             <button className="followup-chip" key={f.id} onClick={() => onAsk(f.id)}>{f.q}</button>)}</div></div>
       )}

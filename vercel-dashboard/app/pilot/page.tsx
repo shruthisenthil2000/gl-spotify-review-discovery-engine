@@ -298,12 +298,14 @@ export default function AiPilot() {
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#04130a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 3v3M5 8h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" /><circle cx="9" cy="13" r="1" /><circle cx="15" cy="13" r="1" /></svg>
         </span>
-        <div>
-          <h1 style={{ margin: 0 }}>Discovery Copilot</h1>
+        <div className="copilot-head-text">
+          <div className="copilot-title-row">
+            <h1 style={{ margin: 0 }}>Discovery Copilot</h1>
+            <span className="dataset-status">Curated dataset · 26,823 reviews analyzed</span>
+          </div>
+          <div className="dataset-note">A cleaned, de-duplicated and relevance-filtered set of real Spotify user reviews, quality-checked before analysis.</div>
         </div>
       </div>
-      <span className="dataset-status">Curated dataset · 26,823 reviews analyzed</span>
-      <div className="dataset-note">A cleaned, de-duplicated and relevance-filtered set of real Spotify user reviews, quality-checked before analysis.</div>
 
       <div className="copilot-body">
         {msgs.map((m, i) => {

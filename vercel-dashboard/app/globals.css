@@ -989,3 +989,12 @@ html, body { overflow-x: clip; }
   border-left: 3px solid var(--green); border-radius: 10px; padding: 12px 15px;
   margin-bottom: 14px; font-size: 13px; line-height: 1.65; color: #d4d4d4; }
 .live-summary > b { color: #fff; }
+
+/* Copilot header: pill beside the title, description right under it, more gap before questions */
+.copilot-header { align-items: flex-start; }
+.copilot-icon.big { margin-top: 5px; }
+.copilot-head-text { flex: 1; min-width: 0; }
+.copilot-title-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.copilot-title-row .dataset-status { margin: 0; }
+.copilot-head-text .dataset-note { margin: 8px 0 0; }
+.copilot-body { margin-top: 40px; }

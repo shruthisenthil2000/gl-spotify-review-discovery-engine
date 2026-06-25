@@ -1,14 +1,21 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { PROJECT, getSummary, getExtra } from "@/lib/data";
 
 export default function TopHeader() {
+  const path = usePathname();
   const [syncing, setSyncing] = useState(false);
   const [syncedAt, setSyncedAt] = useState<string | null>(null);
+  const [fetched, setFetched] = useState(false);
   const sync = async () => {
     setSyncing(true);
     try { await Promise.all([getSummary(), getExtra()]); setSyncedAt(new Date().toLocaleTimeString()); }
     finally { setSyncing(false); }
+  };
+  const fetchLive = () => {
+    window.dispatchEvent(new CustomEvent("fetch-live-reviews"));
+    setFetched(true);
   };
   return (
     <div className="apphdr">
@@ -25,6 +32,15 @@ export default function TopHeader() {
           {syncing ? "Syncing…" : "Sync Reviews"}
         </button>
         {syncedAt && <span className="sync-note">Synced ✓ {syncedAt}</span>}
+        {path === "/" && (
+          <button className="ghost-btn fetch-live" onClick={fetchLive}>
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+            Fetch Live Reviews
+          </button>
+        )}
+        {path === "/" && fetched && <span className="sync-note">Loaded ✓ below</span>}
       </div>
     </div>
   );

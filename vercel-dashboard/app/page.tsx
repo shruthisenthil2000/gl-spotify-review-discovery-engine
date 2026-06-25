@@ -1,7 +1,10 @@
 "use client";
-import { useState } from "react";
-import { getSummary, getExtra, num, pct, NA } from "@/lib/data";
+import { useState, useEffect, useRef } from "react";
+import { getSummary, getExtra, getReviews, num, pct, NA, type ReviewsFile } from "@/lib/data";
 import { Card, Donut, Histogram, Tag, useJSON } from "./components/ui";
+
+// categories tied to the strategic goal: more discovery, less repeat listening
+const DISCOVERY_CATS = new Set(["repetition_issue", "discovery_issue", "algorithm_mismatch"]);
 
 const CAT_LABEL: Record<string, string> = {
   discovery_issue: "Discovery issue", repetition_issue: "Repetition issue",
@@ -65,7 +68,24 @@ export default function Overview() {
   const [modal, setModal] = useState<string | null>(null);
   const [platform, setPlatform] = useState("");
   const [range, setRange] = useState("all");
+  const [live, setLive] = useState<ReviewsFile | null>(null);
+  const [liveTab, setLiveTab] = useState<"all" | "discovery">("discovery");
+  const liveRef = useRef<HTMLDivElement>(null);
+  // "Fetch Live Reviews" button (in the header) dispatches this event
+  useEffect(() => {
+    const onFetch = () => {
+      getReviews().then((r) => {
+        setLive(r);
+        setTimeout(() => liveRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+      }).catch(() => {});
+    };
+    window.addEventListener("fetch-live-reviews", onFetch);
+    return () => window.removeEventListener("fetch-live-reviews", onFetch);
+  }, []);
   if (!s) return <p className="muted">Loading…</p>;
+  const liveRows = live?.rows ?? [];
+  const liveDiscovery = liveRows.filter((r) => DISCOVERY_CATS.has(r.category));
+  const liveShown = liveTab === "all" ? liveRows : liveDiscovery;
   const t = s.totals || {};
 
   const cats: [string, number][] = Object.entries(s.by_category || {})
@@ -147,6 +167,42 @@ export default function Overview() {
           <div className="kpi-link">Click for details ↗</div>
         </button>
       </div>
+
+      {/* live reviews — fetched on demand from the analysis dataset */}
+      {live && (
+        <div ref={liveRef}>
+          <Tag>Live Reviews · pulled from the analysis dataset</Tag>
+          <div className="live-wrap">
+            <div className="live-tabs">
+              <button className={`live-tab ${liveTab === "discovery" ? "active" : ""}`} onClick={() => setLiveTab("discovery")}>
+                Discovery &amp; repeat-listening <b>{num(liveDiscovery.length)}</b></button>
+              <button className={`live-tab ${liveTab === "all" ? "active" : ""}`} onClick={() => setLiveTab("all")}>
+                All reviews <b>{num(liveRows.length)}</b></button>
+            </div>
+            <div className="live-list">
+              {liveShown.slice(0, 40).map((r, i) => {
+                const rn = parseInt(r.rating);
+                const c = SRC_COLOR[r.source] || "#888";
+                return (
+                  <div className="live-card" key={r.id || i} style={{ borderLeftColor: c }}>
+                    <div className="live-q">“{r.text}”</div>
+                    <div className="live-foot">
+                      <span className="live-who">{SRC_EMOJI[r.source] || "📱"} {SRC_LABEL[r.source] || r.source}{r.region ? ` · ${r.region}` : ""}</span>
+                      <span className="live-tags">
+                        {rn >= 1 && rn <= 5 && <span className="live-rate">★ {rn}</span>}
+                        <span className="live-cat" style={{ color: CAT_COLOR[CAT_LABEL[r.category]] || c, background: `${CAT_COLOR[CAT_LABEL[r.category]] || c}22` }}>{r.category.replace(/_/g, " ")}</span>
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="note">Showing {num(Math.min(40, liveShown.length))} of {num(liveShown.length)} fetched reviews
+              {liveTab === "discovery" ? " tied to repeat playlists, familiar artists, and discovery friction" : ""} ·
+              sampled live from the curated 26,823-review dataset.</div>
+          </div>
+        </div>
+      )}
 
       {/* sources strip */}
       <Tag>Sources analyzed · with year coverage</Tag>

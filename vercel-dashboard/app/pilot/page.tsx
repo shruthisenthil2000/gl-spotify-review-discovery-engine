@@ -289,7 +289,7 @@ export default function AiPilot() {
     <>
       <div className="copilot-header">
         <span className="copilot-icon big">
-          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#04130a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#04130a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 3v3M5 8h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" /><circle cx="9" cy="13" r="1" /><circle cx="15" cy="13" r="1" /></svg>
         </span>
         <div>

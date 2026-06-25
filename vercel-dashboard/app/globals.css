@@ -980,3 +980,12 @@ html, body { overflow-x: clip; }
 .copilot-body { margin-top: 24px; }
 /* lift the Fetch Live Reviews button clearly above the tabs */
 .fetch-live-big { margin-top: -32px; }
+
+/* input bar flows under the questions instead of floating (sticky was the odd gap) */
+.copilot-bar { position: static; box-shadow: none; margin-top: 28px; }
+
+/* live reviews — short colour-coded summary */
+.live-summary { background: rgba(255,255,255,.03); border: 1px solid var(--border);
+  border-left: 3px solid var(--green); border-radius: 10px; padding: 12px 15px;
+  margin-bottom: 14px; font-size: 13px; line-height: 1.65; color: #d4d4d4; }
+.live-summary > b { color: #fff; }

@@ -89,6 +89,14 @@ export default function Overview() {
   const liveStars = liveShown.map((r) => parseInt(r.rating)).filter((n) => n >= 1 && n <= 5);
   const liveAvg = liveStars.length ? liveStars.reduce((a, b) => a + b, 0) / liveStars.length : null;
   const liveFrust = liveShown.length ? liveShown.filter((r) => r.sentiment === "frustrated").length / liveShown.length : 0;
+  const livePos = liveShown.length ? liveShown.filter((r) => r.sentiment === "positive").length / liveShown.length : 0;
+  const liveNeu = Math.max(0, 1 - liveFrust - livePos);
+  const liveCatCount: Record<string, number> = {};
+  liveShown.forEach((r) => { liveCatCount[r.category] = (liveCatCount[r.category] || 0) + 1; });
+  const liveTopCats = Object.entries(liveCatCount).sort((a, b) => b[1] - a[1]).slice(0, 2).map(([k]) => k);
+  const liveSrcCount: Record<string, number> = {};
+  liveShown.forEach((r) => { liveSrcCount[r.source] = (liveSrcCount[r.source] || 0) + 1; });
+  const liveTopSrc = Object.entries(liveSrcCount).sort((a, b) => b[1] - a[1])[0]?.[0];
   const t = s.totals || {};
 
   const cats: [string, number][] = Object.entries(s.by_category || {})
@@ -187,8 +195,21 @@ export default function Overview() {
               <span className="live-stat amber" style={{ marginLeft: "auto" }}>★ {liveAvg != null ? liveAvg.toFixed(1) : "—"} avg rating</span>
               <span className="live-stat red">{(liveFrust * 100).toFixed(0)}% frustrated</span>
             </div>
+            <div className="live-summary">
+              <b>In short —</b> these {num(liveShown.length)} reviews mostly cover{" "}
+              {liveTopCats.map((k, i) => (
+                <span key={k}>
+                  <b style={{ color: CAT_COLOR[CAT_LABEL[k]] || "#fff" }}>{(CAT_LABEL[k] || k).toLowerCase()}</b>
+                  {i === 0 && liveTopCats.length > 1 ? " and " : ""}
+                </span>
+              ))}; sentiment runs{" "}
+              <b style={{ color: "#e64a4a" }}>{(liveFrust * 100).toFixed(0)}% frustrated</b>,{" "}
+              <b style={{ color: "#1db954" }}>{(livePos * 100).toFixed(0)}% positive</b>,{" "}
+              <b style={{ color: "#e6b34a" }}>{(liveNeu * 100).toFixed(0)}% neutral</b>
+              {liveTopSrc ? <> — mostly from <b style={{ color: SRC_COLOR[liveTopSrc] || "#fff" }}>{SRC_LABEL[liveTopSrc] || liveTopSrc}</b></> : null}.
+            </div>
             <div className="live-list" key={liveTab}>
-              {liveShown.slice(0, 40).map((r, i) => {
+              {liveShown.slice(0, 25).map((r, i) => {
                 const rn = parseInt(r.rating);
                 const c = SRC_COLOR[r.source] || "#888";
                 return (
@@ -205,7 +226,7 @@ export default function Overview() {
                 );
               })}
             </div>
-            <div className="note">Showing {num(Math.min(40, liveShown.length))} of {num(liveShown.length)} fetched reviews
+            <div className="note">Showing {num(Math.min(25, liveShown.length))} of {num(liveShown.length)} fetched reviews
               {liveTab === "discovery" ? " tied to repeat playlists, familiar artists, and discovery friction" : ""} ·
               sampled live from the curated 26,823-review dataset.</div>
           </div>

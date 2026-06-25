@@ -998,3 +998,7 @@ html, body { overflow-x: clip; }
 .copilot-title-row .dataset-status { margin: 0; }
 .copilot-head-text .dataset-note { margin: 8px 0 0; }
 .copilot-body { margin-top: 40px; }
+
+/* sidebar brand: bigger name + bigger logo (Spotify Pulse) */
+.brand-name { font-size: 18px; }
+.brand-logo { width: 44px; height: 44px; }

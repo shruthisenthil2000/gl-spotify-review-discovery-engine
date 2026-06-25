@@ -12,7 +12,7 @@ const LINKS = [
 
 function SpotifyMark() {
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-label="Spotify">
+    <svg viewBox="0 0 24 24" width="27" height="27" aria-label="Spotify">
       <circle cx="12" cy="12" r="12" fill="#000" />
       <g fill="none" stroke="#1ed760" strokeWidth="1.8" strokeLinecap="round">
         <path d="M6 9.2c4-1.1 8.2-.7 11.6 1.2" /><path d="M6.8 12.4c3.3-.9 6.8-.5 9.6 1.1" />
@@ -29,8 +29,8 @@ export default function Nav() {
       <div className="brand-block">
         <div className="brand-logo"><SpotifyMark /></div>
         <div>
-          <div className="brand-name">Discovery <span className="dot">IQ</span></div>
-          <div className="brand-tag">Spotify Intelligence</div>
+          <div className="brand-name">Spotify <span className="dot">Pulse</span></div>
+          <div className="brand-tag">Review Intelligence</div>
         </div>
       </div>
 

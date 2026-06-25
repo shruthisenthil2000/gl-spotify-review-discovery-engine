@@ -265,8 +265,9 @@ export default function AiPilot() {
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [modalId, setModalId] = useState<string | null>(null);
-  const endRef = useRef<HTMLDivElement>(null);
-  useEffect(() => { if (msgs.length) endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [msgs]);
+  const qRef = useRef<HTMLDivElement>(null);
+  // scroll so the latest question (and the answer right below it) starts at the top
+  useEffect(() => { qRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }, [msgs]);
 
   const ask = (text: string, id?: string) => {
     if (!text.trim() && !id) return;
@@ -282,7 +283,7 @@ export default function AiPilot() {
     <>
       <div className="copilot-header">
         <span className="copilot-icon big">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#04130a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#04130a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 3v3M5 8h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" /><circle cx="9" cy="13" r="1" /><circle cx="15" cy="13" r="1" /></svg>
         </span>
         <div>
@@ -294,13 +295,12 @@ export default function AiPilot() {
 
       <div className="copilot-body">
         {msgs.map((m, i) => {
-          if (m.role === "user") return <div className="bubble-user" key={i}>{m.text}</div>;
+          if (m.role === "user") return <div className="bubble-user" key={i} ref={i === msgs.length - 2 ? qRef : undefined}>{m.text}</div>;
           if (m.role === "bot-fallback") return <div className="ac" key={i}><div className="ac-summary">{FALLBACK_MSG}</div></div>;
           const item = BY_ID[m.id];
           return item ? <AnswerCard key={i} item={item} onEvidence={setModalId} onAsk={(id) => ask("", id)} />
             : <div className="ac" key={i}><div className="ac-summary na">Not available.</div></div>;
         })}
-        <div ref={endRef} />
 
         <div className="copilot-cards-label">{msgs.length ? "Suggested questions" : "Research questions"}</div>
         <div className="qopts">

@@ -180,6 +180,12 @@ function AnswerCard({ item, onEvidence, onAsk }:
             <div className="ac-block tone-teal"><div className="ac-label">Product recommendations</div>
               <ol className="recs">{item.recommendations.map((r, i) => <li key={i}>{r}</li>)}</ol></div>
           )}
+          {/* follow-ups — left column, beside sub-needs */}
+          {followups.length > 0 && (
+            <div className="ac-block tone-flat"><div className="ac-label">Follow-up questions</div>
+              <div className="followups">{followups.map((f) =>
+                <button className="followup-chip" key={f.id} onClick={() => onAsk(f.id)}>{f.q}</button>)}</div></div>
+          )}
         </div>
 
         <div className="ac-col">
@@ -205,13 +211,6 @@ function AnswerCard({ item, onEvidence, onAsk }:
           )}
         </div>
       </div>
-
-      {/* follow-ups — full width */}
-      {followups.length > 0 && (
-        <div className="ac-block tone-flat"><div className="ac-label">Follow-up questions</div>
-          <div className="followups">{followups.map((f) =>
-            <button className="followup-chip" key={f.id} onClick={() => onAsk(f.id)}>{f.q}</button>)}</div></div>
-      )}
     </div>
   );
 }

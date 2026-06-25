@@ -893,3 +893,9 @@ html, body { overflow-x: clip; }
 /* bigger, colour-coded section labels */
 .ac-block[class*="tone-"] .ac-label { color: var(--tone); font-size: 12.5px; letter-spacing: .06em; margin-bottom: 11px; }
 .ac-blocktext { color: #e6dcc2; font-size: 13.5px; line-height: 1.55; }
+
+/* unify all answer-card / copilot subtitles to one slightly larger size */
+.ac-tag, .ac-keytag, .ac-label, .copilot-cards-label,
+.ac-block[class*="tone-"] .ac-label { font-size: 13px; }
+.copilot-cards-label { font-size: 13px; }
+.ac-block.tone-flat { margin-top: 0; }

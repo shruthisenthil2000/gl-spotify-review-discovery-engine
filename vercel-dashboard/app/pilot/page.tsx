@@ -40,18 +40,24 @@ const SRC_LABEL: Record<string, string> = {
 
 // Routing keywords (typed question -> closest answer id)
 const KEYWORDS: Record<string, string[]> = {
-  q1: ["why", "struggle", "discover", "find new", "new music"],
-  q2: ["frustration", "recommend", "suggestion", "irrelevant", "off-taste"],
+  q1: ["why", "struggle", "discover", "find new", "new music", "discover new music", "music discovery", "discovery"],
+  q2: ["frustration", "recommend", "suggestion", "irrelevant", "off-taste", "off taste",
+    "recommendation diversity", "recommendation relevance", "personalized recommendation",
+    "personalised recommendation", "personalized", "diversity", "relevance"],
   q3: ["behavior", "trying to achieve", "goal", "listening behavior"],
-  q4: ["repeat", "repetitive", "same", "loop", "shuffle"],
+  q4: ["repeat", "repetitive", "same", "loop", "shuffle", "repetitive recommendation",
+    "same songs", "same artists", "same song recommended", "same artist recommended",
+    "recommendation loop", "recommendation redundancy", "redundancy", "stale", "stale recommendation",
+    "autoplay", "daily mix repetitive", "song radio repetitive"],
   q5: ["segment", "cohort", "who", "power user", "casual"],
   q6: ["unmet", "need", "needs", "missing"],
-  q7: ["feature", "discover weekly", "release radar", "daily mix", "radio", "smart shuffle"],
+  q7: ["feature", "discover weekly", "release radar", "daily mix", "radio", "smart shuffle",
+    "song radio", "autoplay recommendations", "discover weekly repetitive", "discover weekly not discovering"],
   q8: ["kind of", "new artist", "new song", "genre", "niche", "regional"],
   q9: ["mood", "context", "vibe", "situation", "activity"],
   q10: ["control", "dislike", "reset", "tune", "not interested"],
   q11: ["where", "go", "tiktok", "youtube", "apple music", "fails"],
-  q12: ["feel", "emotion", "bored", "frustrated", "fatigue"],
+  q12: ["feel", "emotion", "bored", "frustrated", "fatigue", "recommendation fatigue", "tired"],
 };
 function matchId(query: string): string | null {
   const q = query.toLowerCase();

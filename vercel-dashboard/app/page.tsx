@@ -86,6 +86,9 @@ export default function Overview() {
   const liveRows = live?.rows ?? [];
   const liveDiscovery = liveRows.filter((r) => DISCOVERY_CATS.has(r.category));
   const liveShown = liveTab === "all" ? liveRows : liveDiscovery;
+  const liveStars = liveShown.map((r) => parseInt(r.rating)).filter((n) => n >= 1 && n <= 5);
+  const liveAvg = liveStars.length ? liveStars.reduce((a, b) => a + b, 0) / liveStars.length : null;
+  const liveFrust = liveShown.length ? liveShown.filter((r) => r.sentiment === "frustrated").length / liveShown.length : 0;
   const t = s.totals || {};
 
   const cats: [string, number][] = Object.entries(s.by_category || {})
@@ -181,6 +184,8 @@ export default function Overview() {
                 Discovery &amp; repeat-listening <b>{num(liveDiscovery.length)}</b></button>
               <button className={`live-tab ${liveTab === "all" ? "active" : ""}`} onClick={() => setLiveTab("all")}>
                 All reviews <b>{num(liveRows.length)}</b></button>
+              <span className="live-stat amber" style={{ marginLeft: "auto" }}>★ {liveAvg != null ? liveAvg.toFixed(1) : "—"} avg rating</span>
+              <span className="live-stat red">{(liveFrust * 100).toFixed(0)}% frustrated</span>
             </div>
             <div className="live-list" key={liveTab}>
               {liveShown.slice(0, 40).map((r, i) => {
